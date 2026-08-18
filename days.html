@@ -114,20 +114,6 @@
     <div class="mcq" id="secH"></div>
   </div>
 
-  <div class="banner b5">🏃 Speed Quiz — bonus game</div>
-  <div class="card">
-    <p class="hint">Click the correct English day as fast as you can — 10 rounds!</p>
-    <div id="spqPrompt" style="font-size:1.6rem;font-weight:800;text-align:center;margin:10px 0;color:var(--navy)">Press Start ▶</div>
-    <div id="spqOpts" class="grid"></div>
-    <div style="margin-top:10px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-      <b>Score: <span id="spqScore">0</span>/10</b>
-      <b>Time: <span id="spqTime">0.0</span>s</b>
-      <b>Round: <span id="spqRound">0</span>/10</b>
-      <button onclick="spqStart()">Start / Restart</button>
-      <span id="spqDone" style="font-weight:800;color:var(--green)"></span>
-    </div>
-  </div>
-
   <div class="done-msg" id="doneMsg">🎉 Perfect score — subarashii! すばらしい！</div>
   <footer>Year 7 Japanese · Days of the Week &amp; Weekly Activities</footer>
 </div>
@@ -276,38 +262,6 @@ document.addEventListener("input",e=>{if(e.target.classList.contains("ans")&&e.t
 document.addEventListener("blur",e=>{if(e.target.classList.contains("ans")&&e.target.tagName==="INPUT"){checkOne(e.target);refreshScore();}},true);
 document.addEventListener("change",e=>{if(e.target.classList.contains("ans")&&e.target.tagName==="SELECT"){checkOne(e.target);refreshScore();save();}});
 
-// ---- Speed Quiz (bonus game, not part of the main score) ----
-let spq={rounds:[],idx:0,score:0,t0:0,timer:null};
-function spqStart(){
-  clearInterval(spq.timer);
-  const pool=DAYS.map(d=>[d[1],d[0]]); // [romaji, english]
-  spq.rounds=[];for(let i=0;i<10;i++)spq.rounds.push(pool[Math.floor(Math.random()*pool.length)]);
-  spq.idx=0;spq.score=0;spq.t0=Date.now();
-  document.getElementById("spqDone").textContent="";document.getElementById("spqScore").textContent="0";
-  spq.timer=setInterval(()=>{document.getElementById("spqTime").textContent=((Date.now()-spq.t0)/1000).toFixed(1);},100);
-  spqShow();
-}
-function spqShow(){
-  if(spq.idx>=spq.rounds.length)return;
-  document.getElementById("spqRound").textContent=(spq.idx+1);
-  const eng=spq.rounds[spq.idx][1];
-  document.getElementById("spqPrompt").textContent=spq.rounds[spq.idx][0];
-  const others=DAYS.map(d=>d[0]).filter(e=>e!==eng);
-  const opts=[eng];while(opts.length<4){const x=others[Math.floor(Math.random()*others.length)];if(!opts.includes(x))opts.push(x);}
-  opts.sort(()=>Math.random()-0.5);
-  const c=document.getElementById("spqOpts");c.innerHTML="";
-  opts.forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=()=>spqAns(o,eng,b);c.appendChild(b);});
-}
-function spqAns(chosen,correct,btn){
-  document.getElementById("spqOpts").querySelectorAll("button").forEach(b=>b.disabled=true); // block extra clicks in the gap
-  if(chosen===correct){spq.score++;document.getElementById("spqScore").textContent=spq.score;btn.classList.add("correct");}
-  else{btn.classList.add("wrong");}
-  spq.idx++;
-  if(spq.idx>=spq.rounds.length){clearInterval(spq.timer);const t=((Date.now()-spq.t0)/1000).toFixed(1);
-    document.getElementById("spqPrompt").textContent="Done! 🎉";document.getElementById("spqOpts").innerHTML="";
-    document.getElementById("spqDone").textContent="Score "+spq.score+"/10 in "+t+"s";return;}
-  setTimeout(spqShow,140);
-}
 load();
 </script>
 </body>
