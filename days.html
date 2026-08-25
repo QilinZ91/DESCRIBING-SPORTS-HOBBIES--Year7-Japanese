@@ -3,265 +3,286 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>曜日 · Days of the Week — Year 7 Japanese</title>
+<title>曜日 · Days, Time & Activities — Year 7 Japanese</title>
 <style>
   :root{--purple:#6741D9;--blue:#1F8FCB;--teal:#0CA678;--amber:#B8860B;--green:#2F9E44;--navy:#1D3A8A;--pink:#D6336C;--red:#E23B2E;--grey:#595959;--line:#c9c9c9;--bg:#f4f6fb;--card:#fff;}
   *{box-sizing:border-box}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:0;background:var(--bg);color:#1a1a1a;line-height:1.5;}
   .wrap{max-width:900px;margin:0 auto;padding:0 14px 60px;}
-  header{background:linear-gradient(135deg,#6741D9,#1F8FCB);color:#fff;text-align:center;padding:22px 16px 16px;border-radius:0 0 18px 18px;}
+  header{background:linear-gradient(135deg,#6741D9,#1F8FCB);color:#fff;text-align:center;padding:22px 16px 14px;border-radius:0 0 18px 18px;}
   header h1{margin:0;font-size:1.4rem;}
   header p{margin:6px 0 0;opacity:.95;font-style:italic;font-size:.9rem;}
-  .toolbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border:1px solid #e3e3ef;border-radius:12px;margin:14px 0 6px;padding:10px 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-  .toolbar .score{font-weight:800;color:var(--navy);margin-right:auto;font-size:.95rem;}
-  .bar{height:8px;border-radius:6px;background:#e6e6ef;flex:1 1 120px;min-width:120px;overflow:hidden;}
-  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2F9E44,#0CA678);transition:width .3s;}
-  button{cursor:pointer;border:none;border-radius:9px;padding:8px 12px;font-weight:700;font-size:.85rem;color:#fff;background:var(--navy);}
-  button.alt{background:#fff;color:var(--navy);border:1.5px solid var(--navy);}
-  button.warn{background:#fff;color:var(--red);border:1.5px solid var(--red);}
-  .note{background:#FFF9DB;border:1.5px solid #FFD43B;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.9rem;}
-  .banner{color:#fff;text-align:center;font-weight:800;font-size:1.02rem;padding:9px;border-radius:11px;margin-top:20px;}
-  .b1{background:var(--teal)}.b2{background:var(--purple)}.b3{background:var(--navy)}.b4{background:var(--pink)}.b5{background:var(--amber)}.b6{background:var(--green)}.b7{background:var(--blue)}.b8{background:var(--red)}.b9{background:var(--navy)}
+  nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0 4px;}
+  nav button{cursor:pointer;border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:20px;padding:7px 16px;font-weight:700;font-size:.9rem;}
+  nav button.on{background:var(--navy);color:#fff;}
+  .view{display:none;}.view.active{display:block;}
+  .banner{color:#fff;text-align:center;font-weight:800;font-size:1.02rem;padding:9px;border-radius:11px;margin-top:18px;}
+  .b1{background:var(--teal)}.b2{background:var(--purple)}.b3{background:var(--navy)}.b4{background:var(--pink)}.b5{background:var(--amber)}.b6{background:var(--green)}.b7{background:var(--blue)}
   .card{background:var(--card);border:1px solid #e7e7f0;border-radius:12px;padding:14px 16px;margin-top:10px;}
-  .hint{color:var(--grey);font-style:italic;font-size:.88rem;margin:2px 0 10px;}
+  .hint{color:var(--grey);font-style:italic;font-size:.88rem;margin:2px 0 8px;}
   .p{color:var(--green);font-weight:800;}
-  .sim{color:#2F9E44;font-weight:800;}   /* shimasu = do */
-  .simn{color:#E23B2E;font-weight:800;}  /* shimasen = don't */
-  .q{margin:9px 0;}
-  .jp{color:var(--grey);font-weight:600;}
+  .sim{color:#2F9E44;font-weight:800;}.simn{color:#E23B2E;font-weight:800;}
+  .chip{display:inline-block;padding:3px 10px;border-radius:7px;color:#fff;font-weight:800;font-size:.92em;margin:2px 2px;}
+  .ch-day{background:#1C7ED6}.ch-ni{background:#E23B2E}.ch-act{background:#2F9E44}.ch-o{background:#F08C00}.ch-verb{background:#6741D9}
+  .t-day{color:#1C7ED6;font-weight:800}.t-ni{color:#E23B2E;font-weight:800}.t-act{color:#2F9E44;font-weight:800}.t-o{color:#F08C00;font-weight:800}.t-verb{color:#6741D9;font-weight:800}
+  .jp{color:var(--grey);font-weight:600;}.kanji{font-size:1.12rem;font-weight:700;}
   table{width:100%;border-collapse:collapse;margin:4px 0;}
   th{background:var(--purple);color:#fff;font-size:.82rem;padding:6px;text-align:left;}
-  td{border:1px solid #e0e2ee;padding:5px 8px;font-size:.95rem;}
-  tr:nth-child(even) td{background:#f7f7fc;}
-  .kanji{font-size:1.15rem;font-weight:700;}
-  input.ans,select.ans{font-size:1rem;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;background:#fff;font-family:inherit;}
-  input.wide{width:100%;max-width:430px;}input.mid{width:160px;}
-  input.correct,select.correct{border-color:var(--green);background:#EAF7EE;}
-  input.incorrect,select.incorrect{border-color:var(--red);background:#FDECEC;}
-  .fb{margin-left:8px;font-weight:700;font-size:.9rem;}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;}@media(max-width:620px){.grid{grid-template-columns:1fr}}
-  .opt{display:block;width:100%;text-align:left;background:#fff;color:#1a1a1a;border:1.5px solid var(--line);border-radius:9px;padding:8px 12px;margin:5px 0;font-size:.98rem;font-weight:500;cursor:pointer;}
-  .opt:hover{border-color:var(--navy)}.opt.correct{background:#EAF7EE;border-color:var(--green);font-weight:700}.opt.wrong{background:#FDECEC;border-color:var(--red)}
-  .opt .l{font-weight:800;color:var(--navy);margin-right:6px}
-  .mcq h4{margin:12px 0 2px;font-size:1rem}
+  td{border:1px solid #e0e2ee;padding:5px 8px;font-size:.95rem;}tr:nth-child(even) td{background:#f7f7fc;}
   .box{border:1.5px solid #e0e0ea;border-radius:12px;padding:10px 14px;margin:8px 0;background:#fbfbfe;}
-  .done-msg{display:none;background:#EAF7EE;border:1.5px solid var(--green);color:#176b2c;border-radius:10px;padding:8px 12px;margin-top:10px;font-weight:700}
-  footer{text-align:center;color:var(--grey);font-size:.8rem;margin-top:26px}
+  .home-btn{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--purple);border-radius:14px;padding:16px 18px;margin:12px 0;cursor:pointer;font-size:1.05rem;font-weight:700;color:var(--navy);}
+  .home-btn small{display:block;font-weight:400;color:var(--grey);margin-top:4px;font-size:.85rem;}
+  /* practice */
+  .prog{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border:1px solid #e3e3ef;border-radius:12px;padding:8px 12px;margin:12px 0;display:flex;align-items:center;gap:10px;}
+  .prog b{color:var(--navy);font-size:.9rem;white-space:nowrap;}
+  .bar{height:8px;border-radius:6px;background:#e6e6ef;flex:1;overflow:hidden;}.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2F9E44,#0CA678);transition:width .3s;}
+  .level{border:1px solid #e2e2ee;border-radius:12px;padding:12px 14px;margin:12px 0;background:#fff;}
+  .level.locked{opacity:.5;}
+  .level.done{border-color:var(--green);background:#f6fdf8;}
+  .lvhead{font-size:1rem;margin-bottom:6px;}
+  .lvhead .lockicon{color:var(--grey);}
+  .q{margin:8px 0;}
+  input.pin,select.pin{font-size:1rem;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;background:#fff;font-family:inherit;}
+  input.wide{width:100%;max-width:420px;}input.mid{width:150px;}input.num{width:80px;}
+  .pin.correct{border-color:var(--green);background:#EAF7EE;}.pin.incorrect{border-color:var(--red);background:#FDECEC;}
+  .fb{margin-left:8px;font-weight:800;font-size:.95rem;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px;}@media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .mcqblock{margin:8px 0;}.mcqq{font-weight:700;margin-bottom:3px;}
+  .opt{display:block;width:100%;text-align:left;background:#fff;color:#1a1a1a;border:1.5px solid var(--line);border-radius:9px;padding:7px 12px;margin:4px 0;font-size:.96rem;cursor:pointer;}
+  .opt.sel{border-color:var(--navy);background:#eef2fb;font-weight:700;}
+  .opt.correct{border-color:var(--green);background:#EAF7EE;font-weight:700;}.opt.wrong{border-color:var(--red);background:#FDECEC;}
+  .checkbtn{cursor:pointer;border:none;border-radius:9px;padding:8px 14px;font-weight:800;color:#fff;background:var(--navy);}
+  .checkbtn:disabled{background:#b7bccb;cursor:not-allowed;}
+  .lvstatus{margin-left:10px;font-weight:800;}
+  .smallbtn{cursor:pointer;border:1.5px solid var(--red);background:#fff;color:var(--red);border-radius:8px;padding:5px 10px;font-weight:700;font-size:.8rem;}
+  footer{text-align:center;color:var(--grey);font-size:.8rem;margin-top:26px;}
 </style>
 </head>
 <body>
 <header>
-  <h1>📅 曜日 · Days of the Week</h1>
-  <p>Youbi · days, activities &amp; ~ o shimasu / shimasen — Year 7 Japanese</p>
+  <h1>📅 曜日 · Days, Time &amp; Activities</h1>
+  <p>Year 7 Japanese — learn the vocab, then complete each practice level</p>
 </header>
 <div class="wrap">
-  <div class="toolbar">
-    <span class="score" id="score">Score: 0 / 0</span>
-    <div class="bar"><i id="barfill"></i></div>
-    <button onclick="checkAll()">✓ Check answers</button>
-    <button class="alt" onclick="revealAll()">Reveal</button>
-    <button class="warn" onclick="resetAll()">Reset</button>
-  </div>
-  <div class="note">Answers check <b>as you type</b> — green ✓ when right. Spelling is forgiving (spaces &amp; capitals don't matter). Your work saves on this device.</div>
+  <nav>
+    <button id="nav-home" class="on" onclick="show('home')">🏠 Home</button>
+    <button id="nav-vocab" onclick="show('vocab')">📚 Vocabulary</button>
+    <button id="nav-practice" onclick="show('practice')">✍️ Practice &amp; Quiz</button>
+  </nav>
 
-  <div class="banner b1">Reference — read me first</div>
-  <div class="card">
-    <b>Days of the week</b> — every day ends in <b>youbi (ようび)</b> = "day of the week".
-    <table><thead><tr><th>English</th><th>Romaji</th><th>Japanese</th><th>Memory clue</th></tr></thead><tbody id="daysRef"></tbody></table>
-    <b style="display:block;margin-top:8px">Activities (… o shimasu)</b>
-    <div class="hint" id="actRef" style="margin-top:2px"></div>
-    <div class="box">
-      <b>Key sentence patterns</b>
-      <div>▸ <b>[activity] <span class="p">o</span> <span class="sim">shimasu</span></b> = I do / play [activity].</div>
-      <div>▸ <b>[day] <span class="p">ni</span> [activity] <span class="p">o</span> <span class="sim">shimasu</span></b> = I do [activity] <b>on</b> [day].</div>
-      <div>▸ <span class="sim">shimasu</span> = do / play &nbsp;·&nbsp; <span class="simn">shimasen</span> = do <b>NOT</b> do / play (negative).</div>
-      <div>▸ <b>Nanyoubi ni … o <span class="sim">shimasu</span> ka?</b> = What day do you do …?</div>
-      <div class="hint" style="margin-top:4px">ni (に) = "on" after the day · o (を) = object particle after the activity.</div>
-      <div class="hint">e.g. Getsuyoubi ni yakyuu o <span class="sim">shimasu</span> = I play baseball on Monday · Nichiyoubi ni sukii o <span class="simn">shimasen</span> = I don't ski on Sunday.</div>
+  <!-- HOME -->
+  <div class="view active" id="view-home">
+    <div class="card">
+      <p>Welcome! This has three parts:</p>
+      <button class="home-btn" onclick="show('vocab')">📚 Vocabulary — learn it first<small>Days of the week, numbers &amp; time, key verbs, sports &amp; hobbies, and the sentence patterns.</small></button>
+      <button class="home-btn" onclick="show('practice')">✍️ Practice &amp; Quiz — test yourself<small>Work through the levels in order. You must get <b>every</b> question in a level correct to unlock the next one. Wrong answers are marked ✗ — fix them and check again.</small></button>
+      <p class="hint">Your progress saves on this device, so you can come back and continue.</p>
     </div>
   </div>
 
-  <div class="banner b2">A · Match the day → English</div>
-  <div class="card"><p class="hint">Choose the English day for each Japanese word.</p><div id="secA"></div></div>
+  <!-- VOCABULARY -->
+  <div class="view" id="view-vocab">
+    <div class="banner b1">Days of the week</div>
+    <div class="card"><p class="hint">Every day ends in <b>youbi (ようび)</b> = "day of the week".</p>
+      <table><thead><tr><th>English</th><th>Romaji</th><th>Japanese</th><th>Memory clue</th></tr></thead><tbody id="daysRef"></tbody></table></div>
 
-  <div class="banner b3">B · Write the romaji day</div>
-  <div class="card"><p class="hint">Type the romaji for each English day (e.g. getsuyoubi).</p><div class="grid" id="secB"></div></div>
+    <div class="banner b5">Numbers &amp; Telling the time</div>
+    <div class="card">
+      <b>🔢 Numbers 1–12</b>
+      <table><thead><tr><th>Number</th><th>Romaji</th><th>Hiragana</th><th>Kanji</th></tr></thead><tbody id="numsRef"></tbody></table>
+      <b style="display:block;margin-top:8px">🕐 [number] <b>ji</b> (じ = 時) = "o'clock"</b>
+      <table><thead><tr><th>Time</th><th>Romaji</th><th>Hiragana</th><th>Kanji + じ</th></tr></thead><tbody id="timeRef"></tbody></table>
+      <div class="hint">Tricky ones: 4 = <b>yo ji</b> (よじ) · 7 = <b>shichi ji</b> (しちじ) · 9 = <b>ku ji</b> (くじ).</div>
+    </div>
 
-  <div class="banner b4">C · Knowledge quiz — kanji &amp; elements</div>
-  <div class="card mcq" id="secC"></div>
+    <div class="banner b6">Key verbs</div>
+    <div class="card"><p class="hint">Recognise the hiragana and know the English meaning.</p>
+      <table><thead><tr><th>Romaji</th><th>English</th><th>Hiragana</th></tr></thead><tbody id="verbRef"></tbody></table>
+      <div class="hint" id="foodRef" style="margin-top:4px"></div></div>
 
-  <div class="banner b5">D · Choose the particle (ni / o)</div>
-  <div class="card"><p class="hint">ni after the day · o after the activity.</p><div id="secD"></div></div>
+    <div class="banner b2">Sports &amp; hobbies</div>
+    <div class="card"><table><thead><tr><th>Japanese</th><th>Romaji</th><th>English</th></tr></thead><tbody id="sportRef"></tbody></table></div>
 
-  <div class="banner b8">E · Consolidate — shimasu or shimasen? (do or don't)</div>
-  <div class="card">
-    <div class="box"><span class="sim">shimasu</span> = I <b>do / play</b> &nbsp;·&nbsp; <span class="simn">shimasen</span> = I do <b>NOT</b> do / play.<br>
-    <span class="hint">If the English says "don't", use <span class="simn">shimasen</span>; otherwise use <span class="sim">shimasu</span>.</span></div>
-    <p class="hint">Read the English (do / don't) and pick the right verb.</p><div id="secG"></div></div>
+    <div class="banner b3">Sentence patterns</div>
+    <div class="card">
+      <div class="hint" style="margin-bottom:6px"><b>Colour key:</b>
+        <span class="chip ch-day">topic</span> day / time / thing ·
+        <span class="chip ch-ni">ni</span> on / at ·
+        <span class="chip ch-act">activity</span> what you do ·
+        <span class="chip ch-o">o</span> object particle ·
+        <span class="chip ch-verb">verb</span> shimasu / mimasu …</div>
 
-  <div class="banner b6">F · Read &amp; translate into English</div>
-  <div class="card"><div id="secE"></div></div>
+      <div class="box"><b>① Day + activity</b>
+        <div style="margin:6px 0;font-size:1.05rem">
+          <span class="chip ch-day">day</span> <span class="chip ch-ni">ni</span> <span class="chip ch-act">activity</span> <span class="chip ch-o">o</span> <span class="chip ch-verb">shimasu</span>
+          &nbsp;=&nbsp; I do <b>activity</b> on <b>day</b>.</div>
+        <table><thead><tr><th>Romaji</th><th>English</th></tr></thead><tbody id="egDay"></tbody></table></div>
 
-  <div class="banner b7">G · Translate into Japanese (romaji)</div>
-  <div class="card"><p class="hint">Order: day + ni + activity + o + shimasu.</p><div id="secF"></div></div>
+      <div class="box"><b>② Time + activity</b>
+        <div style="margin:6px 0;font-size:1.05rem">
+          <span class="chip ch-day">time</span> <span class="chip ch-ni">ni</span> <span class="chip ch-act">activity</span> <span class="chip ch-o">o</span> <span class="chip ch-verb">shimasu</span>
+          &nbsp;=&nbsp; At <b>time</b>, I do <b>activity</b>.</div>
+        <table><thead><tr><th>Romaji</th><th>English</th></tr></thead><tbody id="egTime"></tbody></table></div>
 
-  <div class="banner b5">H · Asking “What day?” — Nanyoubi ni … ka?</div>
-  <div class="card"><p class="hint"><b>Nanyoubi ni [activity] o <span class="sim">shimasu</span> ka?</b> = What day do you [activity]?</p><div id="secN"></div></div>
+      <div class="box"><b>③ Object + verb</b>
+        <div style="margin:6px 0;font-size:1.05rem">
+          <span class="chip ch-act">object</span> <span class="chip ch-o">o</span> <span class="chip ch-verb">verb</span>
+          &nbsp;=&nbsp; do the <b>object</b>.</div>
+        <table><thead><tr><th>Romaji</th><th>Hiragana</th><th>English</th></tr></thead><tbody id="egObj"></tbody></table></div>
 
-  <div class="banner b9">I · Reading — Haruto's week</div>
-  <div class="card">
-    <div class="box"><b>Haruto's week</b><br>Watashi wa Haruto desu. Getsuyoubi ni yakyuu o shimasu. Kayoubi ni tenisu o shimasu. Mokuyoubi ni dokusho o shimasu. Kinyoubi ni ragubii o shimasu. Doyoubi ni tsuri o shimasu.</div>
-    <div class="mcq" id="secH"></div>
+      <div class="box"><span class="sim">shimasu</span> = do / play &nbsp;·&nbsp; <span class="simn">shimasen</span> = do <b>NOT</b> do / play.<br>
+        <span class="hint">Ask: <b>Nanyoubi ni … ka?</b> = What day…? · <b>Nanji ni … ka?</b> = What time…?</span></div>
+    </div>
+
+    <div class="banner b6">Put it all together</div>
+    <div class="card"><p class="hint">Full sentences that combine days / time with activities, objects &amp; verbs.</p>
+      <table><thead><tr><th>Japanese (romaji)</th><th>English</th></tr></thead><tbody id="egAll"></tbody></table></div>
+    <p style="text-align:center;margin-top:14px"><button class="home-btn" style="border-color:var(--green);color:var(--green)" onclick="show('practice')">✍️ Ready? Go to Practice &amp; Quiz →</button></p>
   </div>
 
-  <div class="done-msg" id="doneMsg">🎉 Perfect score — subarashii! すばらしい！</div>
-  <footer>Year 7 Japanese · Days of the Week &amp; Weekly Activities</footer>
+  <!-- PRACTICE -->
+  <div class="view" id="view-practice">
+    <div class="prog"><b id="prog">Completed 0 / 0</b><div class="bar"><i id="progbar"></i></div><button class="smallbtn" onclick="resetProgress()">Reset</button></div>
+    <p class="hint">Complete each level (all correct) to unlock the next. Wrong answers show ✗ — fix and check again.</p>
+    <div id="practice"></div>
+    <div id="allDone" style="display:none;text-align:center;font-weight:800;color:var(--green);font-size:1.1rem;margin-top:16px">🎉 All levels complete — subarashii! すばらしい！</div>
+  </div>
+
+  <footer>Year 7 Japanese · Days, Time &amp; Activities</footer>
 </div>
 <script>
-const DAYS=[ // english, romaji, japanese, clue
- ["Sunday","nichiyoubi","日よう日 (にちようび)","日 = sun ☀️"],
- ["Monday","getsuyoubi","月よう日 (げつようび)","月 = moon 🌙"],
- ["Tuesday","kayoubi","火よう日 (かようび)","火 = fire 🔥"],
- ["Wednesday","suiyoubi","水よう日 (すいようび)","水 = water 💧"],
- ["Thursday","mokuyoubi","木よう日 (もくようび)","木 = wood / tree 🌳"],
- ["Friday","kinyoubi","金よう日 (きんようび)","金 = gold / metal ⭐"],
- ["Saturday","doyoubi","土よう日 (どようび)","土 = earth / soil 🌍"],
-];
-const ACTS=[["ragubii","play rugby"],["tenisu","play tennis"],["sakkaa","play soccer"],["yakyuu","play baseball"],
- ["dansu","dance"],["sukii","ski / go skiing"],["dokusho","read"],["tsuri","go fishing"],["supootsu","play sports"],["sumou","practise sumo"]];
-const dayAlt={Sunday:"nichiyoubi|nichiyobi",Monday:"getsuyoubi|getsuyobi",Tuesday:"kayoubi|kayobi",Wednesday:"suiyoubi|suiyobi",Thursday:"mokuyoubi|mokuyobi",Friday:"kinyoubi|kinyobi|kinyoubi",Saturday:"doyoubi|doyobi"};
-
-const MATCH=DAYS.map(d=>[d[2]+"  <span class='jp'>("+d[1]+")</span>",d[0]]); // jp -> english
+// ================= DATA =================
+const DAYS=[["Sunday","nichiyoubi","日よう日 (にちようび)","日 = sun ☀️"],["Monday","getsuyoubi","月よう日 (げつようび)","月 = moon 🌙"],["Tuesday","kayoubi","火よう日 (かようび)","火 = fire 🔥"],["Wednesday","suiyoubi","水よう日 (すいようび)","水 = water 💧"],["Thursday","mokuyoubi","木よう日 (もくようび)","木 = wood / tree 🌳"],["Friday","kinyoubi","金よう日 (きんようび)","金 = gold / metal ⭐"],["Saturday","doyoubi","土よう日 (どようび)","土 = earth / soil 🌍"]];
 const ENG7=DAYS.map(d=>d[0]);
-const FILL=DAYS.map(d=>[d[0],(dayAlt[d[0]]||d[1])]); // english -> romaji
-const CQ=[
- ["What day is 金よう日 (kinyoubi)?",["Thursday","Friday","Saturday","Wednesday"],1],
- ["Which day means ‘Water day’?",["Monday","Wednesday","Friday","Sunday"],1],
- ["What element does 木よう日 (mokuyoubi) represent?",["Fire","Wood / Tree","Earth","Metal"],1],
- ["Sunday (日よう日) is linked to which?",["Moon","Sun","Stars","Earth"],1],
- ["What does 火 in Tuesday mean?",["Water","Wind","Fire","Ice"],2],
-];
-const PART=[ // before, after, answer (ni/o)
- ["Getsuyoubi ___ yakyuu o shimasu.","","ni"],
- ["Kayoubi ni tenisu ___ shimasu.","","o"],
- ["Nichiyoubi ___ sukii o shimasu.","","ni"],
- ["Doyoubi ni tsuri ___ shimasu.","","o"],
-];
-const E=[
- ["Getsuyoubi ni sakkaa o shimasu.","i play soccer on monday|on monday i play soccer|i do soccer on monday"],
- ["Kayoubi ni dansu o shimasu.","i dance on tuesday|on tuesday i dance"],
- ["Mokuyoubi ni dokusho o shimasu.","i read on thursday|on thursday i read"],
- ["Kinyoubi ni ragubii o shimasu.","i play rugby on friday|on friday i play rugby"],
- ["Doyoubi ni sumou o shimasu.","i practise sumo on saturday|i do sumo on saturday|on saturday i practise sumo|i practice sumo on saturday"],
-];
-const F=[
- ["I play baseball on Monday.","getsuyoubi ni yakyuu o shimasu"],
- ["I play tennis on Wednesday.","suiyoubi ni tenisu o shimasu"],
- ["I go skiing on Sunday.","nichiyoubi ni sukii o shimasu"],
- ["I go fishing on Saturday.","doyoubi ni tsuri o shimasu"],
-];
-const NQ=[ // Nanyoubi ... ka?
- ["Nanyoubi ni sakkaa o shimasu ka?","what day do you play soccer|what day do you play soccer on"],
- ["Nanyoubi ni dokusho o shimasu ka?","what day do you read"],
- ["(write in romaji)  What day do you play tennis?","nanyoubi ni tenisu o shimasu ka"],
-];
-const G=[ // english hint, japanese with blank, answer
- ["On Tuesday, I play tennis.","Kayoubi ni tenisu o ______.","shimasu"],
- ["On Wednesday, I don't read.","Suiyoubi ni dokusho o ______.","shimasen"],
- ["On Friday, I play rugby.","Kinyoubi ni ragubii o ______.","shimasu"],
- ["On Sunday, I don't ski.","Nichiyoubi ni sukii o ______.","shimasen"],
- ["On Saturday, I play sumo.","Doyoubi ni sumou o ______.","shimasu"],
- ["On Thursday, I don't dance.","Mokuyoubi ni dansu o ______.","shimasen"],
-];
-const H=[
- ["What does Haruto do on Monday?",["plays baseball","plays tennis","reads","goes fishing"],0],
- ["On what day does Haruto play tennis?",["Monday","Tuesday","Thursday","Friday"],1],
- ["What does Haruto do on Thursday?",["reads","plays rugby","plays baseball","goes fishing"],0],
- ["On what day does Haruto play rugby?",["Wednesday","Thursday","Friday","Saturday"],2],
- ["What does Haruto do on Saturday?",["goes fishing","dances","reads","plays soccer"],0],
-];
-const LET=["A","B","C","D"];
+const NUMS=[["1","ichi","いち","一"],["2","ni","に","二"],["3","san","さん","三"],["4","yon","よん","四"],["5","go","ご","五"],["6","roku","ろく","六"],["7","nana","なな","七"],["8","hachi","はち","八"],["9","kyuu","きゅう","九"],["10","juu","じゅう","十"],["11","juuichi","じゅういち","十一"],["12","juuni","じゅうに","十二"]];
+const TIME=[["1 o'clock","ichi ji","いちじ","一じ"],["2 o'clock","ni ji","にじ","二じ"],["3 o'clock","san ji","さんじ","三じ"],["4 o'clock","yo ji","よじ","四じ"],["5 o'clock","go ji","ごじ","五じ"],["6 o'clock","roku ji","ろくじ","六じ"],["7 o'clock","shichi ji","しちじ","七じ"],["8 o'clock","hachi ji","はちじ","八じ"],["9 o'clock","ku ji","くじ","九じ"],["10 o'clock","juu ji","じゅうじ","十じ"],["11 o'clock","juuichi ji","じゅういちじ","十一じ"],["12 o'clock","juuni ji","じゅうにじ","十二じ"]];
+const VERBS=[["mimasu","watch / see","みます"],["yomimasu","read","よみます"],["tabemasu","eat","たべます"],["nomimasu","drink","のみます"],["suki","like","すき"],["desu","is / am / are","です"],["shimasu","do / play","します"],["shimasen","don't do / play","しません"]];
+const FOODS=[["mizu","water","みず"],["sushi","sushi","すし"]];
+const SPORTS=[["サッカー","sakkaa","soccer"],["テニス","tenisu","tennis"],["バスケットボール","basukettobooru","basketball"],["やきゅう","yakyuu","baseball"],["バレーボール","bareebooru","volleyball"],["ゲーム","geemu","games"],["おんがく","ongaku","music"],["どくしょ","dokusho","reading"]];
+const TRE=[["ichi ji","1 o'clock|1|one|one oclock"],["yo ji","4 o'clock|4|four"],["shichi ji","7 o'clock|7|seven"],["ku ji","9 o'clock|9|nine"]];
+const TER=[["3 o'clock","san ji"],["6 o'clock","roku ji"],["8 o'clock","hachi ji"],["10 o'clock","juu ji"]];
+const VMEAN=["watch / see","read","eat","drink","like","is / am / are","do / play","don't do / play"];
+const VQ=[["みます","watch / see"],["よみます","read"],["たべます","eat"],["のみます","drink"],["すき","like"],["です","is / am / are"],["します","do / play"],["しません","don't do / play"]];
+const PART=[["Getsuyoubi ___ yakyuu o shimasu.","ni"],["Kayoubi ni tenisu ___ shimasu.","o"],["Nichiyoubi ___ sukii o shimasu.","ni"],["Doyoubi ni tsuri ___ shimasu.","o"]];
+const G=[["On Tuesday, I play tennis.","Kayoubi ni tenisu o ______.","shimasu"],["On Wednesday, I don't read.","Suiyoubi ni dokusho o ______.","shimasen"],["On Friday, I play rugby.","Kinyoubi ni ragubii o ______.","shimasu"],["On Sunday, I don't ski.","Nichiyoubi ni sukii o ______.","shimasen"],["On Saturday, I play sumo.","Doyoubi ni sumou o ______.","shimasu"]];
+const E=[["Getsuyoubi ni sakkaa o shimasu.","i play soccer on monday|on monday i play soccer|i do soccer on monday"],["Kayoubi ni dansu o shimasu.","i dance on tuesday|on tuesday i dance"],["Mokuyoubi ni dokusho o shimasu.","i read on thursday|on thursday i read"],["Kinyoubi ni ragubii o shimasu.","i play rugby on friday|on friday i play rugby"],["Doyoubi ni sumou o shimasu.","i practise sumo on saturday|i do sumo on saturday|on saturday i practise sumo|i practice sumo on saturday"]];
+const OBJV=[["テレビをみます","terebi o mimasu","watch tv|i watch tv|watch television|i watch television"],["ほんをよみます","hon o yomimasu","read a book|i read a book|read book|i read book"],["すしをたべます","sushi o tabemasu","eat sushi|i eat sushi"],["みずをのみます","mizu o nomimasu","drink water|i drink water"]];
+const H=[["What does Haruto do on Monday?",["plays baseball","plays tennis","reads","goes fishing"],0],["On what day does Haruto play tennis?",["Monday","Tuesday","Thursday","Friday"],1],["What does Haruto do on Thursday?",["reads","plays rugby","plays baseball","goes fishing"],0],["On what day does Haruto play rugby?",["Wednesday","Thursday","Friday","Saturday"],2],["What does Haruto do on Saturday?",["goes fishing","dances","reads","plays soccer"],0]];
+const EG_DAY=[["Getsuyoubi ni yakyuu o shimasu.","I play baseball on Monday."],["Kayoubi ni tenisu o shimasu.","I play tennis on Tuesday."],["Doyoubi ni tsuri o shimasu.","I go fishing on Saturday."]];
+const EG_TIME=[["Hachi ji ni tenisu o shimasu.","At 8 o'clock, I play tennis."],["Roku ji ni sakkaa o shimasu.","At 6 o'clock, I play soccer."],["Ku ji ni geemu o shimasu.","At 9 o'clock, I play games."]];
+const EG_OBJ=[["terebi o mimasu","テレビをみます","watch TV"],["hon o yomimasu","ほんをよみます","read a book"],["sushi o tabemasu","すしをたべます","eat sushi"],["mizu o nomimasu","みずをのみます","drink water"]];
+const EG_ALL=[["Getsuyoubi ni sakkaa o shimasu.","On Monday, I play soccer."],["Hachi ji ni terebi o mimasu.","At 8 o'clock, I watch TV."],["Nichiyoubi ni hon o yomimasu.","On Sunday, I read a book."],["Doyoubi ni sushi o tabemasu.","On Saturday, I eat sushi."],["Kinyoubi ni mizu o nomimasu.","On Friday, I drink water."]];
 
-// ---- helpers ----
+// ================= HELPERS =================
 function norm(s){return (s||"").toLowerCase().normalize("NFKC").replace(/[’'`´.,!?。、！？…\-\/():;]/g,"").replace(/\s+/g,"").trim();}
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
-function inp(ans,w){const i=el("input","ans "+(w||""));i.type="text";i.dataset.answer=ans;return i;}
-function sel(ans,opts){const s=el("select","ans");s.dataset.answer=ans;["—",...opts].forEach(o=>{const op=el("option",null,o);op.value=(o==="—"?"":o);s.appendChild(op);});return s;}
+function show(v){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById("view-"+v).classList.add("active");
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));document.getElementById("nav-"+v).classList.add("on");window.scrollTo(0,0);}
 
-// reference tables
+// ================= VOCAB build =================
 DAYS.forEach(d=>{const tr=el("tr");tr.innerHTML="<td>"+d[0]+"</td><td><b>"+d[1]+"</b></td><td class='kanji'>"+d[2]+"</td><td>"+d[3]+"</td>";document.getElementById("daysRef").appendChild(tr);});
-document.getElementById("actRef").innerHTML=ACTS.map(a=>"<b>"+a[0]+"</b> = "+a[1]).join("  ·  ");
+NUMS.forEach(n=>{const tr=el("tr");tr.innerHTML="<td><b>"+n[0]+"</b></td><td>"+n[1]+"</td><td class='kanji'>"+n[2]+"</td><td class='kanji'>"+n[3]+"</td>";document.getElementById("numsRef").appendChild(tr);});
+const _days=new Set(["getsuyoubi","kayoubi","suiyoubi","mokuyoubi","kinyoubi","doyoubi","nichiyoubi"]);
+const _nums=new Set(["ichi","san","yon","go","roku","shichi","nana","hachi","ku","kyuu","juu","juuichi","juuni","ji"]);
+const _verbs=new Set(["shimasu","shimasen","mimasu","yomimasu","tabemasu","nomimasu"]);
+function colr(s){return s.split(/(\s+)/).map(tok=>{if(/^\s+$/.test(tok))return tok;const m=tok.match(/^([A-Za-z]+)([.,!?]*)$/);if(!m)return tok;const w=m[1].toLowerCase(),tail=m[2]||"";let cls="t-act";if(_days.has(w)||_nums.has(w))cls="t-day";else if(w==="ni")cls="t-ni";else if(w==="o")cls="t-o";else if(_verbs.has(w))cls="t-verb";return '<span class="'+cls+'">'+m[1]+'</span>'+tail;}).join("");}
+const _eDay=new Set(["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]);
+const _eOn=new Set(["on","at"]);
+const _eVerb=new Set(["play","watch","read","eat","drink","go","do","practise","practice"]);
+const _eAct=new Set(["baseball","tennis","soccer","games","fishing","tv","book","sushi","water","rugby","basketball","volleyball","music","reading","dance","sumo"]);
+function coleng(s){return s.split(/(\s+)/).map(tok=>{if(/^\s+$/.test(tok))return tok;const m=tok.match(/^(.+?)([.,]*)$/);const raw=m[1],tail=m[2]||"";const w=raw.toLowerCase();let cls=null;if(/^\d+$/.test(raw)||w==="o'clock"||w==="oclock")cls="t-day";else if(_eDay.has(w))cls="t-day";else if(_eOn.has(w))cls="t-ni";else if(_eVerb.has(w))cls="t-verb";else if(_eAct.has(w))cls="t-act";return cls?('<span class="'+cls+'">'+raw+'</span>'+tail):tok;}).join("");}
+function egRows(id,arr,three){arr.forEach(r=>{const tr=el("tr");tr.innerHTML=three?("<td>"+colr(r[0])+"</td><td class='kanji'>"+r[1]+"</td><td>"+coleng(r[2])+"</td>"):("<td>"+colr(r[0])+"</td><td>"+coleng(r[1])+"</td>");document.getElementById(id).appendChild(tr);});}
+egRows("egDay",EG_DAY);egRows("egTime",EG_TIME);egRows("egObj",EG_OBJ,true);egRows("egAll",EG_ALL);
+TIME.forEach(t=>{const tr=el("tr");tr.innerHTML="<td>"+t[0]+"</td><td><b>"+t[1]+"</b></td><td class='kanji'>"+t[2]+"</td><td class='kanji'>"+t[3]+"</td>";document.getElementById("timeRef").appendChild(tr);});
+VERBS.forEach(v=>{const tr=el("tr");tr.innerHTML="<td><b>"+v[0]+"</b></td><td>"+v[1]+"</td><td class='kanji'>"+v[2]+"</td>";document.getElementById("verbRef").appendChild(tr);});
+document.getElementById("foodRef").innerHTML="<b>Food &amp; drink:</b> "+FOODS.map(f=>"<b>"+f[0]+"</b> = "+f[1]+" ("+f[2]+")").join("  ·  ");
+SPORTS.forEach(s=>{const tr=el("tr");tr.innerHTML="<td class='kanji'>"+s[0]+"</td><td><b>"+s[1]+"</b></td><td>"+s[2]+"</td>";document.getElementById("sportRef").appendChild(tr);});
 
-// A match (jp -> english dropdown)
-MATCH.forEach(([jp,ans])=>{const q=el("div","q");q.innerHTML='<span class="jp">'+jp+'</span>&nbsp; ';q.appendChild(sel(ans,ENG7));q.appendChild(el("span","fb"));document.getElementById("secA").appendChild(q);});
-// B fill romaji
-FILL.forEach(([en,ans])=>{const q=el("div","q");q.innerHTML='<b>'+en+'</b> = ';const i=inp(ans,"mid");q.appendChild(i);q.appendChild(el("span","fb"));document.getElementById("secB").appendChild(q);});
-// D particle
-PART.forEach(([b,a,ans],i)=>{const q=el("div","q");q.innerHTML=(i+1)+'. '+b.replace("___","").replace(/\s+$/,"")+' ';
-  // rebuild with select where ___ is
-  q.innerHTML=(i+1)+'. ';const parts=b.split("___");q.appendChild(document.createTextNode(parts[0]));q.appendChild(sel(ans,["ni","o"]));q.appendChild(document.createTextNode(parts[1]||""));q.appendChild(el("span","fb"));
-  document.getElementById("secD").appendChild(q);});
-// E translate to english
-E.forEach(([jp,ans],i)=>{const q=el("div","q");q.appendChild(el("div","jp",(i+1)+".  "+jp));const r=el("div");r.style.marginTop="4px";r.innerHTML="→ ";const x=inp(ans,"wide");r.appendChild(x);r.appendChild(el("span","fb"));q.appendChild(r);document.getElementById("secE").appendChild(q);});
-// F translate to romaji
-F.forEach(([en,ans],i)=>{const q=el("div","q");q.appendChild(el("div",null,"<b>"+(i+1)+".</b> "+en));const r=el("div");r.style.marginTop="4px";r.innerHTML="→ ";const x=inp(ans,"wide");r.appendChild(x);r.appendChild(el("span","fb"));q.appendChild(r);document.getElementById("secF").appendChild(q);});
-// H Nanyoubi ... ka? questions
-NQ.forEach(([prompt,ans],i)=>{const q=el("div","q");q.appendChild(el("div","jp",(i+1)+".  "+prompt));const r=el("div");r.style.marginTop="4px";r.innerHTML="→ ";const x=inp(ans,"wide");r.appendChild(x);r.appendChild(el("span","fb"));q.appendChild(r);document.getElementById("secN").appendChild(q);});
-// G shimasu/shimasen
-G.forEach(([en,jp,ans],i)=>{const q=el("div","q");q.innerHTML='<b>'+(i+1)+'.</b> <span class="jp">'+jp.replace("______","")+'</span> ';
-  const parts=jp.split("______");q.innerHTML='<b>'+(i+1)+'.</b> ';q.appendChild(el("span","jp",parts[0]));q.appendChild(sel(ans,["shimasu","shimasen"]));q.appendChild(el("span","jp",parts[1]||""));q.appendChild(document.createTextNode("   "));q.appendChild(el("span","hint","("+en+")"));q.appendChild(el("span","fb"));
-  document.getElementById("secG").appendChild(q);});
-
-// MCQ builder (C and H)
-const mcqState={};let mcqId=0;
-function buildMCQ(containerId,data){
-  data.forEach(([text,opts,correct])=>{
-    const qi="m"+(mcqId++);const block=el("div");block.dataset.qi=qi;
-    block.appendChild(el("h4",null,text));
-    opts.forEach((o,oi)=>{const b=el("button","opt");b.type="button";b.innerHTML='<span class="l">'+LET[oi]+'</span>'+o;
-      b.onclick=()=>{block.querySelectorAll(".opt").forEach(x=>x.classList.remove("correct","wrong"));
-        if(oi===correct){b.classList.add("correct");mcqState[qi]=true;}else{b.classList.add("wrong");block.querySelectorAll(".opt")[correct].classList.add("correct");mcqState[qi]=false;}
-        refreshScore();save();};
-      block.appendChild(b);});
-    block.dataset.correct=correct;
-    document.getElementById(containerId).appendChild(block);
+// ================= PRACTICE (gated levels) =================
+const LEVELS=[
+ {t:"Level 1 · Days — match the English", items:DAYS.map(d=>({k:"sel",p:'<span class="jp">'+d[2]+' ('+d[1]+')</span> = ',o:ENG7,a:d[0]}))},
+ {t:"Level 2 · Time — romaji ⇄ English", items:[
+   ...TRE.map(([rom,a])=>({k:"in",p:'<b>'+rom+'</b> = ',a,w:"mid"})),
+   ...TER.map(([en,a])=>({k:"in",p:'<b>'+en+'</b> = ',a,w:"mid"})),
+ ]},
+ {t:"Level 3 · Particles — ni / o", items:PART.map(([s,a])=>({k:"sel2",pre:s.split("___")[0],post:s.split("___")[1]||"",o:["ni","o"],a}))},
+ {t:"Level 4 · shimasu or shimasen", items:G.map(([en,jp,a])=>({k:"sel2",pre:jp.split("______")[0],post:jp.split("______")[1]||"",o:["shimasu","shimasen"],a,hint:en}))},
+ {t:"Level 5 · Key verbs — meaning", items:VQ.map(([kana,a])=>({k:"sel",p:'<span class="kanji">'+kana+'</span> = ',o:VMEAN,a}))},
+ {t:"Level 6 · Sports & hobbies — write the English", items:SPORTS.map(s=>({k:"in",p:'<span class="kanji">'+s[0]+'</span> <span class="jp">('+s[1]+')</span> = ',a:s[2],w:"mid"}))},
+ {t:"Level 7 · Day + activity — translate to English", items:E.map(([jp,a])=>({k:"in2",jp,a}))},
+ {t:"Level 8 · Object + verb — read & translate", items:OBJV.map(([kana,rom,a])=>({k:"in2",jp:kana+"  ("+rom+")",a}))},
+ {t:"Level 9 · Reading — Haruto's week", items:H.map(([p,o,c])=>({k:"mcq",p,o,c})), reading:true},
+];
+let completed=0;
+function makeSel(o,a){const s=el("select","pin");s.dataset.answer=a;["—",...o].forEach(x=>{const op=el("option",null,x);op.value=(x==="—"?"":x);s.appendChild(op);});return s;}
+function makeIn(a,w){const i=el("input","pin "+(w||""));i.type="text";i.dataset.answer=a;return i;}
+const prac=document.getElementById("practice");
+LEVELS.forEach((lv,idx)=>{
+  if(lv.reading&&idx===LEVELS.length-1){/* add reading passage above level */}
+  const card=el("div","level");card.dataset.idx=idx;
+  if(lv.reading){const box=el("div","box");box.innerHTML="<b>Haruto's week</b><br>Watashi wa Haruto desu. Getsuyoubi ni yakyuu o shimasu. Kayoubi ni tenisu o shimasu. Mokuyoubi ni dokusho o shimasu. Kinyoubi ni ragubii o shimasu. Doyoubi ni tsuri o shimasu.";card.appendChild(el("div","lvhead",'<b>'+lv.t+'</b> <span class="lockicon">🔒</span>'));card.appendChild(box);}
+  else card.appendChild(el("div","lvhead",'<b>'+lv.t+'</b> <span class="lockicon">🔒</span>'));
+  lv.items.forEach(it=>{
+    const q=el("div","q");
+    if(it.k==="sel"){q.innerHTML=it.p;q.appendChild(makeSel(it.o,it.a));q.appendChild(el("span","fb"));}
+    else if(it.k==="sel2"){q.appendChild(document.createTextNode(it.pre));q.appendChild(makeSel(it.o,it.a));q.appendChild(document.createTextNode(" "+(it.post||"")));if(it.hint)q.appendChild(el("span","hint","  ("+it.hint+")"));q.appendChild(el("span","fb"));}
+    else if(it.k==="in"){q.innerHTML=it.p;q.appendChild(makeIn(it.a,it.w));q.appendChild(el("span","fb"));}
+    else if(it.k==="in2"){q.appendChild(el("div","jp",it.jp));const r=el("div");r.style.marginTop="3px";r.innerHTML="→ ";const i=makeIn(it.a,"wide");r.appendChild(i);r.appendChild(el("span","fb"));q.appendChild(r);}
+    else if(it.k==="mcq"){const blk=el("div","mcqblock");blk.dataset.correct=it.c;blk.dataset.sel="";blk.appendChild(el("div","mcqq",it.p));
+      it.o.forEach((o,oi)=>{const b=el("button","opt");b.type="button";b.textContent=String.fromCharCode(65+oi)+". "+o;
+        b.onclick=()=>{if(+card.dataset.idx!==completed)return;blk.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel","wrong","correct"));b.classList.add("sel");blk.dataset.sel=oi;save();};blk.appendChild(b);});
+      q.appendChild(blk);}
+    card.appendChild(q);
   });
+  const foot=el("div","lvfoot");const btn=el("button","checkbtn");btn.textContent="Check this level";btn.onclick=()=>checkLevel(idx);
+  const st=el("span","lvstatus");foot.appendChild(btn);foot.appendChild(st);card.appendChild(foot);
+  prac.appendChild(card);
+});
+
+function checkLevel(idx){
+  if(idx!==completed)return;
+  const lv=document.querySelector('.level[data-idx="'+idx+'"]');
+  let all=true,total=0,correct=0;
+  lv.querySelectorAll(".pin").forEach(inp=>{total++;const v=norm(inp.value);const ok=v!==""&&(inp.dataset.answer||"").split("|").map(norm).includes(v);
+    inp.classList.toggle("correct",ok);inp.classList.toggle("incorrect",!ok);const fb=inp.parentElement.querySelector(".fb");if(fb){fb.textContent=ok?"✓":"✗";fb.style.color=ok?"var(--green)":"var(--red)";}if(ok)correct++;else all=false;});
+  lv.querySelectorAll(".mcqblock").forEach(blk=>{total++;const s=blk.dataset.sel;const ok=(s!==""&&s!==undefined&&(+s===+blk.dataset.correct));
+    blk.querySelectorAll(".opt").forEach(o=>o.classList.remove("correct","wrong"));
+    if(s!==""&&s!==undefined){const b=blk.querySelectorAll(".opt")[+s];b.classList.remove("sel");b.classList.add(ok?"correct":"wrong");}
+    if(ok)correct++;else all=false;});
+  const st=lv.querySelector(".lvstatus");
+  if(all){lv.classList.add("done");st.innerHTML="✓ Completed!";st.style.color="var(--green)";
+    lv.querySelectorAll(".pin").forEach(i=>i.disabled=true);lv.querySelector(".checkbtn").disabled=true;
+    completed=idx+1;updateLocks();save();
+    const nx=document.querySelector('.level[data-idx="'+(idx+1)+'"]');if(nx&&nx.scrollIntoView)nx.scrollIntoView({behavior:"smooth",block:"start"});
+  } else {st.innerHTML=correct+" / "+total+" correct — fix the ✗ and check again.";st.style.color="var(--red)";save();}
 }
-buildMCQ("secC",CQ);buildMCQ("secH",H);
-const MCQTOTAL=CQ.length+H.length;
+function updateLocks(){
+  document.querySelectorAll(".level").forEach(lv=>{const i=+lv.dataset.idx;const active=(i===completed);const locked=i>completed;
+    lv.classList.toggle("locked",locked);
+    lv.querySelectorAll(".pin").forEach(inp=>inp.disabled=!active);
+    const cb=lv.querySelector(".checkbtn");if(cb)cb.disabled=!active;
+    const lk=lv.querySelector(".lockicon");if(lk)lk.style.display=locked?"inline":"none";});
+  document.getElementById("prog").textContent="Completed "+completed+" / "+LEVELS.length;
+  document.getElementById("progbar").style.width=Math.round(completed/LEVELS.length*100)+"%";
+  document.getElementById("allDone").style.display=(completed>=LEVELS.length)?"block":"none";
+}
+function markDone(i){const lv=document.querySelector('.level[data-idx="'+i+'"]');if(!lv)return;lv.classList.add("done");
+  const st=lv.querySelector(".lvstatus");if(st){st.textContent="✓ Completed!";st.style.color="var(--green)";}
+  lv.querySelectorAll(".pin").forEach(x=>{x.classList.add("correct");x.disabled=true;});
+  lv.querySelectorAll(".mcqblock").forEach(b=>{const c=+b.dataset.correct;const o=b.querySelectorAll(".opt")[c];if(o)o.classList.add("correct");});
+  const cb=lv.querySelector(".checkbtn");if(cb)cb.disabled=true;}
 
-// ---- checking ----
-function alts(e){return (e.dataset.answer||"").split("|").map(norm).filter(Boolean);}
-function checkOne(e){if(!e.dataset.answer)return;const v=norm(e.value),fb=e.parentElement.querySelector(".fb");
-  if(v===""){e.classList.remove("correct","incorrect");if(fb)fb.textContent="";return;}
-  const ok=alts(e).includes(v);e.classList.toggle("correct",ok);e.classList.toggle("incorrect",!ok);
-  if(fb){fb.textContent=ok?"✓":("✗ "+e.dataset.answer.split("|")[0]);fb.style.color=ok?"var(--green)":"var(--red)";}}
-function liveCheck(e){if(!e.dataset.answer)return;const v=norm(e.value),fb=e.parentElement.querySelector(".fb");
-  if(v!==""&&alts(e).includes(v)){e.classList.add("correct");e.classList.remove("incorrect");if(fb){fb.textContent="✓";fb.style.color="var(--green)";}}
-  else{e.classList.remove("correct","incorrect");if(fb)fb.textContent="";}refreshScore();}
-function refreshScore(){let c=0,t=0;document.querySelectorAll(".ans").forEach(e=>{if(!e.dataset.answer)return;t++;if(e.classList.contains("correct"))c++;});
-  t+=MCQTOTAL;for(const k in mcqState)if(mcqState[k])c++;
-  document.getElementById("score").textContent="Score: "+c+" / "+t;document.getElementById("barfill").style.width=(t?Math.round(c/t*100):0)+"%";
-  document.getElementById("doneMsg").style.display=(t>0&&c===t)?"block":"none";}
-function checkAll(){document.querySelectorAll(".ans").forEach(checkOne);refreshScore();save();}
-function revealAll(){document.querySelectorAll(".ans").forEach(e=>{if(!e.dataset.answer)return;e.value=e.dataset.answer.split("|")[0];checkOne(e);});
-  document.querySelectorAll("#secC > div, #secH > div").forEach(blk=>{const cor=+blk.dataset.correct;const opts=blk.querySelectorAll(".opt");opts.forEach(o=>o.classList.remove("correct","wrong"));opts[cor].classList.add("correct");mcqState[blk.dataset.qi]=true;});
-  refreshScore();save();}
-function resetAll(){if(!confirm("Clear all your answers?"))return;localStorage.removeItem("jp-youbi-v1");
-  document.querySelectorAll(".ans").forEach(e=>{e.value="";e.classList.remove("correct","incorrect");const f=e.parentElement.querySelector(".fb");if(f)f.textContent="";});
-  document.querySelectorAll(".opt").forEach(o=>o.classList.remove("correct","wrong"));for(const k in mcqState)delete mcqState[k];refreshScore();}
+// live green ✓ (never ✗) for the active level's text inputs
+document.addEventListener("input",e=>{const t=e.target;if(t.classList&&t.classList.contains("pin")&&t.tagName==="INPUT"&&!t.disabled){const v=norm(t.value);const ok=v!==""&&(t.dataset.answer||"").split("|").map(norm).includes(v);t.classList.toggle("correct",ok);if(!ok)t.classList.remove("incorrect");const fb=t.parentElement.querySelector(".fb");if(fb){fb.textContent=ok?"✓":"";fb.style.color="var(--green)";}}save();});
+document.addEventListener("change",e=>{if(e.target.classList&&e.target.classList.contains("pin"))save();});
+
 // persistence
-function fields(){return document.querySelectorAll(".ans");}
-function save(){const d={mcq:mcqState,f:{}};fields().forEach((e,i)=>d.f[i]=e.value);try{localStorage.setItem("jp-youbi-v1",JSON.stringify(d));}catch(e){}}
-function load(){let d;try{d=JSON.parse(localStorage.getItem("jp-youbi-v1")||"{}");}catch(e){return;}
-  if(d.f)fields().forEach((e,i)=>{if(d.f[i]!==undefined)e.value=d.f[i];});
-  document.querySelectorAll(".ans").forEach(e=>{if(e.dataset.answer&&e.value)checkOne(e);});
-  if(d.mcq){Object.assign(mcqState,d.mcq);document.querySelectorAll("#secC > div, #secH > div").forEach(blk=>{const qi=blk.dataset.qi;if(qi in mcqState){const cor=+blk.dataset.correct;blk.querySelectorAll(".opt")[cor].classList.add("correct");}});}
-  refreshScore();}
-document.addEventListener("input",e=>{if(e.target.classList.contains("ans")&&e.target.tagName==="INPUT")liveCheck(e.target);save();});
-document.addEventListener("blur",e=>{if(e.target.classList.contains("ans")&&e.target.tagName==="INPUT"){checkOne(e.target);refreshScore();}},true);
-document.addEventListener("change",e=>{if(e.target.classList.contains("ans")&&e.target.tagName==="SELECT"){checkOne(e.target);refreshScore();save();}});
-
+function save(){const d={completed,inputs:[],mcq:[]};document.querySelectorAll("#practice .pin").forEach((e,i)=>d.inputs[i]=e.value);document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>d.mcq[i]=b.dataset.sel);try{localStorage.setItem("jp-youbi-v2",JSON.stringify(d));}catch(e){}}
+function load(){let d;try{d=JSON.parse(localStorage.getItem("jp-youbi-v2")||"{}");}catch(e){d={};}
+  if(d.inputs)document.querySelectorAll("#practice .pin").forEach((e,i)=>{if(d.inputs[i]!==undefined)e.value=d.inputs[i];});
+  if(d.mcq)document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>{if(d.mcq[i]!==undefined&&d.mcq[i]!==""){b.dataset.sel=d.mcq[i];const o=b.querySelectorAll(".opt")[+d.mcq[i]];if(o)o.classList.add("sel");}});
+  completed=d.completed||0;for(let i=0;i<completed;i++)markDone(i);updateLocks();}
+function resetProgress(){if(!confirm("Clear all your practice progress?"))return;localStorage.removeItem("jp-youbi-v2");location.reload();}
 load();
 </script>
 </body>
