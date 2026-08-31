@@ -55,6 +55,8 @@
   .checkbtn:disabled{background:#b7bccb;cursor:not-allowed;}
   .lvstatus{margin-left:10px;font-weight:800;}
   .smallbtn{cursor:pointer;border:1.5px solid var(--red);background:#fff;color:var(--red);border-radius:8px;padding:5px 10px;font-weight:700;font-size:.8rem;}
+    nav a.pl{color:#fff;padding:7px 14px;border-radius:20px;font-weight:800;font-size:.85rem;text-decoration:none;align-self:center;box-shadow:0 1px 3px rgba(0,0,0,.15);}
+  .pl-sports{background:#1F8FCB}.pl-hob{background:#D6336C}.pl-days{background:#0CA678}.pl-adj{background:#F08C00}
   footer{text-align:center;color:var(--grey);font-size:.8rem;margin-top:26px;}
 </style>
 </head>
@@ -68,6 +70,7 @@
     <button id="nav-home" class="on" onclick="show('home')">🏠 Home</button>
     <button id="nav-vocab" onclick="show('vocab')">📚 Vocabulary</button>
     <button id="nav-practice" onclick="show('practice')">✍️ Practice &amp; Quiz</button>
+    <a class="pl pl-sports" href="index.html">⚽ Sports</a> <a class="pl pl-hob" href="hobbies.html">🎌 Hobbies</a> <a class="pl pl-adj" href="adjectives.html">⭐ Adjectives</a>
   </nav>
 
   <!-- HOME -->
@@ -157,7 +160,8 @@ const ENG7=DAYS.map(d=>d[0]);
 const NUMS=[["1","ichi","いち","一"],["2","ni","に","二"],["3","san","さん","三"],["4","yon","よん","四"],["5","go","ご","五"],["6","roku","ろく","六"],["7","nana","なな","七"],["8","hachi","はち","八"],["9","kyuu","きゅう","九"],["10","juu","じゅう","十"],["11","juuichi","じゅういち","十一"],["12","juuni","じゅうに","十二"]];
 const TIME=[["1 o'clock","ichi ji","いちじ","一じ"],["2 o'clock","ni ji","にじ","二じ"],["3 o'clock","san ji","さんじ","三じ"],["4 o'clock","yo ji","よじ","四じ"],["5 o'clock","go ji","ごじ","五じ"],["6 o'clock","roku ji","ろくじ","六じ"],["7 o'clock","shichi ji","しちじ","七じ"],["8 o'clock","hachi ji","はちじ","八じ"],["9 o'clock","ku ji","くじ","九じ"],["10 o'clock","juu ji","じゅうじ","十じ"],["11 o'clock","juuichi ji","じゅういちじ","十一じ"],["12 o'clock","juuni ji","じゅうにじ","十二じ"]];
 const VERBS=[["mimasu","watch / see","みます"],["yomimasu","read","よみます"],["tabemasu","eat","たべます"],["nomimasu","drink","のみます"],["suki","like","すき"],["desu","is / am / are","です"],["shimasu","do / play","します"],["shimasen","don't do / play","しません"]];
-const FOODS=[["mizu","water","みず"],["sushi","sushi","すし"]];
+const FOODS=[["mizu","water","みず"],["sushi","sushi","すし"],["ame","candy","あめ"]];
+const RVR=[["みます","mimasu"],["よみます","yomimasu"],["たべます","tabemasu"],["のみます","nomimasu"],["すき","suki"],["です","desu"],["みず","mizu"],["すし","sushi"],["あめ","ame"]];
 const SPORTS=[["サッカー","sakkaa","soccer"],["テニス","tenisu","tennis"],["バスケットボール","basukettobooru","basketball"],["やきゅう","yakyuu","baseball"],["バレーボール","bareebooru","volleyball"],["ゲーム","geemu","games"],["おんがく","ongaku","music"],["どくしょ","dokusho","reading"]];
 const TRE=[["ichi ji","1 o'clock|1|one|one oclock"],["yo ji","4 o'clock|4|four"],["shichi ji","7 o'clock|7|seven"],["ku ji","9 o'clock|9|nine"]];
 const TER=[["3 o'clock","san ji"],["6 o'clock","roku ji"],["8 o'clock","hachi ji"],["10 o'clock","juu ji"]];
@@ -208,6 +212,7 @@ const LEVELS=[
  {t:"Level 3 · Particles — ni / o", items:PART.map(([s,a])=>({k:"sel2",pre:s.split("___")[0],post:s.split("___")[1]||"",o:["ni","o"],a}))},
  {t:"Level 4 · shimasu or shimasen", items:G.map(([en,jp,a])=>({k:"sel2",pre:jp.split("______")[0],post:jp.split("______")[1]||"",o:["shimasu","shimasen"],a,hint:en}))},
  {t:"Level 5 · Key verbs — meaning", items:VQ.map(([kana,a])=>({k:"sel",p:'<span class="kanji">'+kana+'</span> = ',o:VMEAN,a}))},
+ {t:"Level 5b · Hiragana → romaji (vocab quiz)", items:RVR.map(([kana,a])=>({k:"in",p:'<span class="kanji">'+kana+'</span> → ',a,w:"mid"}))},
  {t:"Level 6 · Sports & hobbies — write the English", items:SPORTS.map(s=>({k:"in",p:'<span class="kanji">'+s[0]+'</span> <span class="jp">('+s[1]+')</span> = ',a:s[2],w:"mid"}))},
  {t:"Level 7 · Day + activity — translate to English", items:E.map(([jp,a])=>({k:"in2",jp,a}))},
  {t:"Level 8 · Object + verb — read & translate", items:OBJV.map(([kana,rom,a])=>({k:"in2",jp:kana+"  ("+rom+")",a}))},

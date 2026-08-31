@@ -5,257 +5,146 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Hobbies · Quiz & Practice — Year 7 Japanese</title>
 <style>
-  :root{--purple:#6741D9;--blue:#1F8FCB;--teal:#0CA678;--amber:#B8860B;--green:#2F9E44;
-    --navy:#1D3A8A;--pink:#D6336C;--red:#E23B2E;--grey:#595959;--line:#c9c9c9;--bg:#f4f6fb;--card:#fff;}
+  :root{--purple:#6741D9;--blue:#1F8FCB;--teal:#0CA678;--amber:#B8860B;--green:#2F9E44;--navy:#1D3A8A;--pink:#D6336C;--red:#E23B2E;--grey:#595959;--line:#c9c9c9;--card:#fff;--bg:#f4f6fb;}
   *{box-sizing:border-box}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:0;background:var(--bg);color:#1a1a1a;line-height:1.5;}
   .wrap{max-width:900px;margin:0 auto;padding:0 14px 60px;}
-  header{background:linear-gradient(135deg,#6741D9,#1F8FCB);color:#fff;text-align:center;padding:24px 16px 18px;border-radius:0 0 18px 18px;}
-  header h1{margin:0;font-size:1.4rem;}
-  header p{margin:6px 0 0;opacity:.95;font-style:italic;font-size:.92rem;}
-  header a{color:#fff;font-size:.85rem;opacity:.9;}
-  .toolbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border:1px solid #e3e3ef;border-radius:12px;margin:14px 0 6px;padding:10px 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-  .toolbar .score{font-weight:800;color:var(--navy);margin-right:auto;font-size:.95rem;}
-  .bar{height:8px;border-radius:6px;background:#e6e6ef;flex:1 1 120px;min-width:120px;overflow:hidden;}
-  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2F9E44,#0CA678);transition:width .3s;}
-  button{cursor:pointer;border:none;border-radius:9px;padding:8px 12px;font-weight:700;font-size:.85rem;color:#fff;background:var(--navy);}
-  button.alt{background:#fff;color:var(--navy);border:1.5px solid var(--navy);}
-  button.warn{background:#fff;color:var(--red);border:1.5px solid var(--red);}
-  .note{background:#FFF9DB;border:1.5px solid #FFD43B;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.9rem;}
-  .banner{color:#fff;text-align:center;font-weight:800;font-size:1.02rem;padding:9px;border-radius:11px;margin-top:20px;}
-  .sA{background:var(--pink)}.sB{background:var(--purple)}.sC{background:var(--navy)}.sD{background:var(--green)}
-  .sE{background:var(--blue)}.sF{background:var(--amber)}.sG{background:var(--purple)}
+  header{background:linear-gradient(135deg,#6741D9,#1F8FCB);color:#fff;text-align:center;padding:22px 16px 14px;border-radius:0 0 18px 18px;}
+  header h1{margin:0;font-size:1.4rem;}header p{margin:6px 0 0;opacity:.95;font-style:italic;font-size:.9rem;}
+  nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0 4px;}
+  nav button{cursor:pointer;border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:20px;padding:7px 16px;font-weight:700;font-size:.9rem;}
+  nav button.on{background:var(--navy);color:#fff;}
+  nav a{align-self:center;font-size:.85rem;color:var(--navy);}
+  .view{display:none;}.view.active{display:block;}
+  .banner{color:#fff;text-align:center;font-weight:800;font-size:1.02rem;padding:9px;border-radius:11px;margin-top:18px;}
+  .b1{background:var(--teal)}.b2{background:var(--purple)}.b3{background:var(--navy)}
   .card{background:var(--card);border:1px solid #e7e7f0;border-radius:12px;padding:14px 16px;margin-top:10px;}
-  .hint{color:var(--grey);font-style:italic;font-size:.88rem;margin:2px 0 10px;}
-  .p{color:var(--green);font-weight:800;}
-  .q{margin:10px 0;}
-  .q .lead{font-weight:600;}
-  .jp{color:var(--grey);font-weight:600;}
-  input.ans,select.ans{font-size:1rem;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;background:#fff;font-family:inherit;}
-  input.wide{width:100%;max-width:440px;}
-  input.mid{width:150px;}
-  input.correct,select.correct{border-color:var(--green);background:#EAF7EE;}
-  input.incorrect,select.incorrect{border-color:var(--red);background:#FDECEC;}
-  .fb{margin-left:8px;font-weight:700;font-size:.9rem;}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;}
-  @media(max-width:620px){.grid{grid-template-columns:1fr}}
-  textarea{width:100%;min-height:40px;border:1.5px solid var(--line);border-radius:8px;padding:8px;font-family:inherit;font-size:1rem;margin:4px 0;}
-  .opt{display:block;width:100%;text-align:left;background:#fff;color:#1a1a1a;border:1.5px solid var(--line);border-radius:9px;padding:8px 12px;margin:5px 0;font-size:.98rem;font-weight:500;cursor:pointer;}
-  .opt:hover{border-color:var(--navy);}
-  .opt.correct{background:#EAF7EE;border-color:var(--green);font-weight:700;}
-  .opt.wrong{background:#FDECEC;border-color:var(--red);}
-  .opt .l{font-weight:800;color:var(--navy);margin-right:6px;}
-  .mcq h4{margin:12px 0 2px;font-size:1rem;}
-  .done-msg{display:none;background:#EAF7EE;border:1.5px solid var(--green);color:#176b2c;border-radius:10px;padding:8px 12px;margin-top:10px;font-weight:700;}
+  .hint{color:var(--grey);font-style:italic;font-size:.88rem;margin:2px 0 8px;}
+  .jp{color:var(--grey);font-weight:600;}.kanji{font-size:1.12rem;font-weight:700;}
+  table{width:100%;border-collapse:collapse;margin:4px 0;}
+  th{background:var(--purple);color:#fff;font-size:.82rem;padding:6px;text-align:left;}
+  td{border:1px solid #e0e2ee;padding:5px 8px;font-size:.95rem;}tr:nth-child(even) td{background:#f7f7fc;}
+  .box{border:1.5px solid #e0e0ea;border-radius:12px;padding:10px 14px;margin:8px 0;background:#fbfbfe;}
+  .home-btn{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--purple);border-radius:14px;padding:16px 18px;margin:12px 0;cursor:pointer;font-size:1.05rem;font-weight:700;color:var(--navy);}
+  .home-btn small{display:block;font-weight:400;color:var(--grey);margin-top:4px;font-size:.85rem;}
+  .chip{display:inline-block;padding:3px 10px;border-radius:7px;color:#fff;font-weight:800;font-size:.92em;margin:2px 2px;}
+  .ch-day{background:#1C7ED6}.ch-ni{background:#E23B2E}.ch-act{background:#2F9E44}.ch-o{background:#F08C00}.ch-verb{background:#6741D9}
+  .t-day{color:#1C7ED6;font-weight:800}.t-ni{color:#E23B2E;font-weight:800}.t-act{color:#2F9E44;font-weight:800}.t-o{color:#F08C00;font-weight:800}.t-verb{color:#6741D9;font-weight:800}
+  .prog{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border:1px solid #e3e3ef;border-radius:12px;padding:8px 12px;margin:12px 0;display:flex;align-items:center;gap:10px;}
+  .prog b{color:var(--navy);font-size:.9rem;white-space:nowrap;}
+  .bar{height:8px;border-radius:6px;background:#e6e6ef;flex:1;overflow:hidden;}.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2F9E44,#0CA678);transition:width .3s;}
+  .level{border:1px solid #e2e2ee;border-radius:12px;padding:12px 14px;margin:12px 0;background:#fff;}.level.locked{opacity:.5;}.level.done{border-color:var(--green);background:#f6fdf8;}
+  .lvhead{font-size:1rem;margin-bottom:6px;}.lvhead .lockicon{color:var(--grey);}
+  .q{margin:8px 0;}
+  input.pin,select.pin{font-size:1rem;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;background:#fff;font-family:inherit;}
+  input.wide{width:100%;max-width:420px;}input.mid{width:150px;}
+  .pin.correct{border-color:var(--green);background:#EAF7EE;}.pin.incorrect{border-color:var(--red);background:#FDECEC;}
+  .fb{margin-left:8px;font-weight:800;font-size:.95rem;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px;}@media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .mcqblock{margin:8px 0;}.mcqq{font-weight:700;margin-bottom:3px;}
+  .opt{display:block;width:100%;text-align:left;background:#fff;color:#1a1a1a;border:1.5px solid var(--line);border-radius:9px;padding:7px 12px;margin:4px 0;font-size:.96rem;cursor:pointer;}
+  .opt.sel{border-color:var(--navy);background:#eef2fb;font-weight:700;}.opt.correct{border-color:var(--green);background:#EAF7EE;font-weight:700;}.opt.wrong{border-color:var(--red);background:#FDECEC;}
+  .checkbtn{cursor:pointer;border:none;border-radius:9px;padding:8px 14px;font-weight:800;color:#fff;background:var(--navy);}.checkbtn:disabled{background:#b7bccb;cursor:not-allowed;}
+  .lvstatus{margin-left:10px;font-weight:800;}
+  .smallbtn{cursor:pointer;border:1.5px solid var(--red);background:#fff;color:var(--red);border-radius:8px;padding:5px 10px;font-weight:700;font-size:.8rem;}
+    nav a.pl{color:#fff;padding:7px 14px;border-radius:20px;font-weight:800;font-size:.85rem;text-decoration:none;align-self:center;box-shadow:0 1px 3px rgba(0,0,0,.15);}
+  .pl-sports{background:#1F8FCB}.pl-hob{background:#D6336C}.pl-days{background:#0CA678}.pl-adj{background:#F08C00}
   footer{text-align:center;color:var(--grey);font-size:.8rem;margin-top:26px;}
 </style>
 </head>
 <body>
-<header>
-  <h1>🎌 My Hobbies · Quiz &amp; Practice</h1>
-  <p>Shumi wa nan desu ka? &amp; ~ o shimasu — Year 7 Japanese</p>
-  <p><a href="index.html">← Sports &amp; Hobbies worksheet</a></p>
-</header>
+<header><h1>🎌 My Hobbies · Quiz &amp; Practice</h1><p>Shumi wa nan desu ka? &amp; ~ o shimasu — Year 7 Japanese</p></header>
 <div class="wrap">
-  <div class="toolbar">
-    <span class="score" id="score">Score: 0 / 0</span>
-    <div class="bar"><i id="barfill"></i></div>
-    <button onclick="checkAll()">✓ Check answers</button>
-    <button class="alt" onclick="revealAll()">Reveal</button>
-    <button class="warn" onclick="resetAll()">Reset</button>
-  </div>
-  <div class="note">Answers are checked <b>as you type</b> — a green ✓ appears when it's right. Spelling is forgiving (spaces &amp; capitals don't matter). Your work saves automatically on this device.</div>
+  <nav>
+    <button id="nav-home" class="on" onclick="show('home')">🏠 Home</button>
+    <button id="nav-vocab" onclick="show('vocab')">📚 Vocabulary</button>
+    <button id="nav-practice" onclick="show('practice')">✍️ Practice &amp; Quiz</button>
+    <a class="pl pl-sports" href="index.html">⚽ Sports</a> <a class="pl pl-days" href="days.html">📅 Days</a> <a class="pl pl-adj" href="adjectives.html">⭐ Adjectives</a>
+  </nav>
 
-  <div class="banner sA">A · Listening / Reading — translate into English</div>
-  <div class="card"><p class="hint">Read (or listen to) each sentence, then write what it means in English.</p><div id="secA"></div></div>
-
-  <div class="banner sB">B · Vocabulary — write the English</div>
-  <div class="card"><div class="grid" id="secB"></div></div>
-
-  <div class="banner sC">C · Choose the particle</div>
-  <div class="card"><p class="hint">Pick wa · o · desu · no for each gap.</p><div id="secC"></div></div>
-
-  <div class="banner sD">D · Read &amp; translate into English</div>
-  <div class="card"><div id="secD"></div></div>
-
-  <div class="banner sE">E · Translate into Japanese (romaji)</div>
-  <div class="card"><div id="secE"></div></div>
-
-  <div class="banner sF">F · Complete the sentence (about you)</div>
-  <div class="card"><p class="hint">Write your own answers (not marked).</p>
-    <div>1. Shumi <span class="p">wa</span> <input class="prac" placeholder="hobby"> <span class="p">desu</span>.</div>
-    <div style="margin-top:6px">2. <input class="prac" placeholder="sport/hobby"> <span class="p">o</span> shimasu.</div>
-    <div style="margin-top:6px">3. <input class="prac" placeholder="person" style="width:110px"> no shumi <span class="p">wa</span> <input class="prac" placeholder="hobby"> <span class="p">desu</span>.</div>
+  <div class="view active" id="view-home">
+    <div class="card">
+      <p>Welcome! This has three parts:</p>
+      <button class="home-btn" onclick="show('vocab')">📚 Vocabulary — learn it first<small>Hobby words and the key sentence patterns.</small></button>
+      <button class="home-btn" onclick="show('practice')">✍️ Practice &amp; Quiz — test yourself<small>Work through the levels in order. You must get <b>every</b> question in a level correct to unlock the next. Wrong answers are marked ✗ — fix them and check again.</small></button>
+      <p class="hint">Your progress saves on this device.</p>
+    </div>
   </div>
 
-  <div class="banner sG">G · Multiple Choice — tap the correct answer</div>
-  <div class="card mcq" id="secG"></div>
+  <div class="view" id="view-vocab">
+    <div class="banner b2">Hobby &amp; sport words</div>
+    <div class="card"><table><thead><tr><th>Romaji</th><th>English</th><th>Japanese</th></tr></thead><tbody id="vocabRef"></tbody></table></div>
+    <div class="banner b3">Sentence patterns</div>
+    <div class="card">
+      <div class="hint" style="margin-bottom:6px"><b>Colour key:</b> <span class="chip ch-day">topic</span> the thing · <span class="chip ch-ni">wa</span> topic marker · <span class="chip ch-act">B</span> the word · <span class="chip ch-verb">desu / shimasu</span> verb · <span class="chip ch-o">o</span> object</div>
+      <div class="box"><b>① Asking</b>
+        <div style="margin:6px 0;font-size:1.05rem"><span class="chip ch-day">Shumi</span> <span class="chip ch-ni">wa</span> <span class="chip ch-act">nan</span> <span class="chip ch-verb">desu</span> ka? &nbsp;=&nbsp; What is your hobby?</div></div>
+      <div class="box"><b>② Answering — A wa B desu</b>
+        <div style="margin:6px 0;font-size:1.05rem"><span class="chip ch-day">Shumi</span> <span class="chip ch-ni">wa</span> <span class="chip ch-act">[hobby]</span> <span class="chip ch-verb">desu</span> &nbsp;=&nbsp; My hobby is [hobby].</div>
+        <div class="hint"><span class="t-day">Watashi no / Boku no</span> = "my" (you can add it at the front). <span class="t-day">Watashi no shumi</span> <span class="t-ni">wa</span> <span class="t-act">dansu</span> <span class="t-verb">desu</span> = My hobby is dance.</div></div>
+      <div class="box"><b>③ Doing an activity — ~ o shimasu</b>
+        <div style="margin:6px 0;font-size:1.05rem"><span class="chip ch-act">[activity]</span> <span class="chip ch-o">o</span> <span class="chip ch-verb">shimasu</span> &nbsp;=&nbsp; I play / do [activity].</div>
+        <div class="hint"><span class="t-act">Sakkaa</span> <span class="t-o">o</span> <span class="t-verb">shimasu</span> = I play soccer. · Nani o shimasu ka? = What do you play/do?</div></div>
+    </div>
+    <p style="text-align:center;margin-top:14px"><button class="home-btn" style="border-color:var(--green);color:var(--green)" onclick="show('practice')">✍️ Ready? Go to Practice &amp; Quiz →</button></p>
+  </div>
 
-  <div class="done-msg" id="doneMsg">🎉 Perfect score — subarashii! すばらしい！</div>
-  <footer>Year 7 Japanese · My Hobbies Quiz &amp; Practice</footer>
+  <div class="view" id="view-practice">
+    <div class="prog"><b id="prog">Completed 0 / 0</b><div class="bar"><i id="progbar"></i></div><button class="smallbtn" onclick="resetProgress()">Reset</button></div>
+    <p class="hint">Complete each level (all correct) to unlock the next. Wrong answers show ✗ — fix and check again.</p>
+    <div id="practice"></div>
+    <div id="allDone" style="display:none;text-align:center;font-weight:800;color:var(--green);font-size:1.1rem;margin-top:16px">🎉 All levels complete — subarashii! すばらしい！</div>
+  </div>
+  <footer>Year 7 Japanese · My Hobbies</footer>
 </div>
 <script>
-// ---------- data ----------
-const A=[ // read/listen -> English
- ["Shumi wa tsuri desu.","my hobby is fishing"],
- ["Ragubii o shimasu.","i play rugby|i do rugby"],
- ["Boku no shumi wa geemu desu.","my hobby is games|my hobby is video games"],
- ["Nani o shimasu ka?","what do you play|what do you do|what do you play or do|what do you play do"],
- ["Haha no shumi wa ryouri desu.","my mums hobby is cooking|my mothers hobby is cooking|mums hobby is cooking"],
-];
-const B=[["shumi","hobby"],["tsuri","fishing"],["ryouri","cooking"],["dokusho","reading"],
- ["ongaku","music"],["sakkaa","soccer"],["tenisu","tennis"],["yakyuu","baseball"]];
-const Cq=[ // [before, after, answer]
- ["Shumi ","dansu desu.  (topic)","wa"],
- ["Sakkaa ","shimasu.  (object)","o"],
- ["Watashi ","shumi wa ongaku desu.  (my)","no"],
- ["Nani ","shimasu ka?  (object)","o"],
- ["Shumi wa nan ","ka?  (is)","desu"],
-];
-const D=[
- ["Shumi wa nan desu ka?","what is your hobby|whats your hobby"],
- ["Watashi no shumi wa ongaku desu.","my hobby is music"],
- ["Tenisu o shimasu.","i play tennis|i do tennis"],
- ["Nani o shimasu ka?","what do you play|what do you do|what do you play or do|what do you play do"],
-];
-const E=[
- ["My hobby is reading.","shumi wa dokusho desu|watashi no shumi wa dokusho desu|boku no shumi wa dokusho desu"],
- ["What is your hobby?","shumi wa nan desu ka"],
- ["I play soccer.","sakkaa o shimasu"],
- ["What do you play / do?","nani o shimasu ka"],
- ["My dad's hobby is fishing.","chichi no shumi wa tsuri desu"],
-];
-const KANA={wa:"は",desu:"です",shimasu:"します",nani:"なに",nan:"なん",ka:"か",o:"を"};
-function kh(s){return s.replace(/\b(wa|desu|shimasu|nani|nan|ka|o)\b/gi,m=>m+" ("+KANA[m.toLowerCase()]+")");}
-const MCQ=[
- ["What does 'shumi' mean?",["gymnastics","fishing","hobby","music"],2],
- ["What does 'tsuri' mean?",["music","sports","archery","fishing"],3],
- ["What does 'ryouri' mean?",["reading","hobby","cooking","fishing"],2],
- ["What does 'dokusho' mean?",["games","volleyball","reading","kendo"],2],
- ["What does 'ongaku' mean?",["TV","basketball","judo","music"],3],
- ["What does 'sakkaa' mean?",["flower arranging","soccer","karate","dance"],1],
- ["What does 'tenisu' mean?",["sumo","fishing","tennis","surfing"],2],
- ["What does 'yakyuu' mean?",["baseball","cooking","movies","soccer"],0],
- ["What does 'ragubii' mean?",["rugby","gymnastics","movies","soccer"],0],
- ["What does 'saafin' mean?",["swimming","archery","sports","surfing"],3],
- ["How do you say 'dance' in Japanese?",["dokusho","dansu","yakyuu","shumi"],1],
- ["How do you say 'soccer' in Japanese?",["bareebooru","supootsu","sakkaa","eiga"],2],
- ["'Shumi wa nan desu ka?' means...",["Where do you live?","What do you eat?","What is your hobby?","Do you like sport?"],2],
- ["'A wa B desu' means...",["A and B","A or B","A's B","A is B"],3],
- ["Which word means 'is / am / are'?",["o","ka","wa","desu"],3],
- ["The particle 'o' marks the...",["place","object","possession","topic"],1],
- ["The particle 'no' shows...",["the topic","the object","possession ('s)","a question"],2],
- ["'shimasu' means...",["to do / play","to read","to eat","to watch"],0],
- ["'Nani o shimasu ka?' means...",["What is your name?","Do you like games?","What do you play / do?","What is your hobby?"],2],
- ["'Dokusho o shimasu' means...",["I like reading","I do reading","My hobby is reading","Reading is fun"],1],
-];
-const LET=["A","B","C","D"];
+const VOCAB=[["shumi","hobby","しゅみ"],["tsuri","fishing","つり"],["ryouri","cooking","りょうり"],["dokusho","reading","どくしょ"],["ongaku","music","おんがく"],["supootsu","sports","スポーツ"],["dansu","dance","ダンス"],["geemu","games","ゲーム"],["sakkaa","soccer","サッカー"],["tenisu","tennis","テニス"],["ragubii","rugby","ラグビー"],["yakyuu","baseball","やきゅう"]];
+const PART=[["Shumi ___ dansu desu.","wa","topic"],["Sakkaa ___ shimasu.","o","object"],["Watashi ___ shumi wa ongaku desu.","no","my"],["Nani ___ shimasu ka?","o","object"],["Shumi wa nan ___ ka?","desu","is"]];
+const EN=[["Shumi wa nan desu ka?","what is your hobby|whats your hobby"],["Watashi no shumi wa ongaku desu.","my hobby is music"],["Tenisu o shimasu.","i play tennis|i do tennis"],["Nani o shimasu ka?","what do you play|what do you do|what do you play or do|what do you play do"]];
+const JP=[["My hobby is reading.","shumi wa dokusho desu|watashi no shumi wa dokusho desu"],["What is your hobby?","shumi wa nan desu ka"],["I play soccer.","sakkaa o shimasu"],["What do you play / do?","nani o shimasu ka"]];
+const MCQ=[["What does 'shumi' mean?",["hobby","sport","school","friend"],0],["What does 'tsuri' mean?",["fishing","cooking","reading","music"],0],["What does 'ryouri' mean?",["reading","cooking","music","dance"],1],["'Shumi wa nan desu ka?' means...",["What is your hobby?","Do you like sport?","What do you eat?","Where do you live?"],0],["'A wa B desu' means...",["A is B","A and B","A or B","A's B"],0],["Which word means 'is / am / are'?",["desu","wa","o","ka"],0],["The particle 'o' marks the...",["object","topic","possession","place"],0],["'Nani o shimasu ka?' means...",["What do you play / do?","What is your name?","What is your hobby?","Do you like games?"],0]];
 
-// ---------- helpers ----------
 function norm(s){return (s||"").toLowerCase().normalize("NFKC").replace(/[’'`´.,!?。、！？…\-\/():;]/g,"").replace(/\s+/g,"").trim();}
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
-function greenify(s){return s.replace(/\b(wa|desu|o)\b/g,'<span class="p">$1</span>');}
-function inp(ans,w){const i=el("input","ans "+(w||""));i.type="text";i.dataset.answer=ans;return i;}
+function show(v){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById("view-"+v).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));document.getElementById("nav-"+v).classList.add("on");window.scrollTo(0,0);}
+VOCAB.forEach(v=>{const tr=el("tr");tr.innerHTML="<td><b>"+v[0]+"</b></td><td>"+v[1]+"</td><td class='kanji'>"+v[2]+"</td>";document.getElementById("vocabRef").appendChild(tr);});
 
-// build A (jp sentence + english input)
-A.forEach(([jp,ans],idx)=>{
-  const q=el("div","q");
-  q.appendChild(el("div","jp",(idx+1)+".  "+jp));
-  const row=el("div");row.style.marginTop="4px";row.innerHTML="→ ";
-  const i=inp(ans,"wide");row.appendChild(i);row.appendChild(el("span","fb"));
-  q.appendChild(row);document.getElementById("secA").appendChild(q);
+const LEVELS=[
+ {t:"Level 1 · Vocabulary — write the English", items:VOCAB.slice(0,8).map(v=>({k:"in",p:'<b>'+v[0]+'</b> <span class="jp">('+v[2]+')</span> = ',a:v[1],w:"mid"}))},
+ {t:"Level 2 · Choose the particle — wa / o / desu / no", items:PART.map(([s,a,h])=>({k:"sel2",pre:s.split("___")[0],post:s.split("___")[1]||"",o:["wa","o","desu","no"],a,hint:h}))},
+ {t:"Level 3 · Read & translate into English", items:EN.map(([jp,a])=>({k:"in2",jp,a}))},
+ {t:"Level 4 · Translate into Japanese (romaji)", items:JP.map(([en,a])=>({k:"in2",jp:en,a}))},
+ {t:"Level 5 · Multiple choice", items:MCQ.map(([p,o,c])=>({k:"mcq",p,o,c}))},
+];
+let completed=0;
+function makeSel(o,a){const s=el("select","pin");s.dataset.answer=a;["—",...o].forEach(x=>{const op=el("option",null,x);op.value=(x==="—"?"":x);s.appendChild(op);});return s;}
+function makeIn(a,w){const i=el("input","pin "+(w||""));i.type="text";i.dataset.answer=a;return i;}
+const prac=document.getElementById("practice");
+LEVELS.forEach((lv,idx)=>{
+  const card=el("div","level");card.dataset.idx=idx;card.appendChild(el("div","lvhead",'<b>'+lv.t+'</b> <span class="lockicon">🔒</span>'));
+  lv.items.forEach(it=>{const q=el("div","q");
+    if(it.k==="sel2"){q.appendChild(document.createTextNode(it.pre));q.appendChild(makeSel(it.o,it.a));q.appendChild(document.createTextNode(" "+(it.post||"")));if(it.hint)q.appendChild(el("span","hint","  ("+it.hint+")"));q.appendChild(el("span","fb"));}
+    else if(it.k==="in"){q.innerHTML=it.p;q.appendChild(makeIn(it.a,it.w));q.appendChild(el("span","fb"));}
+    else if(it.k==="in2"){q.appendChild(el("div","jp",it.jp));const r=el("div");r.style.marginTop="3px";r.innerHTML="→ ";const i=makeIn(it.a,"wide");r.appendChild(i);r.appendChild(el("span","fb"));q.appendChild(r);}
+    else if(it.k==="mcq"){const blk=el("div","mcqblock");blk.dataset.correct=it.c;blk.dataset.sel="";blk.appendChild(el("div","mcqq",it.p));
+      it.o.forEach((o,oi)=>{const b=el("button","opt");b.type="button";b.textContent=String.fromCharCode(65+oi)+". "+o;b.onclick=()=>{if(+card.dataset.idx!==completed)return;blk.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel","wrong","correct"));b.classList.add("sel");blk.dataset.sel=oi;save();};blk.appendChild(b);});q.appendChild(blk);}
+    card.appendChild(q);});
+  const foot=el("div","lvfoot");const btn=el("button","checkbtn");btn.textContent="Check this level";btn.onclick=()=>checkLevel(idx);const st=el("span","lvstatus");foot.appendChild(btn);foot.appendChild(st);card.appendChild(foot);
+  prac.appendChild(card);
 });
-// B vocab
-B.forEach(([w,ans])=>{const q=el("div","q");q.innerHTML='<span class="lead">'+w+'</span>&nbsp; ';
-  const i=inp(ans,"mid");q.appendChild(i);q.appendChild(el("span","fb"));document.getElementById("secB").appendChild(q);});
-// C particle selects
-Cq.forEach(([b,a,ans],idx)=>{
-  const q=el("div","q");
-  q.innerHTML='<span class="lead">'+(idx+1)+'. '+greenify(b)+'</span> ';
-  const s=el("select","ans");s.dataset.answer=ans;["—","wa","o","desu","no"].forEach(o=>{const op=el("option",null,o);op.value=(o==="—"?"":o);s.appendChild(op);});
-  q.appendChild(s);q.appendChild(document.createTextNode(" "));
-  const tail=el("span",null," "+greenify(a));q.appendChild(tail);q.appendChild(el("span","fb"));
-  document.getElementById("secC").appendChild(q);
-});
-// D read & translate
-D.forEach(([jp,ans],idx)=>{const q=el("div","q");q.appendChild(el("div","jp",(idx+1)+".  "+jp));
-  const row=el("div");row.style.marginTop="4px";row.innerHTML="→ ";const i=inp(ans,"wide");row.appendChild(i);row.appendChild(el("span","fb"));
-  q.appendChild(row);document.getElementById("secD").appendChild(q);});
-// E translate to japanese
-E.forEach(([en,ans],idx)=>{const q=el("div","q");q.appendChild(el("div","lead",(idx+1)+".  "+en));
-  const row=el("div");row.style.marginTop="4px";row.innerHTML="→ ";const i=inp(ans,"wide");row.appendChild(i);row.appendChild(el("span","fb"));
-  q.appendChild(row);document.getElementById("secE").appendChild(q);});
-// G MCQ
-const mcqState={};
-MCQ.forEach((item,qi)=>{
-  const [text,opts,correct]=item;
-  const block=el("div");block.dataset.qi=qi;
-  block.appendChild(el("h4",null,(qi+1)+". "+kh(text)));
-  opts.forEach((o,oi)=>{
-    const b=el("button","opt");b.type="button";
-    b.innerHTML='<span class="l">'+LET[oi]+'</span>'+kh(o);
-    b.onclick=()=>{
-      block.querySelectorAll(".opt").forEach(x=>x.classList.remove("correct","wrong"));
-      if(oi===correct){b.classList.add("correct");mcqState[qi]=true;}
-      else{b.classList.add("wrong");block.querySelectorAll(".opt")[correct].classList.add("correct");mcqState[qi]=false;}
-      refreshScore();save();
-    };
-    block.appendChild(b);
-  });
-  document.getElementById("secG").appendChild(block);
-});
-
-// ---------- checking ----------
-function alts(e){return (e.dataset.answer||"").split("|").map(norm).filter(Boolean);}
-function checkOne(e){
-  if(!e.dataset.answer)return;
-  const v=norm(e.value);const fb=e.parentElement.querySelector(".fb");
-  if(v===""){e.classList.remove("correct","incorrect");if(fb)fb.textContent="";return;}
-  const ok=alts(e).includes(v);
-  e.classList.toggle("correct",ok);e.classList.toggle("incorrect",!ok);
-  if(fb){fb.textContent=ok?"✓":("✗ "+e.dataset.answer.split("|")[0]);fb.style.color=ok?"var(--green)":"var(--red)";}
-}
-function liveCheck(e){
-  if(!e.dataset.answer)return;const v=norm(e.value);const fb=e.parentElement.querySelector(".fb");
-  if(v!==""&&alts(e).includes(v)){e.classList.add("correct");e.classList.remove("incorrect");if(fb){fb.textContent="✓";fb.style.color="var(--green)";}}
-  else{e.classList.remove("correct","incorrect");if(fb)fb.textContent="";}
-  refreshScore();
-}
-function refreshScore(){
-  let c=0,t=0;
-  document.querySelectorAll(".ans").forEach(e=>{if(!e.dataset.answer)return;t++;if(e.classList.contains("correct"))c++;});
-  t+=MCQ.length;for(const k in mcqState)if(mcqState[k])c++;
-  document.getElementById("score").textContent="Score: "+c+" / "+t;
-  document.getElementById("barfill").style.width=(t?Math.round(c/t*100):0)+"%";
-  document.getElementById("doneMsg").style.display=(t>0&&c===t)?"block":"none";
-}
-function checkAll(){document.querySelectorAll(".ans").forEach(checkOne);refreshScore();save();}
-function revealAll(){
-  document.querySelectorAll(".ans").forEach(e=>{if(!e.dataset.answer)return;const f=e.dataset.answer.split("|")[0];e.value=f;checkOne(e);});
-  document.querySelectorAll("#secG > div").forEach((blk,qi)=>{const opts=blk.querySelectorAll(".opt");opts.forEach(o=>o.classList.remove("correct","wrong"));opts[MCQ[qi][2]].classList.add("correct");mcqState[qi]=true;});
-  refreshScore();save();
-}
-function resetAll(){
-  if(!confirm("Clear all your answers?"))return;
-  localStorage.removeItem("jp-hobbies-v1");
-  document.querySelectorAll(".ans").forEach(e=>{e.value="";e.classList.remove("correct","incorrect");const f=e.parentElement.querySelector(".fb");if(f)f.textContent="";});
-  document.querySelectorAll(".prac").forEach(e=>e.value="");
-  document.querySelectorAll(".opt").forEach(o=>o.classList.remove("correct","wrong"));
-  for(const k in mcqState)delete mcqState[k];
-  refreshScore();
-}
-// persistence
-function fields(){return document.querySelectorAll(".ans,.prac");}
-function save(){const d={mcq:mcqState,f:{}};fields().forEach((e,i)=>d.f[i]=e.value);try{localStorage.setItem("jp-hobbies-v1",JSON.stringify(d));}catch(e){}}
-function load(){let d;try{d=JSON.parse(localStorage.getItem("jp-hobbies-v1")||"{}");}catch(e){return;}
-  if(d.f)fields().forEach((e,i)=>{if(d.f[i]!==undefined)e.value=d.f[i];});
-  document.querySelectorAll(".ans").forEach(e=>{if(e.dataset.answer&&e.value)checkOne(e);});
-  if(d.mcq){Object.assign(mcqState,d.mcq);document.querySelectorAll("#secG > div").forEach((blk,qi)=>{if(qi in mcqState){const opts=blk.querySelectorAll(".opt");opts[MCQ[qi][2]].classList.add(mcqState[qi]?"correct":"correct");}});}
-  refreshScore();
-}
-document.addEventListener("input",e=>{const t=e.target;if(t.classList.contains("ans")&&t.tagName==="INPUT")liveCheck(t);save();});
-document.addEventListener("blur",e=>{const t=e.target;if(t.classList.contains("ans")&&t.tagName==="INPUT"){checkOne(t);refreshScore();}},true);
-document.addEventListener("change",e=>{const t=e.target;if(t.classList.contains("ans")&&t.tagName==="SELECT"){checkOne(t);refreshScore();save();}});
+function checkLevel(idx){if(idx!==completed)return;const lv=document.querySelector('.level[data-idx="'+idx+'"]');let all=true,total=0,correct=0;
+  lv.querySelectorAll(".pin").forEach(inp=>{total++;const v=norm(inp.value);const ok=v!==""&&(inp.dataset.answer||"").split("|").map(norm).includes(v);inp.classList.toggle("correct",ok);inp.classList.toggle("incorrect",!ok);const fb=inp.parentElement.querySelector(".fb");if(fb){fb.textContent=ok?"✓":"✗";fb.style.color=ok?"var(--green)":"var(--red)";}if(ok)correct++;else all=false;});
+  lv.querySelectorAll(".mcqblock").forEach(blk=>{total++;const s=blk.dataset.sel;const ok=(s!==""&&s!==undefined&&(+s===+blk.dataset.correct));blk.querySelectorAll(".opt").forEach(o=>o.classList.remove("correct","wrong"));if(s!==""&&s!==undefined){const b=blk.querySelectorAll(".opt")[+s];b.classList.remove("sel");b.classList.add(ok?"correct":"wrong");}if(ok)correct++;else all=false;});
+  const st=lv.querySelector(".lvstatus");
+  if(all){lv.classList.add("done");st.innerHTML="✓ Completed!";st.style.color="var(--green)";lv.querySelectorAll(".pin").forEach(i=>i.disabled=true);lv.querySelector(".checkbtn").disabled=true;completed=idx+1;updateLocks();save();const nx=document.querySelector('.level[data-idx="'+(idx+1)+'"]');if(nx&&nx.scrollIntoView)nx.scrollIntoView({behavior:"smooth",block:"start"});}
+  else{st.innerHTML=correct+" / "+total+" correct — fix the ✗ and check again.";st.style.color="var(--red)";save();}}
+function updateLocks(){document.querySelectorAll(".level").forEach(lv=>{const i=+lv.dataset.idx;const active=(i===completed);const locked=i>completed;lv.classList.toggle("locked",locked);lv.querySelectorAll(".pin").forEach(inp=>inp.disabled=!active);const cb=lv.querySelector(".checkbtn");if(cb)cb.disabled=!active;const lk=lv.querySelector(".lockicon");if(lk)lk.style.display=locked?"inline":"none";});document.getElementById("prog").textContent="Completed "+completed+" / "+LEVELS.length;document.getElementById("progbar").style.width=Math.round(completed/LEVELS.length*100)+"%";document.getElementById("allDone").style.display=(completed>=LEVELS.length)?"block":"none";}
+function markDone(i){const lv=document.querySelector('.level[data-idx="'+i+'"]');if(!lv)return;lv.classList.add("done");const st=lv.querySelector(".lvstatus");if(st){st.textContent="✓ Completed!";st.style.color="var(--green)";}lv.querySelectorAll(".pin").forEach(x=>{x.classList.add("correct");x.disabled=true;});lv.querySelectorAll(".mcqblock").forEach(b=>{const c=+b.dataset.correct;const o=b.querySelectorAll(".opt")[c];if(o)o.classList.add("correct");});const cb=lv.querySelector(".checkbtn");if(cb)cb.disabled=true;}
+document.addEventListener("input",e=>{const t=e.target;if(t.classList&&t.classList.contains("pin")&&t.tagName==="INPUT"&&!t.disabled){const v=norm(t.value);const ok=v!==""&&(t.dataset.answer||"").split("|").map(norm).includes(v);t.classList.toggle("correct",ok);if(!ok)t.classList.remove("incorrect");const fb=t.parentElement.querySelector(".fb");if(fb){fb.textContent=ok?"✓":"";fb.style.color="var(--green)";}}save();});
+document.addEventListener("change",e=>{if(e.target.classList&&e.target.classList.contains("pin"))save();});
+function save(){const d={completed,inputs:[],mcq:[]};document.querySelectorAll("#practice .pin").forEach((e,i)=>d.inputs[i]=e.value);document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>d.mcq[i]=b.dataset.sel);try{localStorage.setItem("jp-hobbies-v2",JSON.stringify(d));}catch(e){}}
+function load(){let d;try{d=JSON.parse(localStorage.getItem("jp-hobbies-v2")||"{}");}catch(e){d={};}if(d.inputs)document.querySelectorAll("#practice .pin").forEach((e,i)=>{if(d.inputs[i]!==undefined)e.value=d.inputs[i];});if(d.mcq)document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>{if(d.mcq[i]!==undefined&&d.mcq[i]!==""){b.dataset.sel=d.mcq[i];const o=b.querySelectorAll(".opt")[+d.mcq[i]];if(o)o.classList.add("sel");}});completed=d.completed||0;for(let i=0;i<completed;i++)markDone(i);updateLocks();}
+function resetProgress(){if(!confirm("Clear all your practice progress?"))return;localStorage.removeItem("jp-hobbies-v2");location.reload();}
 load();
 </script>
 </body>

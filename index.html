@@ -3,671 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Year 7 Japanese · Sports & Hobbies Revision</title>
+<title>Sports & Hobbies · Likes, Dislikes & Describing — Year 7 Japanese</title>
 <style>
-  :root{
-    --purple:#6741D9; --blue:#1F8FCB; --teal:#0CA678; --amber:#B8860B;
-    --green:#2F9E44; --navy:#1D3A8A; --pink:#D6336C; --red:#E23B2E;
-    --grey:#595959; --kg:#8A8A8A; --line:#c9c9c9; --bg:#f4f6fb; --card:#ffffff;
-  }
+  :root{--purple:#6741D9;--blue:#1F8FCB;--teal:#0CA678;--amber:#B8860B;--green:#2F9E44;--navy:#1D3A8A;--pink:#D6336C;--red:#E23B2E;--grey:#595959;--line:#c9c9c9;--card:#fff;--bg:#f4f6fb;}
   *{box-sizing:border-box}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-    margin:0;background:var(--bg);color:#1a1a1a;line-height:1.5;}
-  .wrap{max-width:920px;margin:0 auto;padding:0 14px 60px;}
-  header{background:linear-gradient(135deg,#6741D9,#1F8FCB);color:#fff;text-align:center;
-    padding:26px 16px 20px;border-radius:0 0 18px 18px;box-shadow:0 4px 14px rgba(0,0,0,.15);}
-  header h1{margin:0;font-size:1.5rem;letter-spacing:.5px;}
-  header p{margin:6px 0 0;opacity:.95;font-style:italic;font-size:.95rem;}
-  .goals{display:flex;gap:8px;max-width:920px;margin:14px auto 0;flex-wrap:wrap;padding:0 14px;}
-  .goal{flex:1 1 160px;color:#fff;border-radius:10px;padding:8px 10px;text-align:center;font-weight:700;font-size:.85rem;}
-  .goal.g1{background:var(--purple)} .goal.g2{background:var(--blue)} .goal.g3{background:var(--green)}
-  .toolbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);
-    border:1px solid #e3e3ef;border-radius:12px;margin:14px 0 6px;padding:10px 12px;display:flex;
-    gap:8px;align-items:center;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-  .toolbar .score{font-weight:800;color:var(--navy);margin-right:auto;font-size:.95rem;}
-  .bar{height:8px;border-radius:6px;background:#e6e6ef;flex:1 1 120px;min-width:120px;overflow:hidden;}
-  .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2F9E44,#0CA678);transition:width .3s;}
-  button{cursor:pointer;border:none;border-radius:9px;padding:8px 12px;font-weight:700;font-size:.85rem;color:#fff;background:var(--navy);}
-  button.alt{background:#fff;color:var(--navy);border:1.5px solid var(--navy);}
-  button.warn{background:#fff;color:var(--red);border:1.5px solid var(--red);}
-  button:active{transform:translateY(1px)}
-  .note{background:#FFF9DB;border:1.5px solid #FFD43B;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.92rem;}
-  section{margin-top:20px;}
-  .banner{color:#fff;text-align:center;font-weight:800;font-size:1.05rem;padding:10px;border-radius:11px;letter-spacing:.3px;}
-  .s1{background:var(--purple)} .s2{background:var(--blue)} .s3{background:var(--teal)}
-  .s4{background:var(--amber)} .s5{background:var(--green)} .s6{background:var(--navy)} .s7{background:var(--pink)} .sk{background:var(--navy)}
-  .card{background:var(--card);border:1px solid #e7e7f0;border-radius:12px;padding:14px 16px;margin-top:10px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
-  h3.sub{margin:14px 0 4px;font-size:1rem;}
-  h3.sub.c1{color:var(--purple)} h3.sub.c2{color:var(--blue)} h3.sub.c3{color:var(--teal)}
-  h3.sub.c4{color:var(--amber)} h3.sub.c5{color:var(--green)} h3.sub.c6{color:var(--navy)} h3.sub.c7{color:var(--pink)}
-  .hint{color:var(--grey);font-style:italic;font-size:.9rem;margin:2px 0 8px;}
-  .p{color:var(--green);font-weight:800;}
-  .kana{color:var(--kg);font-size:.9em;}
-  .ref{background:#f7f7fc;border-radius:10px;padding:8px 12px;margin:6px 0;}
-  .ref .row{margin:3px 0;}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;}
-  @media(max-width:620px){.grid{grid-template-columns:1fr}}
-  .q{margin:9px 0;}
-  .q .lead{font-weight:600;}
-  input.ans,select.ans,select.kopt{font-size:1rem;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;background:#fff;min-width:60px;font-family:inherit;}
-  select.kopt{min-width:150px;}
-  input.ans{width:auto;}
-  input.wide{width:100%;max-width:460px;}
-  input.mid{width:170px;}
-  input.correct,select.correct{border-color:var(--green);background:#EAF7EE;}
-  input.incorrect,select.incorrect{border-color:var(--red);background:#FDECEC;}
-  .fb{margin-left:8px;font-weight:700;font-size:.9rem;}
-  .opts{font-weight:700;font-size:.9rem;color:#333;margin:6px 0;}
-  table.t{width:100%;border-collapse:collapse;margin:6px 0;}
-  table.t th{background:var(--purple);color:#fff;font-size:.85rem;padding:6px;text-align:left;}
-  table.t.blue th{background:var(--blue)} table.t.green th{background:var(--green)}
-  table.t td{border:1px solid #dfe1ee;padding:6px 8px;vertical-align:middle;}
-  table.t tr:nth-child(even) td{background:#f7f7fc;}
-  .kbig{font-size:1.15rem;}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0;}
-  .chip{padding:6px 12px;border:1.5px solid #d0d0e0;border-radius:20px;background:#fff;cursor:pointer;font-size:1.05rem;user-select:none;}
-  .chip.kata{border-color:var(--blue);box-shadow:inset 0 0 0 2px var(--blue);border-radius:20px;}
-  .chip.hira{text-decoration:underline;text-decoration-color:var(--pink);text-decoration-thickness:3px;border-color:var(--pink);}
-  .chip.ok{background:#EAF7EE;} .chip.no{background:#FDECEC;}
-  .legend{font-size:.8rem;color:var(--grey);}
-  .s5drow{border-top:1px dashed #e0e0ea;padding:8px 0;}
-  .s5drow .lab{font-weight:700;color:var(--navy);display:inline-block;min-width:78px;}
-  textarea{width:100%;min-height:44px;border:1.5px solid var(--line);border-radius:8px;padding:8px;font-family:inherit;font-size:1rem;margin:4px 0;}
-  .selfcheck label{display:block;margin:6px 0;font-size:.95rem;}
-  .box{border:1.5px solid #e0e0ea;border-radius:12px;padding:12px 14px;margin:8px 0;}
-  .box.read{background:#EEF1FA;border-color:var(--navy);}
-  .box.model{background:#FBF3E0;border-color:var(--amber);}
-  .box.pattern{background:#EDF7EF;border-color:var(--green);}
-  .box.likes{background:#EAF4FB;border-color:var(--blue);}
-  .big{font-size:1.25rem;font-weight:800;}
-  footer{text-align:center;color:var(--grey);font-size:.8rem;margin-top:30px;}
-  .done-msg{display:none;background:#EAF7EE;border:1.5px solid var(--green);color:#176b2c;border-radius:10px;padding:8px 12px;margin-top:8px;font-weight:700;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:0;background:var(--bg);color:#1a1a1a;line-height:1.5;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 14px 60px;}
+  header{background:linear-gradient(135deg,#6741D9,#1F8FCB);color:#fff;text-align:center;padding:22px 16px 14px;border-radius:0 0 18px 18px;}
+  header h1{margin:0;font-size:1.4rem;}header p{margin:6px 0 0;opacity:.95;font-style:italic;font-size:.9rem;}
+  nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0 4px;}
+  nav button{cursor:pointer;border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:20px;padding:7px 16px;font-weight:700;font-size:.9rem;}
+  nav button.on{background:var(--navy);color:#fff;}nav a{align-self:center;font-size:.85rem;color:var(--navy);}
+  .view{display:none;}.view.active{display:block;}
+  .banner{color:#fff;text-align:center;font-weight:800;font-size:1.02rem;padding:9px;border-radius:11px;margin-top:18px;}
+  .b1{background:var(--teal)}.b2{background:var(--purple)}.b3{background:var(--navy)}.b4{background:var(--green)}
+  .card{background:var(--card);border:1px solid #e7e7f0;border-radius:12px;padding:14px 16px;margin-top:10px;}
+  .hint{color:var(--grey);font-style:italic;font-size:.88rem;margin:2px 0 8px;}
+  .jp{color:var(--grey);font-weight:600;}.kanji{font-size:1.12rem;font-weight:700;}
+  table{width:100%;border-collapse:collapse;margin:4px 0;}
+  th{background:var(--purple);color:#fff;font-size:.82rem;padding:6px;text-align:left;}
+  td{border:1px solid #e0e2ee;padding:5px 8px;font-size:.95rem;}tr:nth-child(even) td{background:#f7f7fc;}
+  .box{border:1.5px solid #e0e0ea;border-radius:12px;padding:10px 14px;margin:8px 0;background:#fbfbfe;}
+  .home-btn{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--purple);border-radius:14px;padding:16px 18px;margin:12px 0;cursor:pointer;font-size:1.05rem;font-weight:700;color:var(--navy);}
+  .home-btn small{display:block;font-weight:400;color:var(--grey);margin-top:4px;font-size:.85rem;}
+  .chip{display:inline-block;padding:3px 10px;border-radius:7px;color:#fff;font-weight:800;font-size:.92em;margin:2px 2px;}
+  .ch-day{background:#1C7ED6}.ch-ni{background:#E23B2E}.ch-act{background:#2F9E44}.ch-o{background:#F08C00}.ch-verb{background:#6741D9}
+  .t-day{color:#1C7ED6;font-weight:800}.t-ni{color:#E23B2E;font-weight:800}.t-act{color:#2F9E44;font-weight:800}.t-o{color:#F08C00;font-weight:800}.t-verb{color:#6741D9;font-weight:800}
+  .prog{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border:1px solid #e3e3ef;border-radius:12px;padding:8px 12px;margin:12px 0;display:flex;align-items:center;gap:10px;}
+  .prog b{color:var(--navy);font-size:.9rem;white-space:nowrap;}
+  .bar{height:8px;border-radius:6px;background:#e6e6ef;flex:1;overflow:hidden;}.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2F9E44,#0CA678);transition:width .3s;}
+  .level{border:1px solid #e2e2ee;border-radius:12px;padding:12px 14px;margin:12px 0;background:#fff;}.level.locked{opacity:.5;}.level.done{border-color:var(--green);background:#f6fdf8;}
+  .lvhead{font-size:1rem;margin-bottom:6px;}.lvhead .lockicon{color:var(--grey);}
+  .q{margin:8px 0;}
+  input.pin,select.pin{font-size:1rem;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;background:#fff;font-family:inherit;}
+  input.wide{width:100%;max-width:420px;}input.mid{width:150px;}
+  .pin.correct{border-color:var(--green);background:#EAF7EE;}.pin.incorrect{border-color:var(--red);background:#FDECEC;}
+  .fb{margin-left:8px;font-weight:800;font-size:.95rem;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px;}@media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .mcqblock{margin:8px 0;}.mcqq{font-weight:700;margin-bottom:3px;}
+  .opt{display:block;width:100%;text-align:left;background:#fff;color:#1a1a1a;border:1.5px solid var(--line);border-radius:9px;padding:7px 12px;margin:4px 0;font-size:.96rem;cursor:pointer;}
+  .opt.sel{border-color:var(--navy);background:#eef2fb;font-weight:700;}.opt.correct{border-color:var(--green);background:#EAF7EE;font-weight:700;}.opt.wrong{border-color:var(--red);background:#FDECEC;}
+  .checkbtn{cursor:pointer;border:none;border-radius:9px;padding:8px 14px;font-weight:800;color:#fff;background:var(--navy);}.checkbtn:disabled{background:#b7bccb;cursor:not-allowed;}
+  .lvstatus{margin-left:10px;font-weight:800;}.smallbtn{cursor:pointer;border:1.5px solid var(--red);background:#fff;color:var(--red);border-radius:8px;padding:5px 10px;font-weight:700;font-size:.8rem;}
+    nav a.pl{color:#fff;padding:7px 14px;border-radius:20px;font-weight:800;font-size:.85rem;text-decoration:none;align-self:center;box-shadow:0 1px 3px rgba(0,0,0,.15);}
+  .pl-sports{background:#1F8FCB}.pl-hob{background:#D6336C}.pl-days{background:#0CA678}.pl-adj{background:#F08C00}
+  footer{text-align:center;color:var(--grey);font-size:.8rem;margin-top:26px;}
 </style>
 </head>
 <body>
-<header>
-  <h1>⚽ Sports &amp; Hobbies · Year 7 Japanese 🎾</h1>
-  <p>Revision &amp; Practice — likes, dislikes, questions &amp; descriptions</p>
-</header>
-<div class="goals">
-  <div class="goal g1">① RECOGNISE</div>
-  <div class="goal g2">② COMMUNICATE</div>
-  <div class="goal g3">③ DESCRIBE</div>
-</div>
-
+<header><h1>⚽ Sports &amp; Hobbies 🎾</h1><p>Likes, dislikes &amp; describing (A wa B desu) — Year 7 Japanese</p></header>
 <div class="wrap">
-  <div class="toolbar">
-    <span class="score" id="score">Score: 0 / 0</span>
-    <div class="bar"><i id="barfill"></i></div>
-    <button onclick="checkAll()">✓ Check answers</button>
-    <button class="alt" onclick="toggleKana()" id="kanaBtn">あ Hide kana</button>
-    <button class="alt" onclick="revealAll()">Reveal</button>
-    <button class="warn" onclick="resetAll()">Reset</button>
+  <nav>
+    <button id="nav-home" class="on" onclick="show('home')">🏠 Home</button>
+    <button id="nav-vocab" onclick="show('vocab')">📚 Vocabulary</button>
+    <button id="nav-practice" onclick="show('practice')">✍️ Practice &amp; Quiz</button>
+    <a class="pl pl-hob" href="hobbies.html">🎌 Hobbies</a> <a class="pl pl-days" href="days.html">📅 Days</a> <a class="pl pl-adj" href="adjectives.html">⭐ Adjectives</a>
+  </nav>
+
+  <div class="view active" id="view-home">
+    <div class="card">
+      <p>Welcome! This has three parts:</p>
+      <button class="home-btn" onclick="show('vocab')">📚 Vocabulary — learn it first<small>Sports &amp; hobbies, adjectives, and the like/dislike + describing patterns.</small></button>
+      <button class="home-btn" onclick="show('practice')">✍️ Practice &amp; Quiz — test yourself<small>Work through the levels in order. You must get <b>every</b> question in a level correct to unlock the next. Wrong answers are marked ✗ — fix them and check again.</small></button>
+      <p class="hint">Your progress saves on this device.</p>
+    </div>
   </div>
-  <div class="note">Every answer is checked <b>as you type</b> — a green ✓ appears when it's right, and the correct answer shows if you leave a wrong one. You can also press <b>Check answers</b> to mark everything at once. Spelling is forgiving (spaces &amp; capitals don't matter). <span class="p">wa</span> and <span class="p">desu</span> are shown in green. Your work saves automatically.</div>
 
-  <!-- SECTION 1 -->
-  <section>
-    <div class="banner s1">SECTION 1 · Vocabulary practice</div>
+  <div class="view" id="view-vocab">
+    <div class="banner b2">Sports &amp; hobbies</div>
+    <div class="card"><table><thead><tr><th>Romaji</th><th>English</th><th>Japanese</th></tr></thead><tbody id="sportRef"></tbody></table></div>
 
-    <div class="card">
-      <h3 class="sub c1">A · Match the vocabulary</h3>
-      <p class="hint">Choose the English meaning for each Japanese word.</p>
-      <div class="grid" id="s1a"></div>
-    </div>
+    <div class="banner b4">Adjectives (describing words)</div>
+    <div class="card"><table><thead><tr><th>Romaji</th><th>English</th><th>Japanese</th></tr></thead><tbody id="adjRef"></tbody></table></div>
 
+    <div class="banner b3">Patterns</div>
     <div class="card">
-      <h3 class="sub c1">B · Write the English meaning</h3>
-      <div class="grid" id="s1b"></div>
-    </div>
+      <div class="hint" style="margin-bottom:6px"><b>Colour key:</b> <span class="chip ch-day">topic</span> the sport · <span class="chip ch-ni">ga / wa</span> particle · <span class="chip ch-act">opinion / adjective</span> · <span class="chip ch-verb">desu</span> is/am/are</div>
 
-    <div class="card">
-      <h3 class="sub c1">C · Kana hunt</h3>
-      <p class="hint">Write the romaji and the English meaning.</p>
-      <table class="t"><thead><tr><th>Kana</th><th>Romaji</th><th>English</th></tr></thead>
-        <tbody id="s1c"></tbody></table>
-    </div>
+      <div class="box"><b>① Likes &amp; dislikes</b>
+        <div style="margin:6px 0;font-size:1.05rem"><span class="chip ch-day">sport</span> <span class="chip ch-ni">ga</span> <span class="chip ch-act">suki</span> <span class="chip ch-verb">desu</span> &nbsp;=&nbsp; I like <b>sport</b>.</div>
+        <table><thead><tr><th>Romaji</th><th>English</th></tr></thead><tbody id="egLike"></tbody></table></div>
 
-    <div class="card">
-      <h3 class="sub c1">D · Script check</h3>
-      <p class="hint">Tap a word once = <b style="color:var(--blue)">katakana (box)</b>, twice = <b style="color:var(--pink)">hiragana (underline)</b>, three times = clear. Find 5 of each.</p>
-      <div class="chips" id="s1d"></div>
-      <button class="alt" onclick="checkScripts()">Check scripts</button>
-      <span class="fb" id="s1dfb"></span>
-      <p class="legend">Katakana is used for borrowed words; hiragana for many native Japanese words.</p>
-    </div>
-  </section>
+      <div class="box"><b>② Describing — A wa B desu</b>
+        <div style="margin:6px 0;font-size:1.05rem"><span class="chip ch-day">sport</span> <span class="chip ch-ni">wa</span> <span class="chip ch-act">adjective</span> <span class="chip ch-verb">desu</span> &nbsp;=&nbsp; <b>sport</b> is <b>adjective</b>.</div>
+        <table><thead><tr><th>Romaji</th><th>English</th></tr></thead><tbody id="egDesc"></tbody></table></div>
 
-  <!-- SECTION 2 -->
-  <section>
-    <div class="banner s2">SECTION 2 · Likes and dislikes</div>
-    <div class="box likes">
-      <b style="color:var(--blue)">Sentence patterns</b>
-      <div class="row">[sport] ga suki <span class="p">desu</span>. &nbsp;=&nbsp; I like [sport].</div>
-      <div class="row">[sport] ga suki ja nai <span class="p">desu</span>. &nbsp;=&nbsp; I don't like [sport].</div>
-      <div class="row">[sport] <span class="p">wa</span> amari suki ja nai <span class="p">desu</span>. &nbsp;=&nbsp; I don't really like [sport].</div>
-      <div class="row">[sport] ga kirai <span class="p">desu</span>. &nbsp;=&nbsp; I really dislike [sport].</div>
-      <div class="row">[sport] ga suki <span class="p">desu</span> ka? &nbsp;=&nbsp; Do you like [sport]?</div>
+      <div class="box"><b>③ Asking</b>
+        <div class="hint"><span class="t-act">Donna</span> supootsu <span class="t-ni">ga</span> <span class="t-act">suki</span> <span class="t-verb">desu</span> ka? = What kind of sport do you like?</div></div>
     </div>
-    <div class="card">
-      <h3 class="sub c2">A · Complete each sentence</h3>
-      <p class="hint">Use: ga, wa, suki desu, suki ja nai desu, amari, kirai desu.</p>
-      <div id="s2a"></div>
-    </div>
-    <div class="card">
-      <h3 class="sub c2">B · Translate into English</h3>
-      <div id="s2b"></div>
-    </div>
-  </section>
+    <p style="text-align:center;margin-top:14px"><button class="home-btn" style="border-color:var(--green);color:var(--green)" onclick="show('practice')">✍️ Ready? Go to Practice &amp; Quiz →</button></p>
+  </div>
 
-  <!-- SECTION 3 -->
-  <section>
-    <div class="banner s3">SECTION 3 · Build accurate sentences</div>
-    <div class="card">
-      <h3 class="sub c3">A · Unjumble the sentences</h3>
-      <p class="hint">Write each sentence in correct romaji.</p>
-      <div id="s3a"></div>
-    </div>
-    <div class="card">
-      <h3 class="sub c3">B · Translate into Japanese (romaji)</h3>
-      <div id="s3b"></div>
-    </div>
-  </section>
-
-  <!-- SECTION 4 -->
-  <section>
-    <div class="banner s4">SECTION 4 · What kind of sport…? (donna)</div>
-    <div class="box model">
-      <b style="color:var(--amber)">Model conversation</b>
-      <div class="row"><b>Q</b> &nbsp;Donna supootsu ga suki <span class="p">desu</span> ka?</div>
-      <div class="row"><b>A</b> &nbsp;Sakkaa ga suki <span class="p">desu</span>.</div>
-      <div class="row" style="color:var(--grey);font-style:italic">What kind of sport do you like? – I like soccer.</div>
-    </div>
-    <div class="card">
-      <h3 class="sub c4">A · Complete the questions and answers</h3>
-      <p class="hint">Use donna, ga, suki, kirai, ka, or a suitable sport.</p>
-      <div id="s4a"></div>
-    </div>
-  </section>
-
-  <!-- FOCUS MODULE · DESCRIBING -->
-  <section>
-    <div class="banner s1" style="background:linear-gradient(135deg,#6741D9,#1F8FCB);font-size:1.15rem">🎯 FOCUS · DESCRIBING SPORTS &amp; HOBBIES</div>
-    <p class="hint" style="text-align:center">Adjectives + the <b>A <span class="p">wa</span> B <span class="p">desu</span></b> pattern</p>
-
-    <div class="banner s1" style="margin-top:10px">✏️ WARM-UP · Copy &amp; rewrite the adjectives</div>
-    <div class="card">
-      <p class="hint">Learn the adjectives: type each one in romaji. The hiragana is shown to help you read it.</p>
-      <table class="t"><thead><tr><th>English</th><th>Romaji</th><th>Type romaji</th><th>Hiragana</th></tr></thead>
-        <tbody id="dcopy"></tbody></table>
-    </div>
-
-    <div class="banner s6" style="margin-top:10px">🔑 THE MAGIC PATTERN · A wa B desu</div>
-    <div class="box pattern">
-      <div class="big">A <span class="p">wa</span> B <span class="p">desu</span> &nbsp;=&nbsp; A is / are B</div>
-      <div class="kana">A は B です</div>
-      <div class="row" style="margin-top:6px">★ Sakkaa <span class="p">wa</span> sugoi <span class="p">desu</span>. → <b style="color:var(--blue)">Soccer is great.</b> <span class="kana">サッカーは すごいです。</span></div>
-      <div class="row">★ Tenisu <span class="p">wa</span> tanoshii <span class="p">desu</span>. → <b style="color:var(--blue)">Tennis is fun.</b> <span class="kana">テニスは たのしいです。</span></div>
-    </div>
-
-    <div class="banner s3" style="margin-top:10px">📚 WORD BANK</div>
-    <div class="box">
-      <div class="row"><b style="color:var(--navy)">🏀 Sports &amp; hobbies:</b> supootsu = sports <span class="kana">(スポーツ)</span> · geemu = games <span class="kana">(ゲーム)</span> · sakkaa = soccer <span class="kana">(サッカー)</span> · tenisu = tennis <span class="kana">(テニス)</span> · suiei = swimming <span class="kana">(すいえい)</span> · yakyuu = baseball <span class="kana">(やきゅう)</span> · ragubii = rugby <span class="kana">(ラグビー)</span> · basukettobooru = basketball <span class="kana">(バスケットボール)</span> · pinpon = table tennis <span class="kana">(ピンポン)</span> · dansu = dance <span class="kana">(ダンス)</span> · karate = karate <span class="kana">(からて)</span> · sumou = sumo <span class="kana">(すもう)</span></div>
-      <div class="row" style="margin-top:6px"><b style="color:var(--purple)">⭐ Adjectives:</b> sugoi = great <span class="kana">(すごい)</span> · tanoshii = fun <span class="kana">(たのしい)</span> · tsumaranai = boring <span class="kana">(つまらない)</span> · omoshiroi = interesting <span class="kana">(おもしろい)</span> · muzukashii = difficult <span class="kana">(むずかしい)</span> · yasashii = easy <span class="kana">(やさしい)</span></div>
-    </div>
-
-    <div class="banner s2" style="margin-top:10px">CHALLENGE 1 · Translate to English ★☆☆</div>
-    <div class="card"><p class="hint">Read each sentence and write what it means in English.</p><div id="dc1"></div></div>
-
-    <div class="banner s5" style="margin-top:10px">CHALLENGE 2 · Translate to Japanese ★★☆</div>
-    <div class="card"><p class="hint">Use the pattern A wa B desu to write each sentence in romaji.</p><div id="dc2"></div></div>
-
-    <div class="banner s4" style="margin-top:10px">CHALLENGE 3 · Build the sentence ★★☆</div>
-    <div class="card"><p class="hint">Pick an adjective, type the romaji sentence and the English meaning. Kana is optional — choose it to check yourself.</p><div id="dc3"></div></div>
-
-    <div class="banner s7" style="margin-top:10px">✍️ WRITING CHALLENGE · Your turn!</div>
-    <div class="card">
-      <p><b style="color:var(--green)">★☆☆ Challenge:</b> Write 3 sentences using <b>A wa B desu</b> (a different adjective each time).</p>
-      <textarea placeholder="1."></textarea><textarea placeholder="2."></textarea><textarea placeholder="3."></textarea>
-      <p style="margin-top:8px"><b style="color:var(--amber)">★★☆ Bonus:</b> Join two ideas with <b>demo</b> (but). <span class="hint">e.g. Sakkaa wa tanoshii desu, demo ragubii wa muzukashii desu.</span></p>
-      <textarea placeholder="1."></textarea><textarea placeholder="2."></textarea>
-      <p style="margin-top:8px"><b style="color:var(--red)">★★★ Super:</b> Describe your favourite sport using <b>TWO</b> adjectives and <b>demo</b>.</p>
-      <textarea placeholder="→"></textarea>
-    </div>
-  </section>
-
-  <!-- SECTION 5 -->
-  <section>
-    <div class="banner s5">SECTION 5 · Describe sports &amp; hobbies</div>
-    <div class="card">
-      <h3 class="sub c5">Adjectives &amp; the pattern</h3>
-      <table class="t green"><thead><tr><th>Romaji</th><th>English</th><th>Hiragana</th></tr></thead>
-        <tbody id="adjref"></tbody></table>
-      <div class="box pattern">
-        <div class="big">A <span class="p">wa</span> B <span class="p">desu</span> &nbsp;=&nbsp; A is / are B</div>
-        <div class="kana">A は B です</div>
-        <div class="row" style="margin-top:6px">★ Sakkaa <span class="p">wa</span> sugoi <span class="p">desu</span>. → <b style="color:var(--blue)">Soccer is great.</b></div>
-        <div class="row">★ Tenisu <span class="p">wa</span> tanoshii <span class="p">desu</span>. → <b style="color:var(--blue)">Tennis is fun.</b></div>
-      </div>
-    </div>
-    <div class="card">
-      <h3 class="sub c5">A · Match each adjective</h3>
-      <div class="grid" id="s5a"></div>
-    </div>
-    <div class="card">
-      <h3 class="sub c5">B · Translate into English</h3>
-      <p class="hint">Pay attention to wa and the adjective.</p>
-      <div id="s5b"></div>
-    </div>
-    <div class="card">
-      <h3 class="sub c5">C · Build the sentence — romaji &amp; English (kana optional)</h3>
-      <p class="hint">Pick an adjective, type the romaji sentence and the English meaning. Kana is optional — choose it to check yourself.</p>
-      <div id="s5c"></div>
-    </div>
-    <div class="card">
-      <h3 class="sub c5">D · Write your own descriptions</h3>
-      <p class="hint">Use a different sport or hobby in each sentence (self-checked).</p>
-      <textarea placeholder="1."></textarea>
-      <textarea placeholder="2."></textarea>
-    </div>
-  </section>
-
-  <!-- SECTION 6 -->
-  <section>
-    <div class="banner s6">SECTION 6 · Reading comprehension</div>
-    <div class="box read">
-      <b style="color:var(--navy)">Emi's sports and hobbies</b>
-      <div class="row">Emi <span class="p">desu</span>. Sakkaa ga suki <span class="p">desu</span>. Dansu mo suki <span class="p">desu</span>.</div>
-      <div class="row">Tenisu <span class="p">wa</span> amari suki ja nai <span class="p">desu</span>. Sumou ga kirai <span class="p">desu</span>.</div>
-      <div class="row">Sakkaa <span class="p">wa</span> tanoshii <span class="p">desu</span>. Dansu <span class="p">wa</span> omoshiroi <span class="p">desu</span>.</div>
-      <div class="row">Kyuudou <span class="p">wa</span> muzukashii <span class="p">desu</span>. Pinpon <span class="p">wa</span> yasashii <span class="p">desu</span>.</div>
-      <div class="row">Donna supootsu ga suki <span class="p">desu</span> ka?</div>
-    </div>
-    <div class="card">
-      <h3 class="sub c6">A · Understand the text</h3>
-      <p class="hint">Answer in English.</p>
-      <div id="s6a"></div>
-    </div>
-    <div class="card">
-      <h3 class="sub c6">B · Grammar detective</h3>
-      <p class="hint">Copy the exact romaji from the reading.</p>
-      <div id="s6b"></div>
-    </div>
-  </section>
-
-  <!-- SECTION 7 -->
-  <section>
-    <div class="banner s7">SECTION 7 · Independent writing &amp; extension</div>
-    <div class="card">
-      <h3 class="sub c7">Core checkpoint — my sports &amp; hobbies profile</h3>
-      <p class="hint">Write six complete romaji sentences. Include ALL of the following:</p>
-      <div class="grid" style="font-size:.9rem;font-weight:600;">
-        <div>☐ one using <span class="p">ga</span> suki <span class="p">desu</span></div>
-        <div>☐ one using <span class="p">wa</span> amari suki ja nai <span class="p">desu</span></div>
-        <div>☐ one using ga kirai <span class="p">desu</span></div>
-        <div>☐ two using <span class="p">wa</span> + adjective + <span class="p">desu</span></div>
-        <div>☐ one question using donna … ka</div><div></div>
-      </div>
-      <textarea placeholder="1."></textarea><textarea placeholder="2."></textarea><textarea placeholder="3."></textarea>
-      <textarea placeholder="4."></textarea><textarea placeholder="5."></textarea><textarea placeholder="6."></textarea>
-    </div>
-    <div class="card">
-      <h3 class="sub c7">Option 2 (advanced) · Six-line conversation</h3>
-      <p class="hint">Include donna, mo, amari suki ja nai, and one adjective description.</p>
-      <textarea placeholder="Q:"></textarea><textarea placeholder="A:"></textarea>
-      <textarea placeholder="Q:"></textarea><textarea placeholder="A:"></textarea>
-      <textarea placeholder="Q:"></textarea><textarea placeholder="A:"></textarea>
-    </div>
-    <div class="card selfcheck">
-      <h3 class="sub c7">Final self-check</h3>
-      <label><input type="checkbox" class="chk"> I used capital letters and full stops / question marks.</label>
-      <label><input type="checkbox" class="chk"> I used ga or wa before the opinion phrase.</label>
-      <label><input type="checkbox" class="chk"> I kept suki ja nai as three words.</label>
-      <label><input type="checkbox" class="chk"> I used ka at the end of each question.</label>
-    </div>
-  </section>
-
-  <div class="done-msg" id="doneMsg">🎉 Perfect score — subarashii! すばらしい！</div>
-  <footer>Year 7 Japanese · Sports &amp; Hobbies Revision &amp; Practice</footer>
+  <div class="view" id="view-practice">
+    <div class="prog"><b id="prog">Completed 0 / 0</b><div class="bar"><i id="progbar"></i></div><button class="smallbtn" onclick="resetProgress()">Reset</button></div>
+    <p class="hint">Complete each level (all correct) to unlock the next. Wrong answers show ✗ — fix and check again.</p>
+    <div id="practice"></div>
+    <div id="allDone" style="display:none;text-align:center;font-weight:800;color:var(--green);font-size:1.1rem;margin-top:16px">🎉 All levels complete — subarashii! すばらしい！</div>
+  </div>
+  <footer>Year 7 Japanese · Sports &amp; Hobbies</footer>
 </div>
-
 <script>
-// ---------- data ----------
-const MEANINGS8 = ["soccer","swimming","baseball","cooking","reading","fishing","calligraphy","bike-riding"];
-const S1A = [["sakkaa","soccer"],["suiei","swimming"],["yakyuu","baseball"],["ryouri","cooking"],
-             ["dokusho","reading"],["tsuri","fishing"],["shodou","calligraphy"],["jitensha","bike-riding"]];
-const S1B = [["tenisu","tennis"],["ragubii","rugby"],["taisou","gymnastics"],
-             ["kyuudou","archery|kyudo"],["eiga","movies|movie|film|films"],["ongaku","music"]];
-const S1C = [["サッカー","sakkaa","soccer"],["すもう","sumou","sumo"],["ダンス","dansu","dance|dancing"],
-             ["じゅうどう","juudou","judo"],["テレビ","terebi","tv|television"],["おんがく","ongaku","music"]];
-const S1D = [["サッカー","kata"],["すいえい","hira"],["ダンス","kata"],["どくしょ","hira"],["テレビ","kata"],
-             ["すもう","hira"],["コンピューター","kata"],["やきゅう","hira"],["ラグビー","kata"],["おんがく","hira"]];
+const SPORTS=[["sakkaa","soccer","サッカー"],["tenisu","tennis","テニス"],["ragubii","rugby","ラグビー"],["yakyuu","baseball","やきゅう"],["suiei","swimming","すいえい"],["bareebooru","volleyball","バレーボール"],["basukettobooru","basketball","バスケットボール"],["karate","karate","からて"],["sumou","sumo","すもう"],["dansu","dance","ダンス"]];
+const ADJ=[["sugoi","great","すごい"],["tanoshii","fun","たのしい"],["tsumaranai","boring","つまらない"],["omoshiroi","interesting","おもしろい"],["muzukashii","difficult","むずかしい"],["yasashii","easy","やさしい"]];
+const EG_LIKE=[["Sakkaa ga suki desu.","I like soccer."],["Sakkaa ga suki ja nai desu.","I don't like soccer."],["Sakkaa wa amari suki ja nai desu.","I don't really like soccer."],["Sakkaa ga kirai desu.","I really dislike soccer."],["Sakkaa ga suki desu ka?","Do you like soccer?"]];
+const EG_DESC=[["Sakkaa wa sugoi desu.","Soccer is great."],["Tenisu wa muzukashii desu.","Tennis is difficult."],["Suiei wa yasashii desu.","Swimming is easy."],["Ragubii wa omoshiroi desu.","Rugby is interesting."]];
+const LEN=[["Tenisu ga suki desu.","i like tennis"],["Suiei wa amari suki ja nai desu.","i dont really like swimming|i do not really like swimming"],["Sumou ga kirai desu.","i really dislike sumo|i really dont like sumo|i hate sumo"],["Sakkaa ga suki desu ka?","do you like soccer"]];
+const LJP=[["I like swimming.","suiei ga suki desu"],["I don't like football.","futtobooru ga suki ja nai desu"],["I don't really like baseball.","yakyuu wa amari suki ja nai desu"],["Do you like cooking?","ryouri ga suki desu ka"]];
+const AMEAN=["great","fun","boring","interesting","difficult","easy"];
+const AQ=[["sugoi","great"],["tanoshii","fun"],["tsumaranai","boring"],["omoshiroi","interesting"],["muzukashii","difficult"],["yasashii","easy"]];
+const DEN=[["Sakkaa wa sugoi desu.","soccer is great|soccer is amazing"],["Tenisu wa muzukashii desu.","tennis is difficult|tennis is hard"],["Suiei wa yasashii desu.","swimming is easy"],["Ragubii wa omoshiroi desu.","rugby is interesting"]];
+const DJP=[["Basketball is interesting.","basukettobooru wa omoshiroi desu"],["Soccer is difficult.","sakkaa wa muzukashii desu"],["Tennis is boring.","tenisu wa tsumaranai desu"],["Sumo is great.","sumou wa sugoi desu"]];
+const MCQ=[["What does 'sakkaa' mean?",["soccer","rugby","tennis","baseball"],0],["What does 'suiei' mean?",["swimming","surfing","sumo","dance"],0],["'ga suki desu' means...",["I like","I don't like","I really dislike","Do you like?"],0],["'ga kirai desu' means...",["I really dislike","I like","I don't really like","Do you like?"],0],["'tanoshii' means...",["fun","boring","difficult","easy"],0],["'muzukashii' means...",["difficult","easy","great","boring"],0],["'A wa B desu' means...",["A is B","A and B","A or B","A's B"],0],["'Donna supootsu ga suki desu ka?' means...",["What kind of sport do you like?","Do you like sport?","What sport is this?","When do you play sport?"],0]];
+const EMI=[["What sport does Emi like?",["soccer","tennis","sumo","rugby"],0],["What else does Emi like?",["dance","cooking","reading","games"],0],["What does Emi NOT really like?",["tennis","soccer","dance","sumo"],0],["What does Emi really dislike?",["sumo","tennis","dance","soccer"],0],["How does Emi describe soccer?",["fun","boring","difficult","easy"],0]];
 
-const S2A = [
-  ["1. Sakkaa ", " suki desu.","ga"],
-  ["2. Yakyuu ", " amari suki ja nai desu.","wa"],
-  ["3. Sumou ga ", ".  (I really dislike sumo.)","kirai desu"],
-  ["4. Tenisu ga ", ".  (I don't like tennis.)","suki ja nai desu"],
-  ["5. Dokusho ", " suki desu.","ga"],
-  ["6. Ragubii wa ", " suki ja nai desu.","amari"],
-];
-const S2B = [
-  ["Tenisu ga suki desu.","I like tennis."],
-  ["Suiei wa amari suki ja nai desu.","I don't really like swimming.|I dont really like swimming."],
-  ["Juudou ga kirai desu.","I really dislike judo.|I really don't like judo.|I hate judo."],
-  ["Dansu ga suki desu ka?","Do you like dance?|Do you like dancing?"],
-];
-const S3A = [
-  ["suki desu / sakkaa / ga","Sakkaa ga suki desu"],
-  ["amari / wa / yakyuu / suki ja nai desu","Yakyuu wa amari suki ja nai desu"],
-  ["ga / sumou / kirai desu","Sumou ga kirai desu"],
-  ["suki desu ka / tenisu / ga","Tenisu ga suki desu ka"],
-  ["mo / dansu / suki desu","Dansu mo suki desu"],
-];
-const S3B = [
-  ["I like swimming.","Suiei ga suki desu"],
-  ["I don't like football.","Futtobooru ga suki ja nai desu"],
-  ["I don't really like baseball.","Yakyuu wa amari suki ja nai desu"],
-  ["Do you like cooking?","Ryouri ga suki desu ka"],
-];
-const S4A = [
-  ["1. Q: ", " supootsu ga suki desu ka?","donna"],
-  ["2. A: Tenisu ", " suki desu.","ga"],
-  ["3. Q: Donna supootsu ga ", " desu ka?  (dislike)","kirai"],
-  ["4. A: ", " ga kirai desu.","__free__"],
-  ["5. Q: Donna supootsu ga suki desu ", "?","ka"],
-  ["6. A: Sakkaa ga ", " desu.","suki"],
-];
-const ADJ = {
-  sugoi:{kana:"すごい",en:"great|amazing|awesome"}, tanoshii:{kana:"たのしい",en:"fun"},
-  tsumaranai:{kana:"つまらない",en:"boring"}, omoshiroi:{kana:"おもしろい",en:"interesting"},
-  muzukashii:{kana:"むずかしい",en:"difficult|hard"}, yasashii:{kana:"やさしい",en:"easy"},
-};
-const KANA_OPTS=["すごい","たのしい","つまらない","おもしろい","むずかしい","やさしい"];
-const ADJREF = [["sugoi","great",ADJ.sugoi.kana],["tanoshii","fun",ADJ.tanoshii.kana],
-  ["tsumaranai","boring",ADJ.tsumaranai.kana],["omoshiroi","interesting",ADJ.omoshiroi.kana],
-  ["muzukashii","difficult",ADJ.muzukashii.kana],["yasashii","easy",ADJ.yasashii.kana]];
-const S5A = [["sugoi","great"],["tsumaranai","boring"],["omoshiroi","interesting"],
-             ["muzukashii","difficult"],["yasashii","easy"],["tanoshii","fun"]];
-const ADJ6 = ["great","fun","boring","interesting","difficult","easy"];
-const S5B = [
-  ["Sakkaa wa sugoi desu.","Soccer is great.|Soccer is amazing."],
-  ["Dokusho wa omoshiroi desu.","Reading is interesting."],
-  ["Kyuudou wa muzukashii desu.","Archery is difficult.|Kyudo is difficult.|Archery is hard."],
-  ["Pinpon wa yasashii desu.","Table tennis is easy.|Ping pong is easy."],
-];
-const S5C = [["Ragubii","ラグビー","rugby"],["Sumou","すもう","sumo"],["Pinpon","ピンポン","table tennis"]];
-const S6A = [
-  ["1. What sport does Emi like?","soccer"],
-  ["2. What other activity does Emi also like?","dance|dancing"],
-  ["3. What sport does Emi not really like?","tennis"],
-  ["4. What sport does Emi really dislike?","sumo"],
-  ["5. How does Emi describe soccer?","fun|tanoshii|its fun|it is fun"],
-  ["6. How does Emi describe dance?","interesting|omoshiroi"],
-  ["7. Which activity is difficult?","archery|kyudo|kyuudou"],
-  ["8. Which activity is easy?","table tennis|ping pong|pinpon"],
-];
-const S6B = [
-  ["The particle meaning 'also':","mo"],
-  ["The phrase meaning 'don't really like':","wa amari suki ja nai desu|amari suki ja nai desu"],
-  ["The question word meaning 'what kind of':","donna"],
-];
+function norm(s){return (s||"").toLowerCase().normalize("NFKC").replace(/[’'`´.,!?。、！？…\-\/():;]/g,"").replace(/\s+/g,"").trim();}
+function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+function show(v){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById("view-"+v).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));document.getElementById("nav-"+v).classList.add("on");window.scrollTo(0,0);}
+SPORTS.forEach(s=>{const tr=el("tr");tr.innerHTML="<td><b>"+s[0]+"</b></td><td>"+s[1]+"</td><td class='kanji'>"+s[2]+"</td>";document.getElementById("sportRef").appendChild(tr);});
+ADJ.forEach(a=>{const tr=el("tr");tr.innerHTML="<td><b>"+a[0]+"</b></td><td>"+a[1]+"</td><td class='kanji'>"+a[2]+"</td>";document.getElementById("adjRef").appendChild(tr);});
 
-// ---------- helpers ----------
-function norm(s){return (s||"").toLowerCase().normalize("NFKC")
-  .replace(/[’'`´.,!?。、！？…\-\/():;]/g,"").replace(/\s+/g,"").trim();}
-function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
-function greenify(str){return str.replace(/\bwa\b/g,'<span class="p">wa</span>').replace(/\bdesu\b/g,'<span class="p">desu</span>');}
-function inputEl(cls,ans,w){const i=el("input",("ans "+(cls||"")));i.type="text";if(ans!=null)i.dataset.answer=ans;if(w)i.classList.add(w);return i;}
+// colour-coding for examples (romaji + English)
+const _topic=new Set(SPORTS.map(s=>s[0]).concat(["supootsu","futtobooru","dokusho","ryouri","juudou","tsuri","geemu","ongaku","eiga"]));
+const _part=new Set(["ga","wa"]);const _verb=new Set(["desu"]);
+const _opin=new Set(["suki","kirai","ja","nai","amari","mo","donna"].concat(ADJ.map(a=>a[0])));
+function colr(s){return s.split(/(\s+)/).map(tok=>{if(/^\s+$/.test(tok))return tok;const m=tok.match(/^([A-Za-z]+)([.,!?]*)$/);if(!m)return tok;const w=m[1].toLowerCase(),tl=m[2]||"";let c=null;if(_topic.has(w))c="t-day";else if(_part.has(w))c="t-ni";else if(_verb.has(w))c="t-verb";else if(_opin.has(w))c="t-act";return c?('<span class="'+c+'">'+m[1]+'</span>'+tl):tok;}).join("");}
+const _eTopic=new Set(["soccer","tennis","rugby","baseball","swimming","volleyball","basketball","karate","sumo","dance","football","cooking","reading","judo","sport"]);
+const _eIs=new Set(["is","are"]);const _eOpin=new Set(["like","dislike","great","amazing","fun","boring","interesting","difficult","hard","easy"]);
+function coleng(s){return s.split(/(\s+)/).map(tok=>{if(/^\s+$/.test(tok))return tok;const m=tok.match(/^(.+?)([.,!?]*)$/);const raw=m[1],tl=m[2]||"";const w=raw.toLowerCase();let c=null;if(_eTopic.has(w))c="t-day";else if(_eIs.has(w))c="t-verb";else if(_eOpin.has(w))c="t-act";return c?('<span class="'+c+'">'+raw+'</span>'+tl):tok;}).join("");}
+function egRows(id,arr){arr.forEach(r=>{const tr=el("tr");tr.innerHTML="<td>"+colr(r[0])+"</td><td>"+coleng(r[1])+"</td>";document.getElementById(id).appendChild(tr);});}
+egRows("egLike",EG_LIKE);egRows("egDesc",EG_DESC);
 
-// ---------- build UI ----------
-function optSelect(ans,options){
-  const s=el("select","ans");s.dataset.answer=ans;
-  s.appendChild(el("option",null,"—"));s.firstChild.value="";
-  options.forEach(o=>{const op=el("option",null,o);op.value=o;s.appendChild(op);});
-  return s;
-}
-// S1A match
-S1A.forEach(([word,ans])=>{
-  const q=el("div","q");q.appendChild(el("span","lead",word+"&nbsp; "));
-  q.appendChild(optSelect(ans,MEANINGS8));q.appendChild(el("span","fb"));
-  document.getElementById("s1a").appendChild(q);
-});
-// S1B english
-S1B.forEach(([word,ans])=>{
-  const q=el("div","q");q.appendChild(el("span","lead",word+"&nbsp; "));
-  q.appendChild(inputEl("",ans,"mid"));q.appendChild(el("span","fb"));
-  document.getElementById("s1b").appendChild(q);
-});
-// S1C kana hunt
-S1C.forEach(([k,r,e])=>{
-  const tr=el("tr");
-  const td1=el("td",null,'<span class="kbig">'+k+'</span>');
-  const td2=el("td");td2.appendChild(inputEl("",r,"mid"));td2.appendChild(el("span","fb"));
-  const td3=el("td");td3.appendChild(inputEl("",e,"mid"));td3.appendChild(el("span","fb"));
-  tr.append(td1,td2,td3);document.getElementById("s1c").appendChild(tr);
-});
-// S1D chips
-S1D.forEach(([w,sc])=>{
-  const c=el("div","chip",w);c.dataset.script=sc;c.dataset.state="";
-  c.onclick=()=>{const st=c.dataset.state;const nx=st===""?"kata":st==="kata"?"hira":"";
-    c.dataset.state=nx;c.classList.remove("kata","hira","ok","no");if(nx)c.classList.add(nx);save();};
-  document.getElementById("s1d").appendChild(c);
-});
-// generic fill rows (lead + input + tail)
-function fillRows(containerId,arr){
-  arr.forEach(([lead,tail,ans])=>{
-    const q=el("div","q");
-    q.appendChild(el("span",null,greenify(lead)));
-    if(ans==="__free__"){const i=inputEl("","","mid");i.removeAttribute("data-answer");i.placeholder="a sport";q.appendChild(i);}
-    else{q.appendChild(inputEl("",ans,"mid"));}
-    q.appendChild(el("span",null,greenify(tail)));
-    q.appendChild(el("span","fb"));
-    document.getElementById(containerId).appendChild(q);
-  });
-}
-fillRows("s2a",S2A);fillRows("s4a",S4A);
-// translate rows (romaji prompt -> english / or english -> romaji)
-function transRows(containerId,arr,greenLead){
-  arr.forEach(([prompt,ans])=>{
-    const q=el("div","q");
-    q.appendChild(el("div","lead",greenLead?greenify(prompt):prompt));
-    const i=inputEl("",ans,"wide");q.appendChild(i);q.appendChild(el("span","fb"));
-    document.getElementById(containerId).appendChild(q);
-  });
-}
-transRows("s2b",S2B,true);
-transRows("s3a",S3A,true);
-transRows("s3b",S3B,false);
-transRows("s5b",S5B,true);
-transRows("s6a",S6A,false);
-transRows("s6b",S6B,false);
-// adj reference + S5A match
-ADJREF.forEach(([r,e,k])=>{const tr=el("tr");tr.innerHTML='<td><b>'+r+'</b></td><td><b>'+e+'</b></td><td class="kana">'+k+'</td>';document.getElementById("adjref").appendChild(tr);});
-S5A.forEach(([word,ans])=>{
-  const q=el("div","q");q.appendChild(el("span","lead",word+"&nbsp; "));
-  q.appendChild(optSelect(ans,ADJ6));q.appendChild(el("span","fb"));
-  document.getElementById("s5a").appendChild(q);
-});
-// S5C build sentence (romaji typed; kana optional dropdown)
-S5C.forEach(([sp,kana,en],idx)=>buildSentenceRow("s5c",idx,sp,kana,en));
-function opt(label,val){const o=el("option",null,label);o.value=(val===undefined?label:val);return o;}
-function updateS5D(row,adj){
-  const r=row.querySelector(".s5d-romaji"),e=row.querySelector(".s5d-en");
-  if(!adj||!ADJ[adj]){if(r)r.dataset.answer="";if(e)e.dataset.answer="";return;}
-  const a=ADJ[adj];
-  r.dataset.answer=row.dataset.romaji+" wa "+adj+" desu";
-  e.dataset.answer=a.en.split("|").map(x=>row.dataset.en+" is "+x).join("|");
-}
-function buildSentenceRow(containerId,idx,sp,kana,en){
-  const row=el("div","s5drow");row.dataset.romaji=sp;row.dataset.kana=kana;row.dataset.en=en;row.dataset.adj="";
-  const head=el("div",null,"<b>"+(idx+1)+".</b> &nbsp;"+sp+' <span class="kana">('+kana+')</span> &nbsp; choose adjective: ');
-  const sel=el("select","adjsel");sel.appendChild(opt("—",""));
-  Object.keys(ADJ).forEach(a=>sel.appendChild(opt(a,a)));
-  sel.onchange=()=>{row.dataset.adj=sel.value;updateS5D(row,sel.value);validateKopt(row);
-    [".s5d-romaji",".s5d-en"].forEach(c=>{const i=row.querySelector(c);if(i.value){liveCheck(i);}else{i.classList.remove("correct","incorrect");const f=i.parentElement.querySelector(".fb");if(f)f.textContent="";}});
-    refreshScore();save();};
-  head.appendChild(sel);row.appendChild(head);
-  const rd=el("div");rd.style.margin="4px 0";rd.innerHTML='<span class="lab">Romaji:</span> ';
-  rd.appendChild(inputEl("s5d-romaji","","wide"));rd.appendChild(el("span","fb"));row.appendChild(rd);
-  const kd=el("div");kd.style.margin="4px 0";kd.innerHTML='<span class="lab">Kana <span style="color:var(--grey);font-weight:400">(optional):</span></span> ';
-  const ks=el("select","kopt s5d-kopt");ks.appendChild(opt("— choose kana",""));
-  KANA_OPTS.forEach(k=>ks.appendChild(opt(k,k)));
-  ks.onchange=()=>{validateKopt(row);save();};
-  kd.appendChild(ks);kd.appendChild(el("span","fb"));row.appendChild(kd);
-  const ed=el("div");ed.style.margin="4px 0";ed.innerHTML='<span class="lab">English:</span> ';
-  ed.appendChild(inputEl("s5d-en","","wide"));ed.appendChild(el("span","fb"));row.appendChild(ed);
-  document.getElementById(containerId).appendChild(row);
-}
-function validateKopt(row){
-  const ks=row.querySelector(".s5d-kopt");if(!ks)return;const fb=ks.parentElement.querySelector(".fb");
-  const v=ks.value;
-  if(!v){ks.classList.remove("correct","incorrect");if(fb)fb.textContent="";return;}
-  const adj=row.dataset.adj;
-  if(!adj||!ADJ[adj]){ks.classList.remove("correct","incorrect");if(fb){fb.textContent="pick an adjective first";fb.style.color="var(--grey)";}return;}
-  const ok=(v===ADJ[adj].kana);
-  ks.classList.toggle("correct",ok);ks.classList.toggle("incorrect",!ok);
-  if(fb){fb.textContent=ok?"✓":("✗  "+ADJ[adj].kana);fb.style.color=ok?"var(--green)":"var(--red)";}
-}
-
-// ---------- FOCUS module: describing ----------
-const DADJ_ORDER=[["sugoi","Great","すごい"],["tanoshii","Fun","たのしい"],["tsumaranai","Boring","つまらない"],
-  ["omoshiroi","Interesting","おもしろい"],["muzukashii","Difficult","むずかしい"],["yasashii","Easy","やさしい"]];
-DADJ_ORDER.forEach(([r,e,k])=>{
-  const tr=el("tr");
-  tr.appendChild(el("td",null,"<b>"+e+"</b>"));
-  tr.appendChild(el("td",null,"<b>"+r+"</b>"));
-  const c3=el("td");c3.appendChild(inputEl("",r,"mid"));c3.appendChild(el("span","fb"));tr.appendChild(c3);
-  tr.appendChild(el("td",null,'<span class="kbig">'+k+'</span>'));
-  document.getElementById("dcopy").appendChild(tr);
-});
-const DC1=[
- ["Supootsu wa tanoshii desu.","Sports is fun.|Sport is fun."],
- ["Geemu wa sugoi desu.","Games are great.|Games are amazing.|Games is great."],
- ["Tenisu wa muzukashii desu.","Tennis is difficult.|Tennis is hard."],
- ["Sakkaa wa omoshiroi desu.","Soccer is interesting."],
- ["Suiei wa yasashii desu.","Swimming is easy."],
+const LEVELS=[
+ {t:"Level 1 · Sports & hobbies — write the English", items:SPORTS.slice(0,8).map(s=>({k:"in",p:'<b>'+s[0]+'</b> <span class="jp">('+s[2]+')</span> = ',a:s[1],w:"mid"}))},
+ {t:"Level 2 · Likes & dislikes — translate to English", items:LEN.map(([jp,a])=>({k:"in2",jp,a}))},
+ {t:"Level 3 · Likes & dislikes — translate to romaji", items:LJP.map(([en,a])=>({k:"in2",jp:en,a}))},
+ {t:"Level 4 · Adjectives — meaning", items:AQ.map(([r,a])=>({k:"sel",p:'<b>'+r+'</b> = ',o:AMEAN,a}))},
+ {t:"Level 5 · Describe (A wa B desu) — translate to English", items:DEN.map(([jp,a])=>({k:"in2",jp,a}))},
+ {t:"Level 6 · Describe — translate to romaji", items:DJP.map(([en,a])=>({k:"in2",jp:en,a}))},
+ {t:"Level 7 · Multiple choice", items:MCQ.map(([p,o,c])=>({k:"mcq",p,o,c}))},
+ {t:"Level 8 · Reading — Emi", items:EMI.map(([p,o,c])=>({k:"mcq",p,o,c})), reading:true},
 ];
-const DC2=[
- ["Basketball is interesting.","Basukettobooru wa omoshiroi desu"],
- ["Soccer is difficult.","Sakkaa wa muzukashii desu"],
- ["Tennis is boring.","Tenisu wa tsumaranai desu"],
- ["Sumo is great.","Sumou wa sugoi desu"],
- ["Swimming is easy.","Suiei wa yasashii desu"],
-];
-transRows("dc1",DC1,true);
-transRows("dc2",DC2,false);
-const DC3=[["Ragubii","ラグビー","rugby"],["Sumou","すもう","sumo"],["Pinpon","ピンポン","table tennis"],["Karate","からて","karate"]];
-DC3.forEach(([sp,kana,en],idx)=>buildSentenceRow("dc3",idx,sp,kana,en));
-
-// ---------- checking ----------
-function altList(elm){return (elm.dataset.answer||"").split("|").map(norm).filter(Boolean);}
-function checkOne(elm){
-  if(elm.dataset.answer===undefined||elm.dataset.answer==="")return null;
-  const v=norm(elm.value);
-  let fb=elm.parentElement.querySelector(".fb");
-  if(v===""){elm.classList.remove("correct","incorrect");if(fb)fb.textContent="";return false;}
-  const ok=altList(elm).includes(v);
-  elm.classList.toggle("correct",ok);elm.classList.toggle("incorrect",!ok);
-  if(fb){fb.textContent=ok?"✓":("✗  "+elm.dataset.answer.split("|")[0]);fb.style.color=ok?"var(--green)":"var(--red)";}
-  return ok;
-}
-function checkAll(){
-  let c=0,t=0;
-  document.querySelectorAll(".ans").forEach(elm=>{
-    if(elm.dataset.answer===undefined||elm.dataset.answer==="")return;
-    t++;if(checkOne(elm))c++;
-  });
-  checkScripts(true);
-  setScore(c,t);save();
-}
-function setScore(c,t){
-  document.getElementById("score").textContent="Score: "+c+" / "+t;
-  document.getElementById("barfill").style.width=(t?Math.round(c/t*100):0)+"%";
-  document.getElementById("doneMsg").style.display=(t>0&&c===t)?"block":"none";
-}
-function refreshScore(){
-  let c=0,t=0;
-  document.querySelectorAll(".ans").forEach(el=>{
-    if(el.dataset.answer===undefined||el.dataset.answer==="")return;
-    t++; if(el.classList.contains("correct"))c++;
-  });
-  setScore(c,t);
-}
-// live check on each keystroke: show ✓ the moment it's right; stay neutral (no ✗) while still typing
-function liveCheck(el){
-  if(!el.dataset.answer){refreshScore();return;}
-  const v=norm(el.value);const fb=el.parentElement.querySelector(".fb");
-  if(v!=="" && altList(el).includes(v)){el.classList.add("correct");el.classList.remove("incorrect");if(fb){fb.textContent="✓";fb.style.color="var(--green)";}}
-  else{el.classList.remove("correct","incorrect");if(fb)fb.textContent="";}
-  refreshScore();
-}
-function checkScripts(silent){
-  let ok=0,tot=0;
-  document.querySelectorAll("#s1d .chip").forEach(c=>{
-    tot++;const want=c.dataset.script,got=c.dataset.state;
-    c.classList.remove("ok","no");
-    if(got===want){c.classList.add("ok");ok++;}else{c.classList.add("no");}
-  });
-  const fb=document.getElementById("s1dfb");
-  fb.textContent=ok+" / "+tot+" correct";fb.style.color=ok===tot?"var(--green)":"var(--red)";
-  return ok===tot;
-}
-function revealAll(){
-  document.querySelectorAll(".ans").forEach(elm=>{
-    if(!elm.dataset.answer)return;
-    const first=elm.dataset.answer.split("|")[0];
-    if(elm.tagName==="SELECT"){elm.value=first;}else{elm.value=first;}
-    checkOne(elm);
-  });
-  document.querySelectorAll("#s1d .chip").forEach(c=>{c.dataset.state=c.dataset.script;c.classList.remove("kata","hira","ok","no");c.classList.add(c.dataset.script);});
-  document.querySelectorAll(".s5drow").forEach(row=>{const adj=row.dataset.adj;const ks=row.querySelector(".s5d-kopt");if(ks&&adj&&ADJ[adj]){ks.value=ADJ[adj].kana;validateKopt(row);}});
-  refreshScore();save();
-}
-let kanaHidden=false;
-function toggleKana(){
-  kanaHidden=!kanaHidden;
-  document.querySelectorAll(".kana").forEach(e=>e.style.display=kanaHidden?"none":"");
-  document.getElementById("kanaBtn").textContent=kanaHidden?"あ Show kana":"あ Hide kana";
-}
-function resetAll(){
-  if(!confirm("Clear all your answers?"))return;
-  localStorage.removeItem("jp-rev-v2");
-  document.querySelectorAll(".ans").forEach(e=>{e.value="";e.classList.remove("correct","incorrect");const f=e.parentElement.querySelector(".fb");if(f)f.textContent="";});
-  document.querySelectorAll("textarea").forEach(e=>e.value="");
-  document.querySelectorAll(".prac").forEach(e=>e.value="");
-  document.querySelectorAll(".chk").forEach(e=>e.checked=false);
-  document.querySelectorAll("#s1d .chip").forEach(c=>{c.dataset.state="";c.classList.remove("kata","hira","ok","no");});
-  document.querySelectorAll(".s5drow select").forEach(s=>{s.value="";s.classList.remove("correct","incorrect");});
-  document.querySelectorAll(".s5drow").forEach(r=>{r.dataset.adj="";const ks=r.querySelector(".s5d-kopt");const f=ks?ks.parentElement.querySelector(".fb"):null;if(f)f.textContent="";});
-  document.querySelectorAll(".s5d-romaji,.s5d-en").forEach(i=>i.dataset.answer="");
-  document.getElementById("s1dfb").textContent="";
-  setScore(0,0);
-}
-
-// ---------- persistence ----------
-function collectFields(){return document.querySelectorAll(".ans,textarea,.chk,.s5drow select");}
-function save(){
-  const d={chips:{}};
-  collectFields().forEach((e,i)=>{d[i]= (e.type==="checkbox")?e.checked:e.value;});
-  document.querySelectorAll("#s1d .chip").forEach((c,i)=>{d.chips[i]=c.dataset.state;});
-  try{localStorage.setItem("jp-rev-v2",JSON.stringify(d));}catch(e){}
-}
-function load(){
-  let d;try{d=JSON.parse(localStorage.getItem("jp-rev-v2")||"{}");}catch(e){return;}
-  collectFields().forEach((e,i)=>{if(d[i]!==undefined){if(e.type==="checkbox")e.checked=d[i];else e.value=d[i];}});
-  document.querySelectorAll(".s5drow select.adjsel").forEach(s=>{const row=s.closest(".s5drow");row.dataset.adj=s.value;if(s.value)updateS5D(row,s.value);});
-  document.querySelectorAll(".s5drow").forEach(r=>validateKopt(r));
-  if(d.chips)document.querySelectorAll("#s1d .chip").forEach((c,i)=>{const st=d.chips[i]||"";c.dataset.state=st;if(st)c.classList.add(st);});
-  document.querySelectorAll(".ans").forEach(el=>{if(el.dataset.answer&&el.value){el.tagName==="INPUT"?liveCheck(el):checkOne(el);}});
-  refreshScore();
-}
-document.addEventListener("input",save);
-document.addEventListener("change",save);
-// instant per-question checking
-document.addEventListener("input",e=>{const t=e.target;if(t.classList&&t.classList.contains("ans")&&t.tagName==="INPUT")liveCheck(t);});
-document.addEventListener("blur",e=>{const t=e.target;if(t.classList&&t.classList.contains("ans")&&t.tagName==="INPUT"&&t.dataset.answer){checkOne(t);refreshScore();}},true);
-document.addEventListener("change",e=>{const t=e.target;if(t.classList&&t.classList.contains("ans")&&t.tagName==="SELECT"){checkOne(t);refreshScore();}});
+let completed=0;
+function makeSel(o,a){const s=el("select","pin");s.dataset.answer=a;["—",...o].forEach(x=>{const op=el("option",null,x);op.value=(x==="—"?"":x);s.appendChild(op);});return s;}
+function makeIn(a,w){const i=el("input","pin "+(w||""));i.type="text";i.dataset.answer=a;return i;}
+const prac=document.getElementById("practice");
+LEVELS.forEach((lv,idx)=>{const card=el("div","level");card.dataset.idx=idx;
+  if(lv.reading){card.appendChild(el("div","lvhead",'<b>'+lv.t+'</b> <span class="lockicon">🔒</span>'));const box=el("div","box");box.innerHTML="<b>Emi</b><br>Emi desu. Sakkaa ga suki desu. Dansu mo suki desu. Tenisu wa amari suki ja nai desu. Sumou ga kirai desu. Sakkaa wa tanoshii desu. Dansu wa omoshiroi desu.";card.appendChild(box);}
+  else card.appendChild(el("div","lvhead",'<b>'+lv.t+'</b> <span class="lockicon">🔒</span>'));
+  lv.items.forEach(it=>{const q=el("div","q");
+    if(it.k==="sel"){q.innerHTML=it.p;q.appendChild(makeSel(it.o,it.a));q.appendChild(el("span","fb"));}
+    else if(it.k==="in"){q.innerHTML=it.p;q.appendChild(makeIn(it.a,it.w));q.appendChild(el("span","fb"));}
+    else if(it.k==="in2"){q.appendChild(el("div","jp",it.jp));const r=el("div");r.style.marginTop="3px";r.innerHTML="→ ";const i=makeIn(it.a,"wide");r.appendChild(i);r.appendChild(el("span","fb"));q.appendChild(r);}
+    else if(it.k==="mcq"){const blk=el("div","mcqblock");blk.dataset.correct=it.c;blk.dataset.sel="";blk.appendChild(el("div","mcqq",it.p));it.o.forEach((o,oi)=>{const b=el("button","opt");b.type="button";b.textContent=String.fromCharCode(65+oi)+". "+o;b.onclick=()=>{if(+card.dataset.idx!==completed)return;blk.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel","wrong","correct"));b.classList.add("sel");blk.dataset.sel=oi;save();};blk.appendChild(b);});q.appendChild(blk);}
+    card.appendChild(q);});
+  const foot=el("div","lvfoot");const btn=el("button","checkbtn");btn.textContent="Check this level";btn.onclick=()=>checkLevel(idx);const st=el("span","lvstatus");foot.appendChild(btn);foot.appendChild(st);card.appendChild(foot);prac.appendChild(card);
+});
+function checkLevel(idx){if(idx!==completed)return;const lv=document.querySelector('.level[data-idx="'+idx+'"]');let all=true,total=0,correct=0;
+  lv.querySelectorAll(".pin").forEach(inp=>{total++;const v=norm(inp.value);const ok=v!==""&&(inp.dataset.answer||"").split("|").map(norm).includes(v);inp.classList.toggle("correct",ok);inp.classList.toggle("incorrect",!ok);const fb=inp.parentElement.querySelector(".fb");if(fb){fb.textContent=ok?"✓":"✗";fb.style.color=ok?"var(--green)":"var(--red)";}if(ok)correct++;else all=false;});
+  lv.querySelectorAll(".mcqblock").forEach(blk=>{total++;const s=blk.dataset.sel;const ok=(s!==""&&s!==undefined&&(+s===+blk.dataset.correct));blk.querySelectorAll(".opt").forEach(o=>o.classList.remove("correct","wrong"));if(s!==""&&s!==undefined){const b=blk.querySelectorAll(".opt")[+s];b.classList.remove("sel");b.classList.add(ok?"correct":"wrong");}if(ok)correct++;else all=false;});
+  const st=lv.querySelector(".lvstatus");
+  if(all){lv.classList.add("done");st.innerHTML="✓ Completed!";st.style.color="var(--green)";lv.querySelectorAll(".pin").forEach(i=>i.disabled=true);lv.querySelector(".checkbtn").disabled=true;completed=idx+1;updateLocks();save();const nx=document.querySelector('.level[data-idx="'+(idx+1)+'"]');if(nx&&nx.scrollIntoView)nx.scrollIntoView({behavior:"smooth",block:"start"});}
+  else{st.innerHTML=correct+" / "+total+" correct — fix the ✗ and check again.";st.style.color="var(--red)";save();}}
+function updateLocks(){document.querySelectorAll(".level").forEach(lv=>{const i=+lv.dataset.idx;const active=(i===completed);const locked=i>completed;lv.classList.toggle("locked",locked);lv.querySelectorAll(".pin").forEach(inp=>inp.disabled=!active);const cb=lv.querySelector(".checkbtn");if(cb)cb.disabled=!active;const lk=lv.querySelector(".lockicon");if(lk)lk.style.display=locked?"inline":"none";});document.getElementById("prog").textContent="Completed "+completed+" / "+LEVELS.length;document.getElementById("progbar").style.width=Math.round(completed/LEVELS.length*100)+"%";document.getElementById("allDone").style.display=(completed>=LEVELS.length)?"block":"none";}
+function markDone(i){const lv=document.querySelector('.level[data-idx="'+i+'"]');if(!lv)return;lv.classList.add("done");const st=lv.querySelector(".lvstatus");if(st){st.textContent="✓ Completed!";st.style.color="var(--green)";}lv.querySelectorAll(".pin").forEach(x=>{x.classList.add("correct");x.disabled=true;});lv.querySelectorAll(".mcqblock").forEach(b=>{const c=+b.dataset.correct;const o=b.querySelectorAll(".opt")[c];if(o)o.classList.add("correct");});const cb=lv.querySelector(".checkbtn");if(cb)cb.disabled=true;}
+document.addEventListener("input",e=>{const t=e.target;if(t.classList&&t.classList.contains("pin")&&t.tagName==="INPUT"&&!t.disabled){const v=norm(t.value);const ok=v!==""&&(t.dataset.answer||"").split("|").map(norm).includes(v);t.classList.toggle("correct",ok);if(!ok)t.classList.remove("incorrect");const fb=t.parentElement.querySelector(".fb");if(fb){fb.textContent=ok?"✓":"";fb.style.color="var(--green)";}}save();});
+document.addEventListener("change",e=>{if(e.target.classList&&e.target.classList.contains("pin"))save();});
+function save(){const d={completed,inputs:[],mcq:[]};document.querySelectorAll("#practice .pin").forEach((e,i)=>d.inputs[i]=e.value);document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>d.mcq[i]=b.dataset.sel);try{localStorage.setItem("jp-sports-v2",JSON.stringify(d));}catch(e){}}
+function load(){let d;try{d=JSON.parse(localStorage.getItem("jp-sports-v2")||"{}");}catch(e){d={};}if(d.inputs)document.querySelectorAll("#practice .pin").forEach((e,i)=>{if(d.inputs[i]!==undefined)e.value=d.inputs[i];});if(d.mcq)document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>{if(d.mcq[i]!==undefined&&d.mcq[i]!==""){b.dataset.sel=d.mcq[i];const o=b.querySelectorAll(".opt")[+d.mcq[i]];if(o)o.classList.add("sel");}});completed=d.completed||0;for(let i=0;i<completed;i++)markDone(i);updateLocks();}
+function resetProgress(){if(!confirm("Clear all your practice progress?"))return;localStorage.removeItem("jp-sports-v2");location.reload();}
 load();
 </script>
 </body>

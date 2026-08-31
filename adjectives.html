@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adjectives &amp; Hiragana Verbs — Year 7 Japanese</title>
+<style>
+  :root{--purple:#6741D9;--blue:#1F8FCB;--teal:#0CA678;--amber:#B8860B;--green:#2F9E44;--navy:#1D3A8A;--pink:#D6336C;--red:#E23B2E;--grey:#595959;--line:#c9c9c9;--card:#fff;--bg:#f4f6fb;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:0;background:var(--bg);color:#1a1a1a;line-height:1.5;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 14px 60px;}
+  header{background:linear-gradient(135deg,#6741D9,#1F8FCB);color:#fff;text-align:center;padding:22px 16px 14px;border-radius:0 0 18px 18px;}
+  header h1{margin:0;font-size:1.4rem;}header p{margin:6px 0 0;opacity:.95;font-style:italic;font-size:.9rem;}
+  nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0 4px;}
+  nav button{cursor:pointer;border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:20px;padding:7px 16px;font-weight:700;font-size:.9rem;}
+  nav button.on{background:var(--navy);color:#fff;}nav a{align-self:center;font-size:.85rem;color:var(--navy);}
+  .view{display:none;}.view.active{display:block;}
+  .banner{color:#fff;text-align:center;font-weight:800;font-size:1.02rem;padding:9px;border-radius:11px;margin-top:18px;}
+  .b1{background:var(--teal)}.b2{background:var(--purple)}.b3{background:var(--navy)}.b4{background:var(--green)}.b5{background:var(--amber)}
+  .card{background:var(--card);border:1px solid #e7e7f0;border-radius:12px;padding:14px 16px;margin-top:10px;}
+  .hint{color:var(--grey);font-style:italic;font-size:.88rem;margin:2px 0 8px;}
+  .jp{color:var(--grey);font-weight:600;}
+  .kanji{font-size:1.3rem;font-weight:800;}
+  table{width:100%;border-collapse:collapse;margin:4px 0;}
+  th{background:var(--purple);color:#fff;font-size:.82rem;padding:6px;text-align:left;}
+  td{border:1px solid #e0e2ee;padding:5px 8px;font-size:.95rem;}tr:nth-child(even) td{background:#f7f7fc;}
+  .box{border:1.5px solid #e0e0ea;border-radius:12px;padding:10px 14px;margin:8px 0;background:#fbfbfe;}
+  .home-btn{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--purple);border-radius:14px;padding:16px 18px;margin:12px 0;cursor:pointer;font-size:1.05rem;font-weight:700;color:var(--navy);}
+  .home-btn small{display:block;font-weight:400;color:var(--grey);margin-top:4px;font-size:.85rem;}
+  .chip{display:inline-block;padding:3px 10px;border-radius:7px;color:#fff;font-weight:800;font-size:.92em;margin:2px 2px;}
+  .ch-day{background:#1C7ED6}.ch-ni{background:#E23B2E}.ch-act{background:#2F9E44}.ch-verb{background:#6741D9}
+  .t-day{color:#1C7ED6;font-weight:800}.t-ni{color:#E23B2E;font-weight:800}.t-act{color:#2F9E44;font-weight:800}.t-verb{color:#6741D9;font-weight:800}
+  .prog{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border:1px solid #e3e3ef;border-radius:12px;padding:8px 12px;margin:12px 0;display:flex;align-items:center;gap:10px;z-index:10;}
+  .prog b{color:var(--navy);font-size:.9rem;white-space:nowrap;}
+  .bar{height:8px;border-radius:6px;background:#e6e6ef;flex:1;overflow:hidden;}.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2F9E44,#0CA678);transition:width .3s;}
+  .level{border:1px solid #e2e2ee;border-radius:12px;padding:12px 14px;margin:12px 0;background:#fff;}.level.locked{opacity:.5;}.level.done{border-color:var(--green);background:#f6fdf8;}
+  .lvhead{font-size:1rem;margin-bottom:6px;}.lvhead .lockicon{color:var(--grey);}
+  .q{margin:8px 0;}
+  input.pin,select.pin{font-size:1rem;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;background:#fff;font-family:inherit;}
+  input.wide{width:100%;max-width:420px;}input.mid{width:150px;}
+  .pin.correct{border-color:var(--green);background:#EAF7EE;}.pin.incorrect{border-color:var(--red);background:#FDECEC;}
+  .fb{margin-left:8px;font-weight:800;font-size:.95rem;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px;}@media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .mcqblock{margin:8px 0;}.mcqq{font-weight:700;margin-bottom:3px;}
+  .opt{display:block;width:100%;text-align:left;background:#fff;color:#1a1a1a;border:1.5px solid var(--line);border-radius:9px;padding:7px 12px;margin:4px 0;font-size:.96rem;cursor:pointer;}
+  .opt.sel{border-color:var(--navy);background:#eef2fb;font-weight:700;}.opt.correct{border-color:var(--green);background:#EAF7EE;font-weight:700;}.opt.wrong{border-color:var(--red);background:#FDECEC;}
+  .checkbtn{cursor:pointer;border:none;border-radius:9px;padding:8px 14px;font-weight:800;color:#fff;background:var(--navy);}.checkbtn:disabled{background:#b7bccb;cursor:not-allowed;}
+  .lvstatus{margin-left:10px;font-weight:800;}
+  .smallbtn{cursor:pointer;border:1.5px solid var(--red);background:#fff;color:var(--red);border-radius:8px;padding:5px 10px;font-weight:700;font-size:.8rem;}
+    nav a.pl{color:#fff;padding:7px 14px;border-radius:20px;font-weight:800;font-size:.85rem;text-decoration:none;align-self:center;box-shadow:0 1px 3px rgba(0,0,0,.15);}
+  .pl-sports{background:#1F8FCB}.pl-hob{background:#D6336C}.pl-days{background:#0CA678}.pl-adj{background:#F08C00}
+  footer{text-align:center;color:var(--grey);font-size:.8rem;margin-top:26px;}
+</style>
+</head>
+<body>
+<header><h1>⭐ Adjectives &amp; Hiragana Verbs</h1><p>~ wa [adjective] desu · key hiragana — Year 7 Japanese</p></header>
+<div class="wrap">
+  <nav>
+    <button id="nav-home" class="on" onclick="show('home')">🏠 Home</button>
+    <button id="nav-vocab" onclick="show('vocab')">📚 Learn</button>
+    <button id="nav-practice" onclick="show('practice')">✍️ Practice &amp; Test</button>
+    <a class="pl pl-sports" href="index.html">⚽ Sports</a> <a class="pl pl-hob" href="hobbies.html">🎌 Hobbies</a> <a class="pl pl-days" href="days.html">📅 Days</a>
+  </nav>
+
+  <div class="view active" id="view-home">
+    <div class="card">
+      <p>Welcome! This has three parts:</p>
+      <button class="home-btn" onclick="show('vocab')">📚 Learn — adjectives, the pattern &amp; hiragana<small>Adjectives, ~ wa [adjective] desu, and the key hiragana words &amp; verbs.</small></button>
+      <button class="home-btn" onclick="show('practice')">✍️ Practice &amp; Test<small>Recognition levels first, then the test. Get <b>every</b> question in a level correct to unlock the next. Wrong answers show ✗ — fix and check again.</small></button>
+      <p class="hint">Your progress saves on this device.</p>
+    </div>
+  </div>
+
+  <div class="view" id="view-vocab">
+    <div class="banner b2">Adjectives (describing words)</div>
+    <div class="card"><p class="hint">Read the hiragana aloud, then cover the romaji.</p>
+      <table><thead><tr><th>Hiragana</th><th>Romaji</th><th>English</th></tr></thead><tbody id="adjRef"></tbody></table></div>
+
+    <div class="banner b3">The pattern — ~ wa [adjective] desu</div>
+    <div class="card">
+      <div class="hint"><b>Colour key:</b> <span class="chip ch-day">topic</span> the sport / thing · <span class="chip ch-ni">wa</span> topic particle · <span class="chip ch-act">adjective</span> describing word · <span class="chip ch-verb">desu</span> is/am/are</div>
+      <div class="box">
+        <div style="font-size:1.1rem;margin:4px 0"><span class="chip ch-day">A</span> <span class="chip ch-ni">wa</span> <span class="chip ch-act">adjective</span> <span class="chip ch-verb">desu</span> &nbsp;=&nbsp; A is [adjective].</div>
+        <table><thead><tr><th>Romaji</th><th>English</th></tr></thead><tbody id="egDesc"></tbody></table>
+      </div>
+    </div>
+
+    <div class="banner b4">Key hiragana words &amp; verbs</div>
+    <div class="card"><p class="hint">You must recognise the hiragana AND know the meaning.</p>
+      <table><thead><tr><th>Hiragana</th><th>Romaji</th><th>English</th></tr></thead><tbody id="verbRef"></tbody></table>
+      <div class="box"><b>Using the verbs:</b>
+        <table><thead><tr><th>Romaji</th><th>Hiragana</th><th>English</th></tr></thead><tbody id="egVerb"></tbody></table>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:14px"><button class="home-btn" style="border-color:var(--green);color:var(--green)" onclick="show('practice')">✍️ Ready? Go to Practice &amp; Test →</button></p>
+  </div>
+
+  <div class="view" id="view-practice">
+    <div class="prog"><b id="prog">Completed 0 / 0</b><div class="bar"><i id="progbar"></i></div><button class="smallbtn" onclick="resetProgress()">Reset</button></div>
+    <p class="hint">Recognition levels first, then the test. Complete each level (all correct) to unlock the next.</p>
+    <div id="practice"></div>
+    <div id="allDone" style="display:none;text-align:center;font-weight:800;color:var(--green);font-size:1.1rem;margin-top:16px">🎉 All levels complete — subarashii! すばらしい！</div>
+  </div>
+  <footer>Year 7 Japanese · Adjectives &amp; Hiragana Verbs</footer>
+</div>
+<script>
+const ADJ=[["たのしい","tanoshii","fun"],["おもしろい","omoshiroi","interesting"],["むずかしい","muzukashii","difficult"],
+ ["やさしい","yasashii","easy"],["すごい","sugoi","great / amazing"],["つまらない","tsumaranai","boring"],["おいしい","oishii","delicious"]];
+const VERBS=[["すき","suki","like"],["です","desu","is / am / are"],["します","shimasu","do / play"],["しません","shimasen","don't do / play"],
+ ["たべます","tabemasu","eat"],["のみます","nomimasu","drink"],["みます","mimasu","watch"],["よみます","yomimasu","read"],
+ ["すし","sushi","sushi"],["みず","mizu","water"],["あめ","ame","lollies / candy"]];
+const EG_DESC=[["Sakkaa wa tanoshii desu.","Soccer is fun."],["Tenisu wa muzukashii desu.","Tennis is difficult."],
+ ["Geemu wa omoshiroi desu.","Games are interesting."],["Suiei wa yasashii desu.","Swimming is easy."],["Sushi wa oishii desu.","Sushi is delicious."]];
+const EG_VERB=[["terebi o mimasu","テレビをみます","I watch TV"],["hon o yomimasu","ほんをよみます","I read a book"],
+ ["sushi o tabemasu","すしをたべます","I eat sushi"],["mizu o nomimasu","みずをのみます","I drink water"]];
+const AMEAN=ADJ.map(a=>a[1]+" — "+a[2]);  // romaji — English options
+const VMEAN=["like","is / am / are","do / play","don't do / play","eat","drink","watch","read","sushi","water","lollies / candy"];
+
+function norm(s){return (s||"").toLowerCase().normalize("NFKC").replace(/[’'`´.,!?。、！？…\-\/():;]/g,"").replace(/\s+/g,"").trim();}
+function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+function show(v){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById("view-"+v).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));document.getElementById("nav-"+v).classList.add("on");window.scrollTo(0,0);}
+ADJ.forEach(a=>{const tr=el("tr");tr.innerHTML="<td class='kanji'>"+a[0]+"</td><td><b>"+a[1]+"</b></td><td>"+a[2]+"</td>";document.getElementById("adjRef").appendChild(tr);});
+VERBS.forEach(v=>{const tr=el("tr");tr.innerHTML="<td class='kanji'>"+v[0]+"</td><td><b>"+v[1]+"</b></td><td>"+v[2]+"</td>";document.getElementById("verbRef").appendChild(tr);});
+EG_DESC.forEach(r=>{const tr=el("tr");const m=r[0].split(" wa ");tr.innerHTML="<td><span class='t-day'>"+m[0]+"</span> <span class='t-ni'>wa</span> <span class='t-act'>"+m[1].replace(" desu.","")+"</span> <span class='t-verb'>desu</span>.</td><td>"+r[1]+"</td>";document.getElementById("egDesc").appendChild(tr);});
+EG_VERB.forEach(r=>{const tr=el("tr");tr.innerHTML="<td><b>"+r[0]+"</b></td><td class='kanji'>"+r[1]+"</td><td>"+r[2]+"</td>";document.getElementById("egVerb").appendChild(tr);});
+
+const KANA={wa:"は",desu:"です",shimasu:"します",shimasen:"しません",nani:"なに",nan:"なん",ka:"か",o:"を"};
+const kh=s=>s.replace(/\b(wa|desu|shimasu|shimasen|nani|nan|ka|o)\b/gi,m=>m+" ("+KANA[m.toLowerCase()]+")");
+
+const DEN=[["Sakkaa wa sugoi desu.","soccer is great|soccer is amazing"],["Tenisu wa muzukashii desu.","tennis is difficult|tennis is hard"],
+ ["Suiei wa yasashii desu.","swimming is easy"],["Geemu wa tsumaranai desu.","games are boring|games is boring"],["Sushi wa oishii desu.","sushi is delicious"]];
+const DJP=[["Basketball is interesting.","basukettobooru wa omoshiroi desu"],["Soccer is fun.","sakkaa wa tanoshii desu"],
+ ["Tennis is boring.","tenisu wa tsumaranai desu"],["Sumo is great.","sumou wa sugoi desu"]];
+const TEST=[
+ // ── Part 1 · Vocab ──
+ ["【Vocab】 What does 'たのしい' mean?",["fun","boring","difficult","easy"],0],
+ ["【Vocab】 What does 'むずかしい' mean?",["difficult","easy","great","interesting"],0],
+ ["【Vocab】 What does 'おいしい' mean?",["delicious","boring","fun","great"],0],
+ ["【Vocab】 Which hiragana means 'boring'?",["つまらない","たのしい","やさしい","すごい"],0],
+ ["【Vocab】 What does 'みます' mean?",["watch","read","eat","drink"],0],
+ ["【Vocab】 What does 'よみます' mean?",["read","watch","drink","do"],0],
+ ["【Vocab】 What does 'たべます' mean?",["eat","drink","watch","like"],0],
+ ["【Vocab】 What does 'のみます' mean?",["drink","eat","read","play"],0],
+ ["【Vocab】 Which hiragana means 'water'?",["みず","すし","あめ","すき"],0],
+ // ── Part 2 · Phrases ──
+ ["【Phrase】 'Terebi o mimasu' means...",["I watch TV","I read a book","I eat sushi","I like TV"],0],
+ ["【Phrase】 'sushi o tabemasu' means...",["I eat sushi","I drink water","Sushi is delicious","I like sushi"],0],
+ ["【Phrase】 'mizu o nomimasu' means...",["I drink water","I eat sushi","Water is delicious","I watch TV"],0],
+ // ── Part 3 · Key sentence structure ──
+ ["【Structure】 'A wa B desu' means...",["A is B","A and B","A does B","A likes B"],0],
+ ["【Structure】 In 'Sakkaa wa tanoshii desu', which word is the topic particle?",["wa","desu","tanoshii","sakkaa"],0],
+ ["【Structure】 In '~ wa [adjective] desu', 'desu' means...",["is / am / are","do / play","like","and"],0],
+ // ── Part 4 · Sentences ──
+ ["【Sentence】 'Sakkaa wa tanoshii desu.' means...",["Soccer is fun.","I like soccer.","I play soccer.","Soccer is difficult."],0],
+ ["【Sentence】 'Sushi wa oishii desu.' means...",["Sushi is delicious.","I eat sushi.","I like sushi.","Sushi is easy."],0],
+ ["【Sentence】 How do you say 'Tennis is difficult'?",["Tenisu wa muzukashii desu","Tenisu o shimasu","Tenisu ga suki desu","Tenisu wa yasashii desu"],0],
+ // ── Part 5 · Paragraph ──
+ ["【Paragraph】 Watashi wa Emi desu. Shumi wa dansu desu. Dansu wa tanoshii desu. Sushi o tabemasu. Sushi wa oishii desu.<br><br>What is Emi's hobby?",["dance","sushi","tennis","reading"],0],
+ ["【Paragraph】 How does Emi describe dance?",["fun (tanoshii)","difficult (muzukashii)","boring (tsumaranai)","delicious (oishii)"],0],
+ ["【Paragraph】 What does Emi eat, and how does she describe it?",["sushi — delicious","water — delicious","sushi — fun","lollies — great"],0],
+];
+
+const LEVELS=[
+ {t:"Level 1 · Adjectives — read the hiragana, choose the meaning", items:ADJ.map(a=>({k:"sel",p:'<span class="kanji">'+a[0]+'</span> = ',o:AMEAN,a:a[1]+" — "+a[2]}))},
+ {t:"Level 2 · Adjectives — write the romaji", items:ADJ.slice(0,6).map(a=>({k:"in",p:'<span class="kanji">'+a[0]+'</span> → ',a:a[1],w:"mid"}))},
+ {t:"Level 3 · ~ wa adjective desu — translate to English", items:DEN.map(([jp,a])=>({k:"in2",jp,a}))},
+ {t:"Level 4 · ~ wa adjective desu — translate to romaji", items:DJP.map(([en,a])=>({k:"in2",jp:en,a}))},
+ {t:"Level 5 · Key hiragana & verbs — choose the meaning", items:VERBS.slice(0,8).map(v=>({k:"sel",p:'<span class="kanji">'+v[0]+'</span> = ',o:VMEAN,a:v[2]}))},
+ {t:"Level 6 · Key hiragana — write the romaji", items:[["みます","mimasu"],["よみます","yomimasu"],["たべます","tabemasu"],["のみます","nomimasu"],["すき","suki"],["です","desu"],["みず","mizu"],["あめ","ame"]].map(([k,a])=>({k:"in",p:'<span class="kanji">'+k+'</span> → ',a,w:"mid"}))},
+ {t:"Level 7 · Time — romaji & kanji", items:[
+   {k:"in",p:'<b>hachi ji</b> = ',a:"8 oclock|8|eight|eight oclock",w:"mid"},
+   {k:"in",p:'<b>yo ji</b> = ',a:"4 oclock|4|four",w:"mid"},
+   {k:"in",p:'<b>ku ji</b> = ',a:"9 oclock|9|nine",w:"mid"},
+   {k:"in",p:'<b>shichi ji</b> = ',a:"7 oclock|7|seven",w:"mid"},
+   {k:"in",p:'<span class="kanji">一じ</span> → romaji: ',a:"ichi ji|ichiji",w:"mid"},
+   {k:"in",p:'<span class="kanji">八じ</span> → romaji: ',a:"hachi ji|hachiji",w:"mid"},
+   {k:"in",p:'<span class="kanji">十じ</span> → romaji: ',a:"juu ji|juuji",w:"mid"},
+   {k:"in",p:'<span class="kanji">十二じ</span> → romaji: ',a:"juuni ji|juuniji",w:"mid"},
+ ]},
+ {t:"Level 8 · Particles — wa · ga · ni · o", items:[
+   {k:"sel2",pre:"Shumi ",post:" dokusho desu.",o:["wa","ga","ni","o"],a:"wa"},
+   {k:"sel2",pre:"Sakkaa ",post:" suki desu.",o:["wa","ga","ni","o"],a:"ga"},
+   {k:"sel2",pre:"Getsuyoubi ",post:" tenisu o shimasu.",o:["wa","ga","ni","o"],a:"ni"},
+   {k:"sel2",pre:"Hachi ji ni geemu ",post:" shimasu.",o:["wa","ga","ni","o"],a:"o"},
+   {k:"sel2",pre:"Sushi ",post:" tabemasu.",o:["wa","ga","ni","o"],a:"o"},
+   {k:"sel2",pre:"Mizu ",post:" nomimasu.",o:["wa","ga","ni","o"],a:"o"},
+ ]},
+ {t:"Level 9 · shimasu or shimasen?", items:[
+   {k:"sel2",pre:"On Friday I play soccer. → Kinyoubi ni sakkaa o ",post:".",o:["shimasu","shimasen"],a:"shimasu"},
+   {k:"sel2",pre:"I don't play games on Sunday. → Nichiyoubi ni geemu o ",post:".",o:["shimasu","shimasen"],a:"shimasen"},
+   {k:"sel2",pre:"I read on Tuesday. → Kayoubi ni dokusho o ",post:".",o:["shimasu","shimasen"],a:"shimasu"},
+   {k:"sel2",pre:"I don't swim on Monday. → Getsuyoubi ni suiei o ",post:".",o:["shimasu","shimasen"],a:"shimasen"},
+ ]},
+ {t:"Level 10 · Sentence building — both directions", items:[
+   {k:"in2",jp:"I play tennis on Monday.",a:"getsuyoubi ni tenisu o shimasu"},
+   {k:"in2",jp:"I play games at 7 o'clock.",a:"shichi ji ni geemu o shimasu"},
+   {k:"in2",jp:"I don't play baseball on Sunday.",a:"nichiyoubi ni yakyuu o shimasen"},
+   {k:"in2",jp:"I watch TV. (terebi)",a:"terebi o mimasu"},
+   {k:"in2",jp:"Doyoubi ni bareebooru o shimasu.",a:"i play volleyball on saturday|on saturday i play volleyball"},
+   {k:"in2",jp:"Yo ji ni dokusho o shimasu.",a:"i read at 4 oclock|at 4 oclock i read|i do reading at 4 oclock"},
+   {k:"in2",jp:"Hon o yomimasu.",a:"i read a book|i read books|read a book"},
+ ]},
+ {t:"Level 11 · Reading — Haru's week", items:[
+   {k:"mcq",p:"Haru: Getsuyoubi no hachi ji ni tenisu o shimasu. Kayoubi no go ji ni sakkaa o shimasu. Suiyoubi no shichi ji ni geemu o shimasu. Doyoubi no ku ji ni bareebooru o shimasu.<br><br>What does Haru do on Monday, and at what time?",o:["tennis at 8 o'clock","soccer at 5 o'clock","games at 7 o'clock","volleyball at 9 o'clock"],c:0},
+   {k:"mcq",p:"Nanji ni sakkaa o shimasu ka?",o:["go ji (5 o'clock)","hachi ji (8 o'clock)","ku ji (9 o'clock)","shichi ji (7 o'clock)"],c:0},
+   {k:"mcq",p:"What does Haru do on Saturday at 9?",o:["plays volleyball","plays tennis","plays games","plays soccer"],c:0},
+ ]},
+ {t:"🏆 TEST — adjectives, hiragana & the pattern", items:TEST.map(([p,o,c])=>({k:"mcq",p,o,c}))},
+];
+let completed=0;
+function makeSel(o,a){const s=el("select","pin");s.dataset.answer=a;["—",...o].forEach(x=>{const op=el("option",null,x);op.value=(x==="—"?"":x);s.appendChild(op);});return s;}
+function makeIn(a,w){const i=el("input","pin "+(w||""));i.type="text";i.dataset.answer=a;return i;}
+const prac=document.getElementById("practice");
+LEVELS.forEach((lv,idx)=>{const card=el("div","level");card.dataset.idx=idx;card.appendChild(el("div","lvhead",'<b>'+lv.t+'</b> <span class="lockicon">🔒</span>'));
+  const grid=(lv.items[0]&&(lv.items[0].k==="sel"||lv.items[0].k==="in"))?el("div","grid"):null;
+  lv.items.forEach(it=>{const q=el("div","q");
+    if(it.k==="sel"){q.innerHTML=it.p;q.appendChild(makeSel(it.o,it.a));q.appendChild(el("span","fb"));}
+    else if(it.k==="sel2"){q.appendChild(document.createTextNode(it.pre));q.appendChild(makeSel(it.o,it.a));q.appendChild(document.createTextNode(" "+(it.post||"")));q.appendChild(el("span","fb"));}
+    else if(it.k==="in"){q.innerHTML=it.p;q.appendChild(makeIn(it.a,it.w));q.appendChild(el("span","fb"));}
+    else if(it.k==="in2"){q.appendChild(el("div","jp",it.jp));const r=el("div");r.style.marginTop="3px";r.innerHTML="→ ";const i=makeIn(it.a,"wide");r.appendChild(i);r.appendChild(el("span","fb"));q.appendChild(r);}
+    else if(it.k==="mcq"){const blk=el("div","mcqblock");blk.dataset.correct=it.c;blk.dataset.sel="";blk.appendChild(el("div","mcqq",it.p));
+      it.o.forEach((o,oi)=>{const b=el("button","opt");b.type="button";b.textContent=String.fromCharCode(65+oi)+". "+o;b.onclick=()=>{if(+card.dataset.idx!==completed)return;blk.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel","wrong","correct"));b.classList.add("sel");blk.dataset.sel=oi;save();};blk.appendChild(b);});q.appendChild(blk);}
+    (grid&&(it.k==="sel"||it.k==="in")?grid:card).appendChild(q);});
+  if(grid)card.appendChild(grid);
+  const foot=el("div");const btn=el("button","checkbtn");btn.textContent="Check this level";btn.onclick=()=>checkLevel(idx);const st=el("span","lvstatus");foot.appendChild(btn);foot.appendChild(st);card.appendChild(foot);prac.appendChild(card);
+});
+function checkLevel(idx){if(idx!==completed)return;const lv=document.querySelector('.level[data-idx="'+idx+'"]');let all=true,total=0,correct=0;
+  lv.querySelectorAll(".pin").forEach(inp=>{total++;const v=norm(inp.value);const ok=v!==""&&(inp.dataset.answer||"").split("|").map(norm).includes(v);inp.classList.toggle("correct",ok);inp.classList.toggle("incorrect",!ok);const fb=inp.parentElement.querySelector(".fb");if(fb){fb.textContent=ok?"✓":"✗";fb.style.color=ok?"var(--green)":"var(--red)";}if(ok)correct++;else all=false;});
+  lv.querySelectorAll(".mcqblock").forEach(blk=>{total++;const s=blk.dataset.sel;const ok=(s!==""&&s!==undefined&&(+s===+blk.dataset.correct));blk.querySelectorAll(".opt").forEach(o=>o.classList.remove("correct","wrong"));if(s!==""&&s!==undefined){const b=blk.querySelectorAll(".opt")[+s];b.classList.remove("sel");b.classList.add(ok?"correct":"wrong");}if(ok)correct++;else all=false;});
+  const st=lv.querySelector(".lvstatus");
+  if(all){lv.classList.add("done");st.innerHTML="✓ Completed!";st.style.color="var(--green)";lv.querySelectorAll(".pin").forEach(i=>i.disabled=true);lv.querySelector(".checkbtn").disabled=true;completed=idx+1;updateLocks();save();const nx=document.querySelector('.level[data-idx="'+(idx+1)+'"]');if(nx&&nx.scrollIntoView)nx.scrollIntoView({behavior:"smooth",block:"start"});}
+  else{st.innerHTML=correct+" / "+total+" correct — fix the ✗ and check again.";st.style.color="var(--red)";save();}}
+function updateLocks(){document.querySelectorAll(".level").forEach(lv=>{const i=+lv.dataset.idx;const active=(i===completed);const locked=i>completed;lv.classList.toggle("locked",locked);lv.querySelectorAll(".pin").forEach(inp=>inp.disabled=!active);const cb=lv.querySelector(".checkbtn");if(cb)cb.disabled=!active;const lk=lv.querySelector(".lockicon");if(lk)lk.style.display=locked?"inline":"none";});document.getElementById("prog").textContent="Completed "+completed+" / "+LEVELS.length;document.getElementById("progbar").style.width=Math.round(completed/LEVELS.length*100)+"%";document.getElementById("allDone").style.display=(completed>=LEVELS.length)?"block":"none";}
+function markDone(i){const lv=document.querySelector('.level[data-idx="'+i+'"]');if(!lv)return;lv.classList.add("done");const st=lv.querySelector(".lvstatus");if(st){st.textContent="✓ Completed!";st.style.color="var(--green)";}lv.querySelectorAll(".pin").forEach(x=>{x.classList.add("correct");x.disabled=true;});lv.querySelectorAll(".mcqblock").forEach(b=>{const c=+b.dataset.correct;const o=b.querySelectorAll(".opt")[c];if(o)o.classList.add("correct");});const cb=lv.querySelector(".checkbtn");if(cb)cb.disabled=true;}
+document.addEventListener("input",e=>{const t=e.target;if(t.classList&&t.classList.contains("pin")&&t.tagName==="INPUT"&&!t.disabled){const v=norm(t.value);const ok=v!==""&&(t.dataset.answer||"").split("|").map(norm).includes(v);t.classList.toggle("correct",ok);if(!ok)t.classList.remove("incorrect");const fb=t.parentElement.querySelector(".fb");if(fb){fb.textContent=ok?"✓":"";fb.style.color="var(--green)";}}save();});
+document.addEventListener("change",e=>{if(e.target.classList&&e.target.classList.contains("pin"))save();});
+function save(){const d={completed,inputs:[],mcq:[]};document.querySelectorAll("#practice .pin").forEach((e,i)=>d.inputs[i]=e.value);document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>d.mcq[i]=b.dataset.sel);try{localStorage.setItem("jp-adj-v1",JSON.stringify(d));}catch(e){}}
+function load(){let d;try{d=JSON.parse(localStorage.getItem("jp-adj-v1")||"{}");}catch(e){d={};}if(d.inputs)document.querySelectorAll("#practice .pin").forEach((e,i)=>{if(d.inputs[i]!==undefined)e.value=d.inputs[i];});if(d.mcq)document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>{if(d.mcq[i]!==undefined&&d.mcq[i]!==""){b.dataset.sel=d.mcq[i];const o=b.querySelectorAll(".opt")[+d.mcq[i]];if(o)o.classList.add("sel");}});completed=d.completed||0;for(let i=0;i<completed;i++)markDone(i);updateLocks();}
+function resetProgress(){if(!confirm("Clear all your practice progress?"))return;localStorage.removeItem("jp-adj-v1");location.reload();}
+load();
+</script>
+</body>
+</html>
