@@ -48,7 +48,21 @@
   .lvstatus{margin-left:10px;font-weight:800;}
   .smallbtn{cursor:pointer;border:1.5px solid var(--red);background:#fff;color:var(--red);border-radius:8px;padding:5px 10px;font-weight:700;font-size:.8rem;}
     nav a.pl{color:#fff;padding:7px 14px;border-radius:20px;font-weight:800;font-size:.85rem;text-decoration:none;align-self:center;box-shadow:0 1px 3px rgba(0,0,0,.15);}
-  .pl-sports{background:#1F8FCB}.pl-hob{background:#D6336C}.pl-days{background:#0CA678}.pl-adj{background:#F08C00}
+  .pl-sports{background:#1F8FCB}.pl-hob{background:#D6336C}.pl-days{background:#0CA678}.pl-adj{background:#F08C00}.pl-me{background:#6741D9}
+  .home-hero{min-height:calc(100vh - 250px);display:flex;flex-direction:column;justify-content:center;gap:14px;padding:10px 0;}
+  .welcome{text-align:center;font-size:1.15rem;margin:4px 0 2px;}
+  .welcome b{color:var(--navy);}
+  .step{display:flex;gap:16px;align-items:center;background:#fff;border-radius:16px;padding:20px 22px;cursor:pointer;border:2px solid transparent;box-shadow:0 2px 10px rgba(0,0,0,.06);width:100%;text-align:left;font-family:inherit;}
+  .step:hover{transform:translateY(-2px);}
+  .step .num{flex:0 0 64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:#fff;}
+  .step h2{margin:0 0 4px;font-size:1.2rem;color:var(--navy);}
+  .step p{margin:0;color:var(--grey);font-size:.92rem;}
+  .step1{border-color:var(--purple);}.step1 .num{background:var(--purple);}
+  .step2{border-color:var(--green);}.step2 .num{background:var(--green);}
+  .goalbox{background:#fff;border:2px solid var(--amber);border-radius:16px;padding:16px 20px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .goalbox h3{margin:0 0 6px;color:var(--amber);font-size:1rem;}
+  .goalbox div{margin:3px 0;font-size:.95rem;}
+  #view-vocab tr, #view-vocab .box div, #view-vocab .hint{cursor:pointer;}
   footer{text-align:center;color:var(--grey);font-size:.8rem;margin-top:26px;}
 </style>
 </head>
@@ -58,21 +72,37 @@
   <nav>
     <button id="nav-home" class="on" onclick="show('home')">🏠 Home</button>
     <button id="nav-vocab" onclick="show('vocab')">📚 Vocabulary</button>
-    <button id="nav-practice" onclick="show('practice')">✍️ Practice &amp; Quiz</button>
-    <a class="pl pl-sports" href="index.html">⚽ Sports</a> <a class="pl pl-days" href="days.html">📅 Days</a> <a class="pl pl-adj" href="adjectives.html">⭐ Adjectives</a>
+    <a class="pl pl-sports" href="index.html">⚽ Sports</a> <a class="pl pl-days" href="days.html">📅 Days</a> <a class="pl pl-adj" href="adjectives.html">⭐ Adjectives</a> <a class="pl pl-me" href="intro.html">👤 About Me</a>
+    <button id="nav-practice" onclick="tryPractice()">🔒 Practice & Quiz</button>
   </nav>
 
   <div class="view active" id="view-home">
-    <div class="card">
-      <p>Welcome! This has three parts:</p>
-      <button class="home-btn" onclick="show('vocab')">📚 Vocabulary — learn it first<small>Hobby words and the key sentence patterns.</small></button>
-      <button class="home-btn" onclick="show('practice')">✍️ Practice &amp; Quiz — test yourself<small>Work through the levels in order. You must get <b>every</b> question in a level correct to unlock the next. Wrong answers are marked ✗ — fix them and check again.</small></button>
-      <p class="hint">Your progress saves on this device.</p>
+    <div class="home-hero">
+      <div class="welcome">👋 <b>Konnichiwa!</b> Learn to say your hobby and what you play or do.</div>
+      <button class="step step1" onclick="show('vocab')">
+        <span class="num">1</span>
+        <span><h2>📚 STEP ONE — Learn</h2>
+        <p>Hobby words and the patterns: <b>Shumi wa nan desu ka? · A wa B desu · ~ o shimasu</b>. Read everything carefully — you need it for Step 2!</p></span>
+      </button>
+      <button class="step step2" onclick="tryPractice()">
+        <span class="num">2</span>
+        <span><h2>✍️ STEP TWO — Practice & Quiz</h2>
+        <p>🔒 Unlocks after you finish Step 1. Work through the levels in order — get <b>every</b> question in a level correct to unlock the next. Wrong answers show ✗: fix them and check again!</p></span>
+      </button>
+      <div class="goalbox">
+        <h3>🎯 By the end, you can say:</h3>
+        <div>▸ <b>Shumi wa nan desu ka?</b> — What is your hobby?</div>
+        <div>▸ <b>Watashi no shumi wa dokusho desu.</b> — My hobby is reading.</div>
+        <div>▸ <b>Sakkaa o shimasu.</b> — I play soccer.</div>
+        <div>▸ <b>Nani o shimasu ka?</b> — What do you play / do?</div>
+      </div>
+      <p class="hint" style="text-align:center">Your progress saves on this device — you can stop and come back anytime.</p>
     </div>
   </div>
 
   <div class="view" id="view-vocab">
-    <div class="banner b2">Hobby &amp; sport words</div>
+    <p class="hint" style="text-align:center;background:#EAF4FB;border:1.5px solid #9CC9E8;border-radius:10px;padding:7px 10px">🔊 <b>Tap any word or sentence to hear it!</b> (uses your device's Japanese voice)</p>
+        <div class="banner b2">Hobby &amp; sport words</div>
     <div class="card"><table><thead><tr><th>Romaji</th><th>English</th><th>Japanese</th></tr></thead><tbody id="vocabRef"></tbody></table></div>
     <div class="banner b3">Sentence patterns</div>
     <div class="card">
@@ -81,12 +111,14 @@
         <div style="margin:6px 0;font-size:1.05rem"><span class="chip ch-day">Shumi</span> <span class="chip ch-ni">wa</span> <span class="chip ch-act">nan</span> <span class="chip ch-verb">desu</span> ka? &nbsp;=&nbsp; What is your hobby?</div></div>
       <div class="box"><b>② Answering — A wa B desu</b>
         <div style="margin:6px 0;font-size:1.05rem"><span class="chip ch-day">Shumi</span> <span class="chip ch-ni">wa</span> <span class="chip ch-act">[hobby]</span> <span class="chip ch-verb">desu</span> &nbsp;=&nbsp; My hobby is [hobby].</div>
-        <div class="hint"><span class="t-day">Watashi no / Boku no</span> = "my" (you can add it at the front). <span class="t-day">Watashi no shumi</span> <span class="t-ni">wa</span> <span class="t-act">dansu</span> <span class="t-verb">desu</span> = My hobby is dance.</div></div>
+        <div class="hint">▸ <span class="t-day">Watashi no / Boku no</span> = "my" — you can add it at the front (or leave it out).</div>
+        <div class="hint">▸ <span class="t-day">Watashi no shumi</span> <span class="t-ni">wa</span> <span class="t-act">dansu</span> <span class="t-verb">desu</span>. = My hobby is dance.</div></div>
       <div class="box"><b>③ Doing an activity — ~ o shimasu</b>
         <div style="margin:6px 0;font-size:1.05rem"><span class="chip ch-act">[activity]</span> <span class="chip ch-o">o</span> <span class="chip ch-verb">shimasu</span> &nbsp;=&nbsp; I play / do [activity].</div>
-        <div class="hint"><span class="t-act">Sakkaa</span> <span class="t-o">o</span> <span class="t-verb">shimasu</span> = I play soccer. · Nani o shimasu ka? = What do you play/do?</div></div>
+        <div class="hint">▸ <span class="t-act">Sakkaa</span> <span class="t-o">o</span> <span class="t-verb">shimasu</span>. = I play soccer.</div>
+        <div class="hint">▸ Ask: <b>Nani o shimasu ka?</b> = What do you play / do?</div></div>
     </div>
-    <p style="text-align:center;margin-top:14px"><button class="home-btn" style="border-color:var(--green);color:var(--green)" onclick="show('practice')">✍️ Ready? Go to Practice &amp; Quiz →</button></p>
+    <p style="text-align:center;margin-top:14px"><button class="home-btn" style="border-color:var(--green);color:var(--green)" onclick="unlockPractice()">✍️ I've read it all — unlock Practice & Quiz →</button></p>
   </div>
 
   <div class="view" id="view-practice">
@@ -107,6 +139,10 @@ const MCQ=[["What does 'shumi' mean?",["hobby","sport","school","friend"],0],["W
 function norm(s){return (s||"").toLowerCase().normalize("NFKC").replace(/[’'`´.,!?。、！？…\-\/():;]/g,"").replace(/\s+/g,"").trim();}
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
 function show(v){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById("view-"+v).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));document.getElementById("nav-"+v).classList.add("on");window.scrollTo(0,0);}
+let learned=false;try{learned=localStorage.getItem("jp-hobbies-learned")==="1";}catch(e){}
+function paintPracticeTab(){const b=document.getElementById("nav-practice");if(!b)return;b.textContent=learned?"✍️ Practice & Quiz":"🔒 Practice & Quiz";b.style.opacity=learned?"1":"0.55";}
+function tryPractice(){if(learned){show("practice");}else{show("vocab");alert("Read the Learn content first! Scroll to the bottom and press the green unlock button when you have finished.");}}
+function unlockPractice(){learned=true;try{localStorage.setItem("jp-hobbies-learned","1");}catch(e){}paintPracticeTab();show("practice");}
 VOCAB.forEach(v=>{const tr=el("tr");tr.innerHTML="<td><b>"+v[0]+"</b></td><td>"+v[1]+"</td><td class='kanji'>"+v[2]+"</td>";document.getElementById("vocabRef").appendChild(tr);});
 
 const LEVELS=[
@@ -116,6 +152,16 @@ const LEVELS=[
  {t:"Level 4 · Translate into Japanese (romaji)", items:JP.map(([en,a])=>({k:"in2",jp:en,a}))},
  {t:"Level 5 · Multiple choice", items:MCQ.map(([p,o,c])=>({k:"mcq",p,o,c}))},
 ];
+// shuffle questions after the first 3 levels (stable per device)
+let seed;try{seed=parseInt(localStorage.getItem("jp-hobbies-seed"));}catch(e){}
+if(!seed){seed=Math.floor(Math.random()*1e9)+1;try{localStorage.setItem("jp-hobbies-seed",String(seed));}catch(e){}}
+function rng(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;}
+function shuf(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+for(let li=3;li<LEVELS.length;li++){const lv=LEVELS[li];
+  if(lv.t.indexOf("TEST")>=0&&lv.items.some(it=>(it.p||"").indexOf("【")>=0)){const groups={},order=[];
+    lv.items.forEach(it=>{const m=(it.p||"").match(/【(.+?)】/);const g=m?m[1]:"_";if(!groups[g]){groups[g]=[];order.push(g);}groups[g].push(it);});
+    lv.items=[];order.forEach(g=>{shuf(groups[g]).forEach(it=>lv.items.push(it));});}
+  else shuf(lv.items);}
 let completed=0;
 function makeSel(o,a){const s=el("select","pin");s.dataset.answer=a;["—",...o].forEach(x=>{const op=el("option",null,x);op.value=(x==="—"?"":x);s.appendChild(op);});return s;}
 function makeIn(a,w){const i=el("input","pin "+(w||""));i.type="text";i.dataset.answer=a;return i;}
@@ -144,8 +190,44 @@ document.addEventListener("input",e=>{const t=e.target;if(t.classList&&t.classLi
 document.addEventListener("change",e=>{if(e.target.classList&&e.target.classList.contains("pin"))save();});
 function save(){const d={completed,inputs:[],mcq:[]};document.querySelectorAll("#practice .pin").forEach((e,i)=>d.inputs[i]=e.value);document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>d.mcq[i]=b.dataset.sel);try{localStorage.setItem("jp-hobbies-v2",JSON.stringify(d));}catch(e){}}
 function load(){let d;try{d=JSON.parse(localStorage.getItem("jp-hobbies-v2")||"{}");}catch(e){d={};}if(d.inputs)document.querySelectorAll("#practice .pin").forEach((e,i)=>{if(d.inputs[i]!==undefined)e.value=d.inputs[i];});if(d.mcq)document.querySelectorAll("#practice .mcqblock").forEach((b,i)=>{if(d.mcq[i]!==undefined&&d.mcq[i]!==""){b.dataset.sel=d.mcq[i];const o=b.querySelectorAll(".opt")[+d.mcq[i]];if(o)o.classList.add("sel");}});completed=d.completed||0;for(let i=0;i<completed;i++)markDone(i);updateLocks();}
-function resetProgress(){if(!confirm("Clear all your practice progress?"))return;localStorage.removeItem("jp-hobbies-v2");location.reload();}
+function resetProgress(){if(!confirm("Clear all your practice progress?"))return;localStorage.removeItem("jp-hobbies-v2");localStorage.removeItem("jp-hobbies-learned");localStorage.removeItem("jp-hobbies-seed");location.reload();}
+
+// ---- 🔊 tap-to-hear pronunciation (device's Japanese voice) ----
+const JPRE=/[぀-ヿ一-鿿]/;
+const R2K=[["kya","きゃ"],["kyu","きゅ"],["kyo","きょ"],["gya","ぎゃ"],["gyu","ぎゅ"],["gyo","ぎょ"],["sha","しゃ"],["shu","しゅ"],["sho","しょ"],["ja","じゃ"],["ju","じゅ"],["jo","じょ"],["cha","ちゃ"],["chu","ちゅ"],["cho","ちょ"],["nya","にゃ"],["nyu","にゅ"],["nyo","にょ"],["hya","ひゃ"],["hyu","ひゅ"],["hyo","ひょ"],["bya","びゃ"],["byu","びゅ"],["byo","びょ"],["pya","ぴゃ"],["pyu","ぴゅ"],["pyo","ぴょ"],["mya","みゃ"],["myu","みゅ"],["myo","みょ"],["rya","りゃ"],["ryu","りゅ"],["ryo","りょ"],["shi","し"],["chi","ち"],["tsu","つ"],["ka","か"],["ki","き"],["ku","く"],["ke","け"],["ko","こ"],["ga","が"],["gi","ぎ"],["gu","ぐ"],["ge","げ"],["go","ご"],["sa","さ"],["su","す"],["se","せ"],["so","そ"],["za","ざ"],["ji","じ"],["zu","ず"],["ze","ぜ"],["zo","ぞ"],["ta","た"],["te","て"],["to","と"],["da","だ"],["de","で"],["do","ど"],["na","な"],["ni","に"],["nu","ぬ"],["ne","ね"],["no","の"],["ha","は"],["hi","ひ"],["fu","ふ"],["he","へ"],["ho","ほ"],["ba","ば"],["bi","び"],["bu","ぶ"],["be","べ"],["bo","ぼ"],["pa","ぱ"],["pi","ぴ"],["pu","ぷ"],["pe","ぺ"],["po","ぽ"],["ma","ま"],["mi","み"],["mu","む"],["me","め"],["mo","も"],["ya","や"],["yu","ゆ"],["yo","よ"],["ra","ら"],["ri","り"],["ru","る"],["re","れ"],["ro","ろ"],["wa","わ"],["wo","を"],["a","あ"],["i","い"],["u","う"],["e","え"],["o","お"],["n","ん"]];
+function romaji2kana(s){s=s.toLowerCase().replace(/[^a-z\s-]/g," ").replace(/-/g,"");let out="";
+  for(const w of s.split(/\s+/)){let word=w,res="";
+    while(word.length){
+      if(word.length>1&&word[0]===word[1]&&"kstpgzdbh".includes(word[0])){res+="っ";word=word.slice(1);continue;}
+      let hit=false;
+      for(const [r,k] of R2K){if(word.startsWith(r)){res+=k;word=word.slice(r.length);hit=true;break;}}
+      if(!hit)word=word.slice(1);}
+    out+=res;}
+  return out;}
+function speakJa(t){if(!t)return;try{const synth=window.speechSynthesis;if(!synth)return;
+  const u=new SpeechSynthesisUtterance(t);u.lang="ja-JP";
+  const v=(synth.getVoices()||[]).find(x=>(x.lang||"").toLowerCase().startsWith("ja"));if(v)u.voice=v;
+  u.rate=0.85;synth.cancel();synth.speak(u);}catch(e){}}
+if(window.speechSynthesis)speechSynthesis.onvoiceschanged=()=>{};
+function sayFlash(el){const o=el.style.background;el.style.background="#dbeeff";setTimeout(()=>el.style.background=o,400);}
+(function(){const vv=document.getElementById("view-vocab");if(!vv)return;
+ vv.addEventListener("click",e=>{
+  const ds=e.target.closest("[data-say]");
+  if(ds){speakJa(ds.dataset.say);sayFlash(ds);return;}
+  const tr=e.target.closest("tr");
+  if(tr&&tr.querySelector("td")){let jp=null;
+    tr.querySelectorAll("td").forEach(td=>{if(!jp&&JPRE.test(td.textContent))jp=td.textContent;});
+    if(!jp){const first=tr.querySelector("td");if(first)jp=romaji2kana(first.textContent);}
+    if(jp){speakJa(jp.replace(/\(.*?\)/g," ").trim());sayFlash(tr);}return;}
+  const line=e.target.closest("div");
+  if(line&&/▸|★/.test(line.textContent)){
+    let t=line.textContent.replace(/^[▸★\s]+/,"").split(/=|—/)[0].trim();
+    if(!t)return;
+    speakJa(JPRE.test(t)?t:romaji2kana(t));sayFlash(line);}
+ });})();
+
 load();
+paintPracticeTab();
 </script>
 </body>
 </html>
