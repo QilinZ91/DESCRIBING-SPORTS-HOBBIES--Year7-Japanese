@@ -108,7 +108,8 @@
     <div class="banner b5">Ages — number + sai (kanji numbers!)</div>
     <div class="card">
       <table><thead><tr><th>Age</th><th>Romaji</th><th>Kanji</th><th>Age</th><th>Romaji</th><th>Kanji</th></tr></thead><tbody id="ageRef"></tbody></table>
-      <div class="hint">Add <b>-sai</b> (才/歳) = "years old" — e.g. <b>juuni-sai</b> (十二さい) = 12 years old.</div>
+      <div class="hint">Add <b>-sai</b> (さい) = "years old" — e.g. <b>juuni-sai</b> (十二さい) = 12 years old.</div>
+      <div class="hint">⚠ <b>11 is special:</b> <b>juuissai</b> (じゅういっさい) — NOT "juuichi-sai"! The <i>chi</i> squeezes into a small っ.</div>
     </div>
 
     <div class="banner b3">The four patterns</div>
@@ -154,13 +155,13 @@
 const VOCAB=[["konnichiwa","hello"],["hajimemashite","nice to meet you (first time)"],["watashi","I (anyone)"],["boku","I (boys)"],
  ["onamae wa?","what's your name?"],["-sai","years old"],["nansai desu ka?","how old are you?"],
  ["-jin","person / nationality"],["sunde imasu","live (I live in …)"],["doko","where"],["desu","is / am / are"]];
-const AGES=[["11","juuichi-sai","十一さい"],["12","juuni-sai","十二さい"],["13","juusan-sai","十三さい"],["14","juuyon-sai","十四さい"]];
+const AGES=[["11","juuissai ⚠","十一さい"],["12","juuni-sai","十二さい"],["13","juusan-sai","十三さい"],["14","juuyon-sai","十四さい"]];
 const NAT=[["Oosutoraria-jin","Australian"],["Nihon-jin","Japanese"],["Amerika-jin","American"],["Chuugoku-jin","Chinese"]];
 const VMEAN=VOCAB.map(v=>v[1]);
 
 function norm(s){return (s||"").toLowerCase().normalize("NFKC").replace(/[’'`´.,!?。、！？…\-\/():;]/g,"").replace(/\s+/g,"").trim();}
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
-function show(v){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById("view-"+v).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));document.getElementById("nav-"+v).classList.add("on");window.scrollTo(0,0);}
+function show(v){if(window.speechSynthesis)try{speechSynthesis.cancel();}catch(e){}document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById("view-"+v).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));document.getElementById("nav-"+v).classList.add("on");window.scrollTo(0,0);}
 let learned=false;try{learned=localStorage.getItem("jp-intro-learned")==="1";}catch(e){}
 function paintPracticeTab(){const b=document.getElementById("nav-practice");b.textContent=learned?"✍️ Practice & Test":"🔒 Practice & Test";b.style.opacity=learned?"1":"0.55";}
 function tryPractice(){if(learned){show("practice");}else{show("vocab");alert("Read the Learn tab first! Scroll to the bottom and press the green unlock button when you have finished.");}}
@@ -191,7 +192,7 @@ const LEVELS=[
    {k:"in",p:'<span class="kanji">十二さい</span> = I am ___ years old: ',a:"12|twelve",w:"mid"},
    {k:"in",p:'<span class="kanji">十四さい</span> = I am ___ years old: ',a:"14|fourteen",w:"mid"},
    {k:"in",p:'13 years old = <b>___-sai</b> (romaji): ',a:"juusan",w:"mid"},
-   {k:"in",p:'11 years old = <b>___-sai</b> (romaji): ',a:"juuichi",w:"mid"},
+   {k:"in",p:'11 years old = <b>___</b> (romaji — the special one!): ',a:"juuissai|juu issai|juuissaidesu",w:"mid"},
  ]},
  {t:"Level 3 · Complete the sentence", items:[
    {k:"sel2",pre:"Watashi ",post:" Emi desu.  (I am Emi)",o:["wa","ni","o","ga"],a:"wa"},
@@ -257,7 +258,7 @@ function resetProgress(){if(!confirm("Clear all your practice progress?"))return
 
 // ---- 🔊 tap-to-hear pronunciation (device's Japanese voice) ----
 const JPRE=/[぀-ヿ一-鿿]/;
-const R2K=[["kya","きゃ"],["kyu","きゅ"],["kyo","きょ"],["gya","ぎゃ"],["gyu","ぎゅ"],["gyo","ぎょ"],["sha","しゃ"],["shu","しゅ"],["sho","しょ"],["ja","じゃ"],["ju","じゅ"],["jo","じょ"],["cha","ちゃ"],["chu","ちゅ"],["cho","ちょ"],["nya","にゃ"],["nyu","にゅ"],["nyo","にょ"],["hya","ひゃ"],["hyu","ひゅ"],["hyo","ひょ"],["bya","びゃ"],["byu","びゅ"],["byo","びょ"],["pya","ぴゃ"],["pyu","ぴゅ"],["pyo","ぴょ"],["mya","みゃ"],["myu","みゅ"],["myo","みょ"],["rya","りゃ"],["ryu","りゅ"],["ryo","りょ"],["shi","し"],["chi","ち"],["tsu","つ"],["ka","か"],["ki","き"],["ku","く"],["ke","け"],["ko","こ"],["ga","が"],["gi","ぎ"],["gu","ぐ"],["ge","げ"],["go","ご"],["sa","さ"],["su","す"],["se","せ"],["so","そ"],["za","ざ"],["ji","じ"],["zu","ず"],["ze","ぜ"],["zo","ぞ"],["ta","た"],["te","て"],["to","と"],["da","だ"],["de","で"],["do","ど"],["na","な"],["ni","に"],["nu","ぬ"],["ne","ね"],["no","の"],["ha","は"],["hi","ひ"],["fu","ふ"],["he","へ"],["ho","ほ"],["ba","ば"],["bi","び"],["bu","ぶ"],["be","べ"],["bo","ぼ"],["pa","ぱ"],["pi","ぴ"],["pu","ぷ"],["pe","ぺ"],["po","ぽ"],["ma","ま"],["mi","み"],["mu","む"],["me","め"],["mo","も"],["ya","や"],["yu","ゆ"],["yo","よ"],["ra","ら"],["ri","り"],["ru","る"],["re","れ"],["ro","ろ"],["wa","わ"],["wo","を"],["a","あ"],["i","い"],["u","う"],["e","え"],["o","お"],["n","ん"]];
+const R2K=[["kinyoubi","きんようび"],["nanyoubi","なんようび"],["kya","きゃ"],["kyu","きゅ"],["kyo","きょ"],["gya","ぎゃ"],["gyu","ぎゅ"],["gyo","ぎょ"],["sha","しゃ"],["shu","しゅ"],["sho","しょ"],["ja","じゃ"],["ju","じゅ"],["jo","じょ"],["cha","ちゃ"],["chu","ちゅ"],["cho","ちょ"],["nya","にゃ"],["nyu","にゅ"],["nyo","にょ"],["hya","ひゃ"],["hyu","ひゅ"],["hyo","ひょ"],["bya","びゃ"],["byu","びゅ"],["byo","びょ"],["pya","ぴゃ"],["pyu","ぴゅ"],["pyo","ぴょ"],["mya","みゃ"],["myu","みゅ"],["myo","みょ"],["rya","りゃ"],["ryu","りゅ"],["ryo","りょ"],["shi","し"],["chi","ち"],["tsu","つ"],["ka","か"],["ki","き"],["ku","く"],["ke","け"],["ko","こ"],["ga","が"],["gi","ぎ"],["gu","ぐ"],["ge","げ"],["go","ご"],["sa","さ"],["su","す"],["se","せ"],["so","そ"],["za","ざ"],["ji","じ"],["zu","ず"],["ze","ぜ"],["zo","ぞ"],["ta","た"],["te","て"],["to","と"],["da","だ"],["de","で"],["do","ど"],["na","な"],["ni","に"],["nu","ぬ"],["ne","ね"],["no","の"],["ha","は"],["hi","ひ"],["fu","ふ"],["he","へ"],["ho","ほ"],["ba","ば"],["bi","び"],["bu","ぶ"],["be","べ"],["bo","ぼ"],["pa","ぱ"],["pi","ぴ"],["pu","ぷ"],["pe","ぺ"],["po","ぽ"],["ma","ま"],["mi","み"],["mu","む"],["me","め"],["mo","も"],["ya","や"],["yu","ゆ"],["yo","よ"],["ra","ら"],["ri","り"],["ru","る"],["re","れ"],["ro","ろ"],["wa","わ"],["wo","を"],["a","あ"],["i","い"],["u","う"],["e","え"],["o","お"],["n","ん"]];
 function romaji2kana(s){s=s.toLowerCase().replace(/[^a-z\s-]/g," ").replace(/-/g,"");let out="";
   for(const w of s.split(/\s+/)){let word=w,res="";
     while(word.length){
