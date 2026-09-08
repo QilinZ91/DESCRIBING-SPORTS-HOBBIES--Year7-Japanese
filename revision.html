@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 3 Revision and Practice Station — Year 7 Japanese</title>
+<style>
+  :root{--purple:#6741D9;--blue:#1F8FCB;--teal:#0CA678;--amber:#B8860B;--green:#2F9E44;--navy:#1D3A8A;--pink:#D6336C;--red:#E23B2E;--grey:#595959;--line:#c9c9c9;--card:#fff;--bg:#f4f6fb;--wine:#C92A2A;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:0;background:var(--bg);color:#1a1a1a;line-height:1.5;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 14px 60px;}
+  header{background:linear-gradient(135deg,#C92A2A,#6741D9);color:#fff;text-align:center;padding:22px 16px 14px;border-radius:0 0 18px 18px;}
+  header h1{margin:0;font-size:1.4rem;}header p{margin:6px 0 0;opacity:.95;font-style:italic;font-size:.9rem;}
+  nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0 4px;}
+  nav button{cursor:pointer;border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:20px;padding:7px 16px;font-weight:700;font-size:.9rem;}
+  nav button.on{background:var(--navy);color:#fff;}
+  nav a.pl{color:#fff;padding:7px 14px;border-radius:20px;font-weight:800;font-size:.85rem;text-decoration:none;align-self:center;box-shadow:0 1px 3px rgba(0,0,0,.15);}
+  .pl-sports{background:#1F8FCB}.pl-hob{background:#D6336C}.pl-days{background:#0CA678}.pl-adj{background:#F08C00}.pl-me{background:#6741D9}
+  .view{display:none;}.view.active{display:block;}
+  .prog{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border:1px solid #e3e3ef;border-radius:12px;padding:8px 12px;margin:12px 0;display:flex;align-items:center;gap:10px;z-index:10;}
+  .prog b{color:var(--navy);font-size:.9rem;white-space:nowrap;}
+  .bar{height:8px;border-radius:6px;background:#e6e6ef;flex:1;overflow:hidden;}.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2F9E44,#0CA678);transition:width .3s;}
+  .level{border:1px solid #e2e2ee;border-radius:12px;padding:12px 14px;margin:12px 0;background:#fff;}.level.locked{opacity:.5;}.level.done{border-color:var(--green);background:#f6fdf8;}
+  .lvhead{font-size:1rem;margin-bottom:6px;}.lvhead .lockicon{color:var(--grey);}
+  .q{margin:8px 0;}
+  .hint{color:var(--grey);font-style:italic;font-size:.88rem;margin:2px 0 8px;}
+  .read{border:1.5px solid #9CC9E8;background:#F4FAFF;border-radius:10px;padding:9px 13px;margin:6px 0 10px;font-size:.98rem;}
+  input.pin,select.pin{font-size:1rem;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;background:#fff;font-family:inherit;}
+  input.wide{width:100%;max-width:420px;}input.mid{width:170px;}
+  .pin.correct{border-color:var(--green);background:#EAF7EE;}.pin.incorrect{border-color:var(--red);background:#FDECEC;}
+  .fb{margin-left:8px;font-weight:800;font-size:.95rem;}
+  .mcqblock{margin:8px 0;}.mcqq{font-weight:700;margin-bottom:3px;}
+  .opt{display:block;width:100%;text-align:left;background:#fff;color:#1a1a1a;border:1.5px solid var(--line);border-radius:9px;padding:7px 12px;margin:4px 0;font-size:.96rem;cursor:pointer;}
+  .opt.sel{border-color:var(--navy);background:#eef2fb;font-weight:700;}.opt.correct{border-color:var(--green);background:#EAF7EE;font-weight:700;}.opt.wrong{border-color:var(--red);background:#FDECEC;}
+  .checkbtn{cursor:pointer;border:none;border-radius:9px;padding:8px 14px;font-weight:800;color:#fff;background:var(--navy);}.checkbtn:disabled{background:#b7bccb;cursor:not-allowed;}
+  .lvstatus{margin-left:10px;font-weight:800;}
+  .smallbtn{cursor:pointer;border:1.5px solid var(--red);background:#fff;color:var(--red);border-radius:8px;padding:5px 10px;font-weight:700;font-size:.8rem;}
+  .home-hero{min-height:calc(100vh - 250px);display:flex;flex-direction:column;justify-content:center;gap:14px;padding:10px 0;}
+  .welcome{text-align:center;font-size:1.15rem;margin:4px 0 2px;}
+  .welcome b{color:var(--navy);}
+  .step{display:flex;gap:16px;align-items:center;background:#fff;border-radius:16px;padding:20px 22px;cursor:pointer;border:2px solid transparent;box-shadow:0 2px 10px rgba(0,0,0,.06);width:100%;text-align:left;font-family:inherit;}
+  .step:hover{transform:translateY(-2px);}
+  .step .num{flex:0 0 64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:#fff;}
+  .step h2{margin:0 0 4px;font-size:1.2rem;color:var(--navy);}
+  .step p{margin:0;color:var(--grey);font-size:.92rem;}
+  .step1{border-color:var(--wine);}.step1 .num{background:var(--wine);}
+  .step2{border-color:var(--green);}.step2 .num{background:var(--green);}
+  .goalbox{background:#fff;border:2px solid var(--amber);border-radius:16px;padding:16px 20px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .goalbox h3{margin:0 0 6px;color:var(--amber);font-size:1rem;}
+  .goalbox div{margin:3px 0;font-size:.95rem;}
+  .kanji{font-size:1.3rem;font-weight:800;}
+  .oj{color:#F08C00;font-weight:800}.pj{color:#6741D9;font-weight:800}
+  .msgrow{border:1px solid #eee;border-radius:10px;padding:8px 12px;margin:8px 0;background:#fdfdff;}
+  .msgrow .lab{font-weight:800;color:#1D3A8A;margin-bottom:2px;}
+  .msgrow .pat{font-size:.92rem;margin-bottom:5px;}
+  input.plan{width:100%;max-width:340px;border-style:dashed;font-style:italic;}
+  .genout{border:2px solid #6741D9;background:#F6F3FF;border-radius:12px;padding:12px 16px;margin-top:12px;font-size:1.05rem;display:none;}
+  .remind{border:2px solid #B8860B;background:#FFF9EC;border-radius:12px;padding:10px 14px;margin-top:10px;font-weight:700;display:none;}
+  footer{text-align:center;color:var(--grey);font-size:.8rem;margin-top:26px;}
+</style>
+</head>
+<body>
+<header><h1>📝 Task 3 Revision and Practice Station</h1><p>Sports · hobbies · days · hiragana · kanji · your message — Year 7 Japanese</p></header>
+<div class="wrap">
+  <nav>
+    <button id="nav-home" class="on" onclick="show('home')">🏠 Home</button>
+    <button id="nav-practice" onclick="show('practice')">✍️ Practice</button>
+    <a class="pl pl-sports" href="index.html">⚽ Sports</a> <a class="pl pl-hob" href="hobbies.html">🎌 Hobbies</a> <a class="pl pl-days" href="days.html">📅 Days</a> <a class="pl pl-adj" href="adjectives.html">⭐ Adjectives</a> <a class="pl pl-me" href="intro.html">👤 About Me</a>
+  </nav>
+
+  <div class="view active" id="view-home">
+    <div class="home-hero">
+      <div class="welcome">👋 <b>Konnichiwa!</b> This is your big revision — everything in one place. Work through the levels in order!</div>
+      <button class="step step1" onclick="show('practice')">
+        <span class="num">1</span>
+        <span><h2>🔁 Levels 1–7 — Revise the building blocks</h2>
+        <p>Vocab translation · fill the gap · hiragana <b>します・すき・です・すし・たべます・のみます</b> · kanji numbers &amp; days · reading &amp; writing sentences.</p></span>
+      </button>
+      <button class="step step2" onclick="show('practice')">
+        <span class="num">2</span>
+        <span><h2>🏆 Levels 8–9 — The message</h2>
+        <p>Read Haru's message to a friend, then build <b>your own message</b> sentence by sentence — greeting, sports, hobby, day, food, meal, describing words and a question!</p></span>
+      </button>
+      <div class="goalbox">
+        <h3>🎯 By the end, you can write a whole message:</h3>
+        <div>▸ <b>Konnichiwa! Watashi no namae wa Ken desu.</b> — introduce yourself</div>
+        <div>▸ <b>Getsuyoubi ni sakkaa o shimasu.</b> — say what you do and when</div>
+        <div>▸ <b>Sushi ga suki desu. Sushi wa oishii desu.</b> — likes + describing</div>
+        <div>▸ <b>___-san no shumi wa nan desu ka?</b> — ask your friend</div>
+      </div>
+      <p class="hint" style="text-align:center">Your progress saves on this device — get every question in a level right to unlock the next.</p>
+    </div>
+  </div>
+
+  <div class="view" id="view-practice">
+    <div class="prog"><b id="prog">Completed 0 / 0</b><div class="bar"><i id="progbar"></i></div><button class="smallbtn" onclick="resetProgress()">Reset</button></div>
+    <p class="hint">Complete each level (all correct) to unlock the next. Wrong answers show ✗ — fix and check again.</p>
+    <div id="practice"></div>
+    <div id="allDone" style="display:none;text-align:center;font-weight:800;color:var(--green);font-size:1.1rem;margin-top:16px">🎉 Revision complete — subarashii! すばらしい！ You are ready to write your message!</div>
+  </div>
+  <footer>Year 7 Japanese · Task 3 Revision and Practice Station</footer>
+</div>
+<script>
+function norm(s){return (s||"").toLowerCase().normalize("NFKC").replace(/[’'`´.,!?。、！？…\-\/():;]/g,"").replace(/\s+/g,"").trim();}
+function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+function show(v){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));document.getElementById("view-"+v).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));document.getElementById("nav-"+v).classList.add("on");window.scrollTo(0,0);}
+
+const RIKU='<div class="read"><b>Riku\'s week:</b><br>・ Kayoubi ni yakyuu o shimasu.<br>・ Suiyoubi ni suiei o shimasu.<br>・ Kinyoubi ni dokusho o shimasu.<br>・ Nichiyoubi ni geemu o shimasu.<br>・ Yakyuu ga suki desu. Demo, suiei wa amari suki ja nai desu.<br>・ Doyoubi ni ame o tabemasu. Mizu o nomimasu.</div>';
+const HARU='<div class="read"><b>Konnichiwa, Emi-san!</b><br>Watashi no namae wa Haru desu. Juuni-sai desu. Oosutoraria ni sunde imasu.<br>Watashi wa sakkaa ga suki desu.<br>Shumi wa tenisu desu. Doyoubi ni tenisu o shimasu.<br>Geemu ga suki desu. Nichiyoubi ni geemu o shimasu. Geemu wa omoshiroi desu.<br>Sushi ga suki desu. Hirugohan ni sushi o tabemasu. Sushi wa oishii desu.<br>Emi-san no shumi wa nan desu ka?<br><b>Mata ne! — Haru</b><br><span class="hint">New words: asagohan = breakfast · hirugohan = lunch · bangohan = dinner</span></div>';
+
+const LEVELS=[
+ {t:"Level 1 · Warm-up — translation", items:[
+   {k:"in",p:"<b>yakyuu</b> = ",a:"baseball",w:"mid"},
+   {k:"in",p:"<b>mizu</b> = ",a:"water",w:"mid"},
+   {k:"in",p:"<b>doyoubi</b> = ",a:"saturday",w:"mid"},
+   {k:"in",p:"<b>nomimasu</b> = ",a:"drink|to drink|i drink",w:"mid"},
+   {k:"in",p:"Wednesday = <i>(romaji)</i> ",a:"suiyoubi",w:"mid"},
+   {k:"in",p:"lollies / candy = <i>(romaji)</i> ",a:"ame",w:"mid"},
+   {k:"in",p:"read = <i>(romaji)</i> ",a:"yomimasu",w:"mid"},
+   {k:"in",p:"I like music. = <i>(romaji)</i> ",a:"ongaku ga suki desu",w:"wide"},
+ ]},
+ {t:"Level 2 · Fill the gap — noun AND verb", items:[
+   {k:"sel",p:"____ ni yakyuu o shimasu.  <i>(I play baseball on Tuesday)</i> ",o:["kayoubi","suiyoubi","nichiyoubi","doyoubi"],a:"kayoubi"},
+   {k:"sel",p:"Kayoubi ni yakyuu o ____ .  <i>(play)</i> ",o:["shimasu","shimasen","tabemasu","nomimasu"],a:"shimasu"},
+   {k:"sel",p:"Ongaku ga ____ .  <i>(I like music)</i> ",o:["suki desu","suki ja nai desu","shimasu","desu"],a:"suki desu"},
+   {k:"sel",p:"Nichiyoubi ni ____ o tabemasu.  <i>(lollies)</i> ",o:["ame","mizu","sushi","geemu"],a:"ame"},
+   {k:"sel",p:"____ ni geemu o shimasen.  <i>(I don't play games on Wednesday)</i> ",o:["suiyoubi","kayoubi","doyoubi","getsuyoubi"],a:"suiyoubi"},
+   {k:"sel",p:"Mizu o ____ .  <i>(drink)</i> ",o:["nomimasu","tabemasu","mimasu","yomimasu"],a:"nomimasu"},
+   {k:"sel",p:"Suiei wa amari ____ .  <i>(I don't really like swimming)</i> ",o:["suki ja nai desu","suki desu","shimasen","tanoshii desu"],a:"suki ja nai desu"},
+   {k:"sel",p:"Doyoubi ni ame o ____ .  <i>(eat)</i> ",o:["tabemasu","nomimasu","shimasu","mimasu"],a:"tabemasu"},
+ ]},
+ {t:"Level 3 · Key hiragana — recognise", items:[
+   {k:"mcq",p:"<span class='kanji'>します</span> means...",o:["shimasu — do / play","sushi — sushi","suki — like"],c:0},
+   {k:"mcq",p:"<span class='kanji'>すき</span> means...",o:["desu — is","suki — like","sushi — sushi"],c:1},
+   {k:"mcq",p:"<span class='kanji'>です</span> means...",o:["desu — is / am / are","tabemasu — eat","shimasu — do"],c:0},
+   {k:"mcq",p:"<span class='kanji'>すし</span> means...",o:["suki — like","shimasu — do","sushi — sushi"],c:2},
+   {k:"mcq",p:"<span class='kanji'>たべます</span> means...",o:["nomimasu — drink","tabemasu — eat","mimasu — watch"],c:1},
+   {k:"mcq",p:"<span class='kanji'>のみます</span> means...",o:["nomimasu — drink","yomimasu — read","tabemasu — eat"],c:0},
+   {k:"mcq",p:"Which one is <b>shimasu</b> (do / play)?",o:["します","すし","すき"],c:0},
+   {k:"mcq",p:"Which one is <b>tabemasu</b> (eat)?",o:["のみます","たべます","よみます"],c:1},
+ ]},
+ {t:"Level 4 · Kanji — numbers & days", items:[
+   {k:"in",p:"<span class='kanji'>三</span> = ",a:"3|three",w:"mid"},
+   {k:"in",p:"<span class='kanji'>七</span> = ",a:"7|seven",w:"mid"},
+   {k:"in",p:"<span class='kanji'>九</span> = ",a:"9|nine",w:"mid"},
+   {k:"in",p:"<span class='kanji'>十一</span> = ",a:"11|eleven",w:"mid"},
+   {k:"in",p:"<span class='kanji'>十二</span> = ",a:"12|twelve",w:"mid"},
+   {k:"mcq",p:"<span class='kanji'>月よう日</span> is...",o:["Monday","Tuesday","Sunday"],c:0},
+   {k:"mcq",p:"<span class='kanji'>水よう日</span> is...",o:["Thursday","Wednesday","Saturday"],c:1},
+   {k:"mcq",p:"<span class='kanji'>金よう日</span> is...",o:["Friday","Monday","Wednesday"],c:0},
+   {k:"mcq",p:"<span class='kanji'>土よう日</span> is...",o:["Sunday","Thursday","Saturday"],c:2},
+   {k:"mcq",p:"<span class='kanji'>日よう日</span> is...",o:["Sunday","Monday","Friday"],c:0},
+ ]},
+ {t:"Level 5 · Reading — Riku's week", items:[
+   {k:"mcq",p:RIKU+"What does Riku do on Tuesday?",o:["plays baseball","swims","reads","plays games"],c:0},
+   {k:"mcq",p:"Nanyoubi ni suiei o shimasu ka?",o:["Wednesday","Tuesday","Friday","Sunday"],c:0},
+   {k:"mcq",p:"What does Riku do on Friday?",o:["reads","plays baseball","plays games","eats lollies"],c:0},
+   {k:"mcq",p:"What does Riku like — and not really like?",o:["likes baseball · doesn't really like swimming","likes swimming · doesn't really like baseball","likes games · doesn't really like reading"],c:0},
+   {k:"mcq",p:"What does Riku eat and drink on Saturday?",o:["lollies and water","sushi and water","lollies and juice"],c:0},
+ ]},
+ {t:"Level 6 · Translate Mai's week into English", items:[
+   {k:"in2",jp:"Kayoubi ni suiei o shimasu.",a:"i swim on tuesday|on tuesday i swim|i do swimming on tuesday|she swims on tuesday"},
+   {k:"in2",jp:"Mokuyoubi ni geemu o shimasu.",a:"i play games on thursday|on thursday i play games|she plays games on thursday"},
+   {k:"in2",jp:"Yakyuu ga suki desu.",a:"i like baseball|she likes baseball"},
+   {k:"in2",jp:"Doyoubi ni ame o tabemasu.",a:"i eat lollies on saturday|i eat candy on saturday|on saturday i eat lollies|she eats lollies on saturday|she eats candy on saturday"},
+   {k:"in2",jp:"Nichiyoubi ni hon o yomimasu.",a:"i read a book on sunday|on sunday i read a book|i read books on sunday|she reads a book on sunday"},
+   {k:"in2",jp:"Getsuyoubi ni dansu o shimasen.",a:"i dont dance on monday|i do not dance on monday|on monday i dont dance|she doesnt dance on monday|she does not dance on monday"},
+ ]},
+ {t:"Level 7 · Write it in romaji", items:[
+   {k:"in2",jp:"I play baseball on Tuesday.  ①",a:"kayoubi ni yakyuu o shimasu"},
+   {k:"in2",jp:"I like music.  ②",a:"ongaku ga suki desu"},
+   {k:"in2",jp:"I eat lollies on Sunday.  ③",a:"nichiyoubi ni ame o tabemasu"},
+   {k:"in2",jp:"I don't swim on Wednesday.  ①",a:"suiyoubi ni suiei o shimasen"},
+   {k:"in2",jp:"I don't really like games.  ②",a:"geemu wa amari suki ja nai desu"},
+ ]},
+ {t:"🏆 Level 8 · Read the message from Haru", items:[
+   {k:"mcq",p:HARU+"How old is Haru?",o:["12","11","13","14"],c:0},
+   {k:"mcq",p:"Where does Haru live?",o:["Australia","Japan","America","China"],c:0},
+   {k:"mcq",p:"What is Haru's hobby — and when does he do it?",o:["tennis · Saturday","soccer · Saturday","tennis · Sunday","games · Monday"],c:0},
+   {k:"mcq",p:"How does Haru describe games?",o:["interesting","fun","boring","difficult"],c:0},
+   {k:"mcq",p:"At which meal does Haru eat sushi?",o:["lunch (hirugohan)","breakfast (asagohan)","dinner (bangohan)"],c:0},
+   {k:"mcq",p:"What does Haru ask Emi at the end?",o:["what her hobby is","how old she is","where she lives","what she eats"],c:0},
+ ]},
+ {t:"🏆 Level 9 · Build YOUR message — you are Ken!", items:[
+   {k:"in2",jp:"1 · Greet your friend Emi.  (Konnichiwa…)",a:"konnichiwa emi san|konnichiwa emisan|konnichiwa emi"},
+   {k:"in2",jp:"2 · Say your name is Ken.",a:"watashi no namae wa ken desu|watashi wa ken desu|boku wa ken desu"},
+   {k:"in2",jp:"3 · Say you are 13 years old.",a:"juusan sai desu|juusansaidesu"},
+   {k:"in2",jp:"4 · Say you live in Australia.",a:"oosutoraria ni sunde imasu|osutoraria ni sunde imasu"},
+   {k:"in2",jp:"5 · Say your hobby is soccer.",a:"shumi wa sakkaa desu|watashi no shumi wa sakkaa desu"},
+   {k:"in2",jp:"6 · Say you play soccer on Monday.",a:"getsuyoubi ni sakkaa o shimasu"},
+   {k:"in2",jp:"7 · Say you like sushi.",a:"sushi ga suki desu"},
+   {k:"in2",jp:"8 · Say you eat sushi at lunch.",a:"hirugohan ni sushi o tabemasu"},
+   {k:"in2",jp:"9 · Say games are fun.",a:"geemu wa tanoshii desu"},
+   {k:"in2",jp:"10 · Ask Emi what her hobby is.",a:"emi san no shumi wa nan desu ka|emisan no shumi wa nan desu ka"},
+   {k:"in2",jp:"11 · Say goodbye!",a:"mata ne|sayounara|sayonara"},
+ ]},
+];
+
+// stable per-device shuffle for levels 3+ (skip reading/message levels where order matters)
+let seed;try{seed=parseInt(localStorage.getItem("jp-rev-seed"));}catch(e){}
+if(!seed){seed=Math.floor(Math.random()*1e9)+1;try{localStorage.setItem("jp-rev-seed",String(seed));}catch(e){}}
+function rng(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;}
+function shuf(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+for(let li=3;li<LEVELS.length;li++){const lv=LEVELS[li];
+  if(/Reading|message|Build/.test(lv.t))continue;
+  shuf(lv.items);}
+
+const MSG=[
+ ["1 · Greeting + introduce yourself","Konnichiwa, <span class='oj'>[friend]</span><span class='pj'>-san!</span>  <span class='pj'>Watashi no namae wa</span> <span class='oj'>[name]</span> <span class='pj'>desu.</span> <span class='oj'>[age]</span><span class='pj'>-sai desu.</span> <span class='oj'>[country]</span> <span class='pj'>ni sunde imasu.</span>","e.g. Emi · 12 · Australia",s=>s.includes("konnichiwa")&&s.includes("desu")&&s.includes("sunde imasu")],
+ ["2 · A sport you like","<span class='oj'>[sport]</span> <span class='pj'>ga suki desu.</span>","e.g. tennis",s=>s.includes("ga suki desu")],
+ ["3 · Your sport as a hobby","<span class='pj'>Shumi wa</span> <span class='oj'>[sport]</span> <span class='pj'>desu.</span>","same sport!",s=>s.includes("shumi wa")&&s.includes("desu")],
+ ["4 · When you do the sport","<span class='oj'>[day]</span> <span class='pj'>ni</span> <span class='oj'>[sport]</span> <span class='pj'>o shimasu.</span>","e.g. Saturday",s=>/ ni /.test(" "+s+" ")&&s.includes("shimasu")],
+ ["5 · A hobby you like","<span class='oj'>[hobby]</span> <span class='pj'>ga suki desu.</span>","e.g. games",s=>s.includes("ga suki desu")],
+ ["6 · When you do the hobby","<span class='oj'>[day]</span> <span class='pj'>ni</span> <span class='oj'>[hobby]</span> <span class='pj'>o shimasu.</span>","e.g. Sunday",s=>/ ni /.test(" "+s+" ")&&s.includes("shimasu")],
+ ["7 · Describe the hobby","<span class='oj'>[hobby]</span> <span class='pj'>wa</span> <span class='oj'>[adjective]</span> <span class='pj'>desu.</span>","fun? interesting? difficult?",s=>/ wa /.test(" "+s+" ")&&s.includes("desu")],
+ ["8 · A food you like","<span class='oj'>[food]</span> <span class='pj'>ga suki desu.</span>","e.g. sushi",s=>s.includes("ga suki desu")],
+ ["9 · The meal you have it at","<span class='oj'>[asagohan / hirugohan / bangohan]</span> <span class='pj'>ni</span> <span class='oj'>[food]</span> <span class='pj'>o tabemasu / nomimasu.</span>","breakfast? lunch? dinner?",s=>/ ni /.test(" "+s+" ")&&(s.includes("tabemasu")||s.includes("nomimasu"))],
+ ["10 · Describe the food","<span class='oj'>[food]</span> <span class='pj'>wa</span> <span class='oj'>[adjective]</span> <span class='pj'>desu.</span>","oishii!",s=>/ wa /.test(" "+s+" ")&&s.includes("desu")],
+ ["11 · Ask your friend's hobby","<span class='oj'>[friend]</span><span class='pj'>-san no shumi wa nan desu ka?</span>","",s=>s.includes("shumi wa nan desu ka")],
+ ["12 · Farewell","<span class='pj'>Mata ne!</span>   OR   <span class='pj'>Sayounara!</span>","",s=>s.includes("mata ne")||s.includes("sayounara")||s.includes("sayonara")],
+];
+LEVELS.push({t:"✉️ Level 10 · YOUR message — plan in English, write in romaji",custom:true,items:[]});
+let completed=0;
+try{const s=parseInt(localStorage.getItem("jp-rev-v1"));if(!isNaN(s))completed=s;}catch(e){}
+function save(){try{localStorage.setItem("jp-rev-v1",String(completed));}catch(e){}}
+
+function makeSel(o,a){const s=el("select","pin");s.dataset.answer=a;["—",...o].forEach(x=>{const op=el("option",null,x);op.value=(x==="—"?"":x);s.appendChild(op);});return s;}
+function makeIn(a,w){const i=el("input","pin "+(w||""));i.type="text";i.dataset.answer=a;return i;}
+
+const box=document.getElementById("practice");
+LEVELS.forEach((lv,idx)=>{
+  const d=el("div","level locked");d.id="lv"+idx;
+  d.appendChild(el("div","lvhead","<b>"+lv.t+"</b> <span class='lockicon'>🔒</span>"));
+  const body=el("div","lvbody");
+  if(lv.custom){
+    body.appendChild(el("div","hint","For each sentence: jot your <b>plan in English</b> first (the dashed box), then write the sentence in romaji. The <span class='oj'>orange [parts]</span> = your own information; the <span class='pj'>purple parts</span> stay the same."));
+    MSG.forEach((m,mi)=>{
+      const r=el("div","msgrow");
+      r.appendChild(el("div","lab",m[0]));
+      r.appendChild(el("div","pat",m[1]));
+      const plan=el("input","pin plan");plan.type="text";plan.placeholder="Plan in English… "+(m[2]||"");plan.dataset.mi=mi;
+      const sent=el("input","pin wide msgline");sent.type="text";sent.placeholder="→ your sentence in romaji";sent.dataset.mi=mi;
+      r.appendChild(plan);r.appendChild(el("div",null,""));r.appendChild(sent);r.appendChild(el("span","fb",""));
+      body.appendChild(r);});
+    const row=el("div",null,"");const btn=el("button","checkbtn","✉️ Check & generate my message");btn.onclick=()=>checkMsg(idx);
+    row.appendChild(btn);row.appendChild(el("span","lvstatus",""));body.appendChild(row);
+    body.appendChild(el("div","genout"));const rem=el("div","remind");
+    rem.innerHTML="📣 <b>Remember &amp; practise!</b> Read your message aloud 3 times, copy it into your book, then cover it and try to write the whole thing from <b>memory</b>. Come back tomorrow and do it again — that's how it sticks!";
+    body.appendChild(rem);
+    d.appendChild(body);box.appendChild(d);return;
+  }
+  lv.items.forEach((it,qi)=>{
+    if(it.k==="mcq"){
+      const b=el("div","mcqblock");b.appendChild(el("div","mcqq",it.p));
+      it.o.forEach((opt,oi)=>{const btn=el("button","opt",String.fromCharCode(97+oi)+".  "+opt);btn.type="button";btn.dataset.c=(oi===it.c?"1":"0");
+        btn.onclick=()=>{b.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));btn.classList.add("sel");};
+        b.appendChild(btn);});
+      body.appendChild(b);
+    }else if(it.k==="in2"){
+      const q=el("div","q");q.appendChild(el("div","mcqq",it.jp));
+      const i=makeIn(it.a,"wide");q.appendChild(i);q.appendChild(el("span","fb",""));body.appendChild(q);
+    }else{
+      const q=el("div","q");const sp=el("span",null,it.p);q.appendChild(sp);
+      const ctl=(it.k==="sel")?makeSel(it.o,it.a):makeIn(it.a,it.w);
+      q.appendChild(ctl);q.appendChild(el("span","fb",""));body.appendChild(q);
+    }
+  });
+  const row=el("div",null,"");const btn=el("button","checkbtn","Check level ✔");btn.onclick=()=>checkLevel(idx);
+  row.appendChild(btn);row.appendChild(el("span","lvstatus",""));body.appendChild(row);
+  d.appendChild(body);box.appendChild(d);
+});
+
+function checkLevel(idx){
+  const d=document.getElementById("lv"+idx);let all=true;
+  d.querySelectorAll(".pin").forEach(p=>{
+    const ok=(p.dataset.answer||"").split("|").some(a=>norm(a)===norm(p.value));
+    p.classList.toggle("correct",ok);p.classList.toggle("incorrect",!ok);
+    const fb=p.parentElement.querySelector(".fb");if(fb){fb.textContent=ok?"✓":"✗";fb.style.color=ok?"#2F9E44":"#E23B2E";}
+    if(!ok)all=false;
+  });
+  d.querySelectorAll(".mcqblock").forEach(b=>{
+    const sel=b.querySelector(".opt.sel");
+    b.querySelectorAll(".opt").forEach(x=>x.classList.remove("correct","wrong"));
+    if(!sel){all=false;return;}
+    if(sel.dataset.c==="1"){sel.classList.add("correct");}
+    else{sel.classList.add("wrong");all=false;}
+  });
+  const st=d.querySelector(".lvstatus");
+  if(all){st.textContent="🎉 Level complete!";st.style.color="#2F9E44";
+    if(idx===completed){completed=idx+1;save();}
+    d.classList.add("done");updateLocks();
+    const nx=document.getElementById("lv"+(idx+1));if(nx&&nx.scrollIntoView)nx.scrollIntoView({behavior:"smooth",block:"start"});
+  }else{st.textContent="Some answers need fixing — look for ✗ and red boxes.";st.style.color="#E23B2E";}
+}
+function checkMsg(idx){
+  const d=document.getElementById("lv"+idx);let all=true;const parts=[];
+  d.querySelectorAll(".msgrow").forEach((r,mi)=>{
+    const plan=r.querySelector(".plan"),sent=r.querySelector(".msgline"),fb=r.querySelector(".fb");
+    const pv=(plan.value||"").trim();
+    const sv=(sent.value||"").toLowerCase().normalize("NFKC").replace(/[’'`´.,!?。、！？…\/():;]/g,"").replace(/-/g," ").replace(/\s+/g," ").trim();
+    const planOK=pv.length>0||mi>=10; // rows 11-12 need no plan
+    const sentOK=sv.length>2&&MSG[mi][3](sv);
+    plan.classList.toggle("correct",planOK&&pv.length>0);plan.classList.toggle("incorrect",!planOK);
+    sent.classList.toggle("correct",sentOK);sent.classList.toggle("incorrect",!sentOK);
+    fb.textContent=sentOK?"✓":"✗ check the pattern!";fb.style.color=sentOK?"#2F9E44":"#E23B2E";
+    if(!planOK||!sentOK)all=false;else parts.push(sent.value.trim());
+  });
+  const st=d.querySelector(".lvstatus");
+  if(all){
+    st.textContent="🎉 Message complete!";st.style.color="#2F9E44";
+    const out=d.querySelector(".genout");
+    out.innerHTML="<b>✉️ Your whole message:</b><br><br>"+parts.map(p=>p.replace(/</g,"&lt;")).join(" ");
+    out.style.display="block";d.querySelector(".remind").style.display="block";
+    if(idx===completed){completed=idx+1;save();}
+    d.classList.add("done");updateLocks();
+  }else{st.textContent="Fix the ✗ rows — follow the purple pattern and fill your English plan.";st.style.color="#E23B2E";}
+}
+function updateLocks(){
+  LEVELS.forEach((lv,idx)=>{
+    const d=document.getElementById("lv"+idx);
+    const unlocked=idx<=completed;
+    d.classList.toggle("locked",!unlocked);
+    d.querySelectorAll("input,select,button").forEach(c=>{if(!c.classList.contains("smallbtn"))c.disabled=!unlocked;});
+    const ic=d.querySelector(".lockicon");if(ic)ic.textContent=unlocked?(idx<completed?"✅":"✍️"):"🔒";
+    if(idx<completed)d.classList.add("done");
+  });
+  document.getElementById("prog").textContent="Completed "+Math.min(completed,LEVELS.length)+" / "+LEVELS.length;
+  document.getElementById("progbar").style.width=(100*Math.min(completed,LEVELS.length)/LEVELS.length)+"%";
+  document.getElementById("allDone").style.display=(completed>=LEVELS.length)?"block":"none";
+}
+function resetProgress(){completed=0;save();
+  document.querySelectorAll(".pin").forEach(p=>{p.value="";p.classList.remove("correct","incorrect");});
+  document.querySelectorAll(".opt").forEach(o=>o.classList.remove("sel","correct","wrong"));
+  document.querySelectorAll(".fb").forEach(f=>f.textContent="");
+  document.querySelectorAll(".lvstatus").forEach(s=>s.textContent="");
+  document.querySelectorAll(".level").forEach(l=>l.classList.remove("done"));
+  updateLocks();window.scrollTo(0,0);}
+updateLocks();
+</script>
+</body>
+</html>
