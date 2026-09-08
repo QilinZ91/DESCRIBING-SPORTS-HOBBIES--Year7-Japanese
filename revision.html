@@ -309,7 +309,7 @@ function checkMsg(idx){
   if(all){
     st.textContent="🎉 Message complete!";st.style.color="#2F9E44";
     const out=d.querySelector(".genout");
-    out.innerHTML="<b>✉️ Your whole message:</b><br><br>"+parts.map(p=>p.replace(/</g,"&lt;")).join(" ");
+    out.innerHTML="<b>✉️ Your whole message — all "+parts.length+" sentences:</b><br><br>"+parts.map(p=>p.replace(/</g,"&lt;")).join("<br>");
     out.style.display="block";d.querySelector(".remind").style.display="block";
     if(idx===completed){completed=idx+1;save();}
     d.classList.add("done");updateLocks();
