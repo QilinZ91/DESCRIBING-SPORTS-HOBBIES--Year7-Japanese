@@ -210,20 +210,48 @@ function speakJa(t){if(!t)return;try{const synth=window.speechSynthesis;if(!synt
   u.rate=0.85;synth.cancel();synth.speak(u);}catch(e){}}
 if(window.speechSynthesis)speechSynthesis.onvoiceschanged=()=>{};
 function sayFlash(el){const o=el.style.background;el.style.background="#dbeeff";setTimeout(()=>el.style.background=o,400);}
+// Readings the voice can get wrong when it sees kanji
+const SAYFIX={"十一さい":"じゅういっさい","十二さい":"じゅうにさい","十三さい":"じゅうさんさい","十四さい":"じゅうよんさい"};
+function fixSay(t){for(const k in SAYFIX)t=t.split(k).join(SAYFIX[k]);return t.trim();}
+const KANJI=/[一-鿿]/;
+function isJpCell(td){const t=td.textContent;return JPRE.test(t)&&!/=/.test(t);}
+// Text to say for a Japanese cell: use the kana in brackets if there is one, e.g. 日よう日 (にちようび)
+function cellSay(td){const t=td.textContent;const m=t.match(/[(（]\s*([぀-ヿー\s]+?)\s*[)）]/);
+  return fixSay(m?m[1]:t.replace(/[(（].*?[)）]/g," "));}
+// Split a row into groups (e.g. "あ | a | は | ha") so each word plays its own sound
+function rowGroups(tds){const n=tds.filter(isJpCell).length;if(n<2)return [tds];
+  const size=Math.max(1,Math.round(tds.length/n));const g=[];for(let i=0;i<tds.length;i+=size)g.push(tds.slice(i,i+size));return g;}
+function groupJp(g){const j=g.filter(isJpCell);return j.find(td=>!KANJI.test(td.textContent))||j[0]||null;}
+// Romaji words on this page -> their Japanese spelling (so sakkaa is said as サッカー)
+const LOAN={sakkaa:"サッカー",tenisu:"テニス",ragubii:"ラグビー",dansu:"ダンス",geemu:"ゲーム",supootsu:"スポーツ",terebi:"テレビ",bareebooru:"バレーボール",basukettobooru:"バスケットボール",oosutoraria:"オーストラリア",amerika:"アメリカ",shidonii:"シドニー"};
+let TAPVOCAB=null;
+function vocabDict(){if(TAPVOCAB)return TAPVOCAB;TAPVOCAB={};const vv=document.getElementById("view-vocab");if(!vv)return TAPVOCAB;
+  vv.querySelectorAll("tr").forEach(tr=>{const tds=[...tr.querySelectorAll("td")];if(!tds.length)return;
+    rowGroups(tds).forEach(g=>{const j=groupJp(g);if(!j)return;const say=cellSay(j);
+      g.forEach(td=>{const w=td.textContent.replace(/[⚠*]/g,"").trim().toLowerCase().replace(/-/g,"");
+        if(/^[a-z']{3,}$/.test(w)&&!(w in TAPVOCAB))TAPVOCAB[w]=say;});});});
+  return TAPVOCAB;}
+function toKana(s){const d=vocabDict();
+  return s.toLowerCase().replace(/[^a-z\s'-]/g," ").split(/\s+/).filter(Boolean)
+    .map(w=>{const k=w.replace(/-/g,"");return d[k]||LOAN[k]||w.split("-").map(x=>d[x]||LOAN[x]||romaji2kana(x)).join("");}).join("");}
 (function(){const vv=document.getElementById("view-vocab");if(!vv)return;
  vv.addEventListener("click",e=>{
   const ds=e.target.closest("[data-say]");
   if(ds){speakJa(ds.dataset.say);sayFlash(ds);return;}
   const tr=e.target.closest("tr");
-  if(tr&&tr.querySelector("td")){let jp=null;
-    tr.querySelectorAll("td").forEach(td=>{if(!jp&&JPRE.test(td.textContent))jp=td.textContent;});
-    if(!jp){const first=tr.querySelector("td");if(first)jp=romaji2kana(first.textContent);}
-    if(jp){speakJa(jp.replace(/\(.*?\)/g," ").trim());sayFlash(tr);}return;}
+  if(tr&&tr.querySelector("td")){const tds=[...tr.querySelectorAll("td")];const td=e.target.closest("td");
+    let say=null;
+    if(!tds.some(isJpCell)){say=toKana(tds[0].textContent);}
+    else if(td&&isJpCell(td)&&!(KANJI.test(td.textContent)&&groupJp((rowGroups(tds).find(g=>g.includes(td)))||[])!==td)){say=cellSay(td);}
+    else{const g=(td&&rowGroups(tds).find(x=>x.includes(td)))||tds;const j=groupJp(g)||groupJp(tds);if(j)say=cellSay(j);}
+    if(say){speakJa(say);sayFlash(tr);}return;}
   const line=e.target.closest("div");
   if(line&&/▸|★/.test(line.textContent)){
-    let t=line.textContent.replace(/^[▸★\s]+/,"").split(/=|—/)[0].trim();
+    let t=line.textContent.replace(/^[▸★\s]+/,"").replace(/^(Ask|Answer|Say|Reply)\s*:\s*/i,"").split(/=|—/)[0];
+    const m=t.match(/[(（]([^)）]*[぀-ヿ一-鿿][^)）]*)[)）]/);
+    t=(m?m[1]:t.replace(/[(（].*?[)）]/g," ")).trim();
     if(!t)return;
-    speakJa(JPRE.test(t)?t:romaji2kana(t));sayFlash(line);}
+    speakJa(JPRE.test(t)?fixSay(t):toKana(t));sayFlash(line);}
  });})();
 
 load();
